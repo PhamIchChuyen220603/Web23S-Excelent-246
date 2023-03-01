@@ -1,64 +1,75 @@
 import { Injectable } from '@angular/core';
-import { signInWithPopup, GoogleAuthProvider, Auth, authState, signOut } from '@angular/fire/auth'
-import { environment } from '../env/environment'
-import { User } from '../model/user.model'
 import {
-  CanActivate, Router,
-} from '@angular/router';
+  signInWithPopup,
+  GoogleAuthProvider,
+  Auth,
+  authState,
+  signOut,
+} from '@angular/fire/auth';
+import { environment } from '../../app/env/environment';
+import { User } from '../model/user.model';
+import { CanActivate, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { AuthState } from 'src/ngrx/states/auth.states';
 import { AuthActions } from 'src/ngrx/actions/auth.actions';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   userInfo: any;
   idToken: string = '';
-  constructor(private auth: Auth, private http: HttpClient, private router: Router, private authStore: Store<{ auth: AuthState }>) {
+  constructor(
+    private auth: Auth,
+    private http: HttpClient,
+    private router: Router,
+    private authStore: Store<{ auth: AuthState }>
+  ) {
     authState(this.auth).subscribe(async (user) => {
       if (user != null) {
         let temp: User = {
           userId: user?.uid,
           email: user?.email,
           userName: user?.displayName,
-          photoURL: user?.photoURL
-        }
+          photoURL: user?.photoURL,
+        };
         this.authStore.dispatch(AuthActions.loginSuccess({ user: temp }));
       }
     });
   }
   // Sign in with Google
   getData() {
-    return this.http.get('https://social.runwayclub.dev/api/articles/latest')
+    return this.http.get('https://social.runwayclub.dev/api/articles/latest');
   }
   loginGG() {
     const provider = new GoogleAuthProvider();
     return new Promise<User>(async (resolve, reject) => {
       try {
-        let result = await signInWithPopup(this.auth, provider)
+        let result = await signInWithPopup(this.auth, provider);
         if (result) {
           let user: User = {
             userId: result.user?.uid,
             email: result.user?.email,
             userName: result.user?.displayName,
-            photoURL: result.user?.photoURL
-          }
+            photoURL: result.user?.photoURL,
+          };
           resolve(user);
-          this.http.post(environment.baseUrl + 'auth/sign-in', {
-            userId: user.userId,
-            email: user.email,
-            userName: user.userName,
-            photoURL: user.photoURL
-          }).subscribe(response => {
-            console.log(response);
-          })
+          this.http
+            .post(environment.baseUrl + 'auth/sign-in', {
+              userId: user.userId,
+              email: user.email,
+              userName: user.userName,
+              photoURL: user.photoURL,
+            })
+            .subscribe((response) => {
+              console.log(response);
+            });
         }
       } catch (err) {
         reject(null);
       }
-    })
+    });
   }
   logOut() {
     return new Promise<string>(async (resolve, reject) => {
