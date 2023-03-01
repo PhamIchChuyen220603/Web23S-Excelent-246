@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import { environment } from '../env/environment'
+import { environment } from '../app/env/environment';
 // syncfusion module
 
 // ngrx
@@ -21,11 +21,7 @@ import { AuthEffects } from 'src/ngrx/effects/auth.effects';
 import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoadingComponent,
-
-  ],
+  declarations: [AppComponent, LoadingComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -39,11 +35,9 @@ import { LoadingComponent } from './components/loading/loading.component';
     StoreModule.forRoot({
       auth: AuthReducer,
     }),
-    EffectsModule.forRoot([
-      AuthEffects
-    ]),
+    EffectsModule.forRoot([AuthEffects]),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
