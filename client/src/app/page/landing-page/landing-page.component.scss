@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+*{
+  font-family: 'Source Sans Pro', sans-serif;
+
+}
+.container{
+  background-color: #f8f9fa;
+=======
 #navbar {
   width: 100%;
   height: 8%;
@@ -5,17 +13,62 @@
 
 #body {
   display: flex;
+>>>>>>> 9613062335065d0567888f55d68f2681caeeb86e
   width: 100vw;
-  height: 92%;
+  height:100vh;
+  overflow: hidden;
 }
 
+<<<<<<< HEAD
+.left-right{
+=======
 .left-body {
   width: 40%;
   height: 100%;
+>>>>>>> 9613062335065d0567888f55d68f2681caeeb86e
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+}
+.font{
+  padding-top: 17rem;
+  margin-left: 5.375rem;
+  color:#737373;
+  
+}
+#make_data{
+  margin-bottom: 1.25rem;
+}
+#text{
+  font-size: 50px;
+  font-weight: bolder;
+}
+#EXCELENT{
+  margin-top: 2.5rem;
+  font-size: 4.75rem;
+  color: #E11E5D;
+  font-weight: bolder;
 }
 
+<<<<<<< HEAD
+.text2{
+  font-size: 1.5rem;
+}
+#create{
+  margin-top: 6.25rem;
+}
+#online{
+  margin-bottom: 1.563rem;
+}
+#buttonAgency{
+  font-size: 1.3rem;
+  font-weight: bolder;
+  color:#f8f9fa;
+  margin-right: 2rem;
+  padding: 0.625rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #E11E5D;
+=======
 .title {
   width: fit-content;
   height: fit-content;
@@ -56,26 +109,72 @@
 
 .start:hover {
   background-color: #0469bd;
+>>>>>>> 9613062335065d0567888f55d68f2681caeeb86e
   cursor: pointer;
+  transition: 0.5s;
 }
 
+<<<<<<< HEAD
+#buttonAgency:hover{
+  background-color: #FF2B72; 
+}
+
+#buttonAccess{
+  font-size:  1.3rem;
+  font-weight: bolder;
+  color:#f8f9fa;
+  padding:  0.625rem;
+  border: none;
+  border-radius: 6px;
+  background-color:#E11E5D;
+=======
 .trial {
   color: #1e84e5;
 }
 
 .trial:hover {
   background-color: #e1e1e1;
+>>>>>>> 9613062335065d0567888f55d68f2681caeeb86e
   cursor: pointer;
+  transition: 0.5s;
+}
+#buttonAccess:hover{
+  background-color: #FF2B72;
 }
 
+<<<<<<< HEAD
+.image{
+=======
 .right-body {
   width: 60%;
   height: 100%;
+>>>>>>> 9613062335065d0567888f55d68f2681caeeb86e
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
+}
+#image{
+  position: absolute;
+  margin-right:42rem;
+  margin-top: 16rem;
+}
+#image2{
+  margin-right:52rem;
+  margin-top: 3rem;
+  border: 1.2rem #E11E5D solid;
+  border-radius: 6px;
+  position: absolute;
+  // margin-top: 5rem;
 }
 
+<<<<<<< HEAD
+#image3{
+  margin-top: 19rem;
+  margin-right: 80%;
+  border: 1rem #E11E5D solid;
+  border-radius: 6px;
+  position: absolute;
+}
+=======
 .demo-sheet {
   width: 80%;
   height: 50%;
@@ -102,3 +201,4 @@
   height: 92%;
   border-radius: 5px;
 }
+>>>>>>> 9613062335065d0567888f55d68f2681caeeb86e
