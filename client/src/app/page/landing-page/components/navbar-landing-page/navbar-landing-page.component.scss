@@ -1,0 +1,78 @@
+
+*{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.container{
+    width: 100vw;
+    height: 4.25rem;
+    display: flex;
+    justify-content: space-between;
+    background-color:#f8f9fa;
+    border-bottom: 1px #737373 solid ;
+    align-items: center;
+}
+.right-navbar {
+    margin-top: 19px;
+    display: flex;
+}
+
+.right-navbar button{
+    margin-right: 5.375rem;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: #737373;
+        background-color: #f8f9fa;
+        border: none;
+        cursor: pointer;
+        transition: 0.5s;
+}
+
+.right-navbar button:hover{
+    color: #FF2B72  
+}
+
+#login{
+    color:#E11E5D
+}
+
+#login:hover{
+    color:#737373
+}
+
+#excelent{
+    color: #E11E5D;
+    font-size: 2.5rem;
+    font-weight: bolder;
+    margin-left: 5.375rem;
+    margin-top: 1.188rem;
+    margin-bottom: 1.5rem;
+}
+// #contact{
+//     margin-right: 5.375rem;
+//     font-size: 1.5rem;
+//     margin-bottom: 1.5rem;
+//     color: #737373;
+//     background-color: #f8f9fa;
+//     border: none;
+// }
+// #about-us{
+//     margin-right: 5.375rem;
+//     font-size:1.5rem;
+//     margin-bottom: 1.5rem;
+//     color: #737373;
+//     background-color: #f8f9fa;
+//     border: none;
+// }
+// #login{
+//     margin-right: 5.375rem;
+//     margin-bottom: 1.5rem;
+//     color: #E11E5D;
+//     font-size: 1.5rem;
+//     font-weight: bolder;
+//     background-color: #f8f9fa;
+//     border: none;
+// }
+
+.right-navbar #contact  #about-us:hover{
+    color: aquamarine !important;
+}
