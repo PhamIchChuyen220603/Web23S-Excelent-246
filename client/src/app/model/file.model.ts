@@ -1,9 +1,12 @@
 export interface File {
-  FileId: string;
-  name: string;
-  createdDate: Date;
-  modifiedDate: Date;
-  size: number;
-  type: string;
+  fileId: string;
+  ownerId: string;
+  // name: string;
+  title: string;
+  createdDate: number;
+  modifiedDate: number;
+  modifiedBy: string
   createdBy: string;
+  data: any;
+  status: 'private' | 'public';
 }
