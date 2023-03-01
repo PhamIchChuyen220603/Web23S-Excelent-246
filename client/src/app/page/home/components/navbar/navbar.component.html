@@ -1,1 +1,15 @@
-{{(auth$ | async)?.user?.userName}}
+<!-- {{(auth$ | async)?.user?.userName}} -->
+
+<div class="navbar">
+  <div class="logo">
+    <span class="title">EXCELENT</span>
+  </div>
+
+  <div class="search">
+    <input class="search-bar" type="search" placeholder="Search" />
+  </div>
+
+  <div class="profile">
+    <img class="profile" [src]="(this.auth$ | async)?.user?.photoURL" />
+  </div>
+</div>

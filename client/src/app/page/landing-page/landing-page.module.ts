@@ -20,4 +20,4 @@ import { NavbarLandingPageComponent } from './components/navbar-landing-page/nav
 
   ]
 })
-export class LandingPageModule { }
+export class LandingPageModule {}
