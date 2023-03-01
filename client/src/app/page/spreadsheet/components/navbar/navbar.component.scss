@@ -1,0 +1,138 @@
+#container{
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+}
+
+.content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.left-side{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.left-side-content{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+
+.logo{
+    height: 60%;
+    width: auto;
+    cursor: pointer;
+}
+
+.logo img{
+    height: 90%;
+    width: auto;
+}
+
+.file-name-and-tools{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: flex-start;
+}
+
+
+
+
+.file-name h2{
+    margin:0;
+    padding-left: 5px;
+}
+
+.tools{
+    display: flex;
+    flex-direction: row;
+}
+.tools div{
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: 500;
+    color: rgb(110, 110, 110);
+
+}
+
+.tools div:hover{
+    // background-color:#ffdce7;
+    // color: #e3165b;
+    // border-bottom: 2px solid #e3165b;
+    color: #000;
+    background-color: #e8e8e8;
+}
+
+
+//right side
+
+.right-side{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+
+.right-side-content{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.share{
+    border-radius: 5px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: white;
+    background-color: #e3165b;
+    display: block;
+    float: left;
+}
+
+.share:hover{
+    background-color: #ff2b72;
+}
+
+
+.profile{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: flex-end;
+}
+
+.avt{
+    height: 60%;
+    width: auto;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avt img{
+    height: 70%;
+    width: auto;
+    border-radius: 50px;
+}

@@ -1,0 +1,29 @@
+
+#container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sheet-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 90vh;
+    background-color: #f2f2f2;
+}
+
+ejs-spreadsheet{
+    // border: 1px black solid;
+    border-radius: 10px !important;
+}
+
+#spreadsheet {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0;
+}

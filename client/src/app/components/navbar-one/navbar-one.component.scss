@@ -1,0 +1,80 @@
+#container{
+    width: 100vw;
+    height: 5rem;
+    display: flex;
+}
+
+
+.left-navbar{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+
+.logo{
+    width: 15%;
+    height: 70%;
+    margin-left: 2.5rem;
+    display: flex;
+    cursor: pointer;
+}
+
+.logo img{
+    width: 6rem;
+    height: 5rem;
+    margin: auto 0;
+}
+
+
+.right-navbar{
+    width: 50%;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.contact-info-login{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 2.5rem;
+}
+
+
+.contact-info-login div{
+    width: fit-content;
+    margin-top: 1.7rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.contact-info-login button{
+    font-size: medium;
+    border: none;
+    background-color: #fff;
+    color: #7A7A7A;
+    font-weight: 500;
+}
+
+.contact button:hover{
+    color: #0469BD;
+    cursor: pointer;
+}
+
+.info button:hover{
+    color: #0469BD;
+    cursor: pointer;
+}
+
+.login button:hover{
+    color: #7A7A7A;
+    cursor: pointer;
+}
+
+.login button{
+    color: #4693e7;
+}

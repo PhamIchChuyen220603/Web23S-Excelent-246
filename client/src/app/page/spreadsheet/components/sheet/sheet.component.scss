@@ -1,0 +1,38 @@
+.sheet-container{
+    text-align: center;
+
+}
+div{
+    margin: 0;
+    padding: 0;
+}
+
+table{
+    border-collapse: collapse !important;
+}
+
+input{
+    width: 5rem;
+    height: 1.4rem;
+    border: 1px solid #e0e0e0;
+}
+input:hover{
+    background-color: #eeeeee;
+}
+
+
+.col-header{
+    margin: 0;
+    background-color: #eeeeee;
+    border: 1px solid #e0e0e0;
+    
+}
+
+.row-header{
+    border: none;
+    border-bottom: 1.5px solid #e0e0e0;
+    background-color: #eeeeee;
+    height: 1.5rem;
+    text-align: center;
+    margin: 0;
+}
