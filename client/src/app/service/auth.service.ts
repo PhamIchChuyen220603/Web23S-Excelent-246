@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { signInWithPopup, GoogleAuthProvider, Auth, authState, signOut } from '@angular/fire/auth'
-import { environment } from '../../env/environment'
+import { environment } from '../env/environment'
 import { User } from '../model/user.model'
 import {
   CanActivate, Router,
