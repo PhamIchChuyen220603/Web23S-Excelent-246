@@ -3,6 +3,13 @@
         <app-navbar></app-navbar>
     </div>
     <div class="sheet-container">
-        <ejs-spreadsheet id="spreadsheet" #spreadsheet [openUrl]="this.openUrl" (allowSave)="true" [saveUrl]="this.saveUrl"></ejs-spreadsheet>
+        <ejs-spreadsheet 
+        (created)="hide()"
+        (beforeOpen)="upload($event)"
+        id="spreadsheet" #spreadsheet 
+        [openUrl]="this.openUrl" 
+        (allowSave)="true"
+        [saveUrl]="this.saveUrl">
+    </ejs-spreadsheet>
     </div>
 </div>

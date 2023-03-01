@@ -1,5 +1,6 @@
-* {
-  font-family: "Source Sans Pro", sans-serif;
+*{
+  font-family: 'Source Sans Pro', sans-serif;
+
 }
 .container {
   background-color: #f8f9fa;
@@ -8,7 +9,7 @@
   overflow: hidden;
 }
 
-.left-right {
+.left-right{
   display: flex;
   justify-content: space-between;
 }
@@ -31,7 +32,7 @@
   font-weight: bolder;
 }
 
-.text2 {
+.text2{
   font-size: 1.5rem;
 }
 #create {
@@ -48,13 +49,13 @@
   padding: 0.625rem;
   border: none;
   border-radius: 6px;
-  background-color: #e11e5d;
+  background-color: #E11E5D;
   cursor: pointer;
   transition: 0.5s;
 }
 
-#buttonAgency:hover {
-  background-color: #ff2b72;
+#buttonAgency:hover{
+  background-color: #FF2B72; 
 }
 
 #buttonAccess {
@@ -64,7 +65,7 @@
   padding: 0.625rem;
   border: none;
   border-radius: 6px;
-  background-color: #e11e5d;
+  background-color:#E11E5D;
   cursor: pointer;
   transition: 0.5s;
 }
@@ -72,7 +73,7 @@
   background-color: #ff2b72;
 }
 
-.image {
+.image{
   display: flex;
   justify-content: space-around;
 }
@@ -90,7 +91,7 @@
   // margin-top: 5rem;
 }
 
-#image3 {
+#image3{
   margin-top: 19rem;
   margin-right: 80%;
   border: 1rem #e11e5d solid;

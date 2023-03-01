@@ -7,6 +7,6 @@ export interface File {
   modifiedDate: number;
   modifiedBy: string;
   createdBy: string;
-  // data: any;
+  data: any;
   status: 'private' | 'public';
 }
