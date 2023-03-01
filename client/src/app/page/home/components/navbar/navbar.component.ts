@@ -11,4 +11,5 @@ export class NavbarComponent {
   constructor(public auth: AuthService, private authState: Store<{ auth: AuthState }>) {
   }
   auth$ = this.authState.select('auth');
+
 }
