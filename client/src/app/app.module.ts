@@ -21,7 +21,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { AuthReducer } from 'src/ngrx/reducers/auth.reducers';
 import { AuthEffects } from 'src/ngrx/effects/auth.effects';
-import { LoadingComponent } from './components/loading/loading.component';
 
 // syncfusion components
 
@@ -31,13 +30,11 @@ import { LoadingComponent } from './components/loading/loading.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoadingComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule,
     BrowserAnimationsModule,
     ToolbarModule,
     MenuModule,
