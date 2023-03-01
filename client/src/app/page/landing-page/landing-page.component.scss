@@ -1,8 +1,7 @@
-#navbar{
+#navbar {
   width: 100%;
   height: 8%;
 }
-
 
 #body {
   display: flex;
@@ -10,38 +9,37 @@
   height: 92%;
 }
 
-.left-body{
+.left-body {
   width: 40%;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.title{
+.title {
   width: fit-content;
   height: fit-content;
   margin: 12rem 0 3rem 8rem;
 }
 
-
-.title h1{
+.title h1 {
   font-size: 2.5rem;
   font-weight: 600;
 }
 
-.content{
+.content {
   width: fit-content;
   height: fit-content;
   margin-left: 8rem;
   color: #7a7a7a;
 }
 
-.start-trial{
+.start-trial {
   margin-top: 3.5rem;
   margin-left: 8rem;
 }
 
-.start-trial button{
+.start-trial button {
   padding: 1.1rem 0;
   width: 8rem;
   margin-right: 2.5rem;
@@ -51,28 +49,26 @@
   font-size: 1rem;
 }
 
-.start{
-  background-color: #1E84E5;
+.start {
+  background-color: #1e84e5;
   color: #fff;
 }
 
-.start:hover{
-  background-color: #0469BD;
+.start:hover {
+  background-color: #0469bd;
   cursor: pointer;
 }
 
-.trial{
-  color: #1E84E5;
+.trial {
+  color: #1e84e5;
 }
 
-.trial:hover{
+.trial:hover {
   background-color: #e1e1e1;
   cursor: pointer;
 }
 
-
-
-.right-body{
+.right-body {
   width: 60%;
   height: 100%;
   display: flex;
@@ -80,20 +76,19 @@
   align-items: center;
 }
 
-
-.demo-sheet{
-  width:80%;
+.demo-sheet {
+  width: 80%;
   height: 50%;
-  background-color: #1E84E5;
+  background-color: #1e84e5;
   display: flex;
   justify-content: center;
   border-radius: 5px;
 }
 
-.back-ground{
+.back-ground {
   width: 95%;
   height: 26rem;
-  background-color: rgba(255, 255, 255, .3);
+  background-color: rgba(255, 255, 255, 0.3);
   box-shadow: rgba(0, 0, 0, 0.25) 0px 40px 50px;
   border-radius: 5px;
   margin-top: 2rem;
@@ -102,7 +97,7 @@
   align-items: center;
 }
 
-.back-ground img{
+.back-ground img {
   width: 94%;
   height: 92%;
   border-radius: 5px;
