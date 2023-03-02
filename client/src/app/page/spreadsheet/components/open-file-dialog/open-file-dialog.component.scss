@@ -1,0 +1,181 @@
+#container{
+    width: 60rem;
+    height: 35rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // overflow: scroll;
+}
+
+.content{
+    width: 90%;
+    height: 85%;
+    // background-color: yellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.top{
+    width: 100%;
+    height: 10rem;
+    // background-color: aqua;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+.first{
+    width: 100%;
+    height: 25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.second{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    border-bottom: 0.01rem solid #737373;
+}
+
+.second-content{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.second-content div{
+    width: fit-content;
+    height: 100%;
+    padding: 0 1rem;
+    cursor: pointer;
+    color: #737373;
+}
+
+.second-content div:hover{
+    border-bottom: 2px solid #E11E5D;
+    color: #E11E5D;
+}
+
+.second p{
+    margin: 0;
+    padding: 0;
+}
+
+.third{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: flex-start;
+    color: #737373;
+    border-bottom: 0.01rem solid #737373;
+}
+
+.search{
+    width: 27rem;
+    height: 80%;
+}
+
+
+.search-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 6px;
+    color: black;
+    background-color: #f5f5f5;
+}
+
+.search-container span{
+    color: #737373;
+    font-size: 1.5rem;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+#find{
+    color: black;
+}
+
+#find:hover{
+    color: #737373;
+}
+
+#filter{
+    color: #737373;
+}
+#filter:hover{
+    color: black;
+}
+
+
+
+.search input{
+    width: 80%;
+    height: 70%;
+    outline: none !important;
+    border: none;
+    background-color: transparent;
+    font-size: 0.9rem;
+}
+
+// .yesterday-file{
+//     width: 100%;
+//     height: 10rem;
+//     background-color: red;
+// }
+
+.file-container{
+    width: 100%;
+    height: 20rem;
+    background-color: blue;
+}
+
+.logo-title{
+    column-gap: 1rem;
+    display: flex;
+    align-items: center;
+    color: #737373;
+
+}
+
+.logo-title img{
+    width: 1.5rem;
+    height: auto;
+}
+
+.logo-title p{
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    color: 737373;
+}
+
+.close{
+    margin: auto 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.close span{
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.close span:hover{
+    color: #737373;
+}
+

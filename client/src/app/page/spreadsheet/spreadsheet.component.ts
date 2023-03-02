@@ -20,7 +20,6 @@ export class SpreadsheetComponent implements OnInit{
 
   hide(){
     this.spreadsheetObj.hideFileMenuItems(['File'],true);
-    // this.spreadsheetObj.hideRibbonTabs(['Insert','Formulas','Data','View'],true);
   }
 
   auth$ = this.store.select('auth');
