@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { LandingPageRoutingModule } from './landing-page-routing.module';
 import { LandingPageComponent } from './landing-page.component';
 
-
 import { SharedModule } from '../../shared/shared.module';
 import { NavbarLandingPageComponent } from './components/navbar-landing-page/navbar-landing-page.component';
 
@@ -16,7 +15,7 @@ import { NavbarLandingPageComponent } from './components/navbar-landing-page/nav
   imports: [
     CommonModule,
     LandingPageRoutingModule,
-    SharedModule
+    SharedModule,
 
   ]
 })
