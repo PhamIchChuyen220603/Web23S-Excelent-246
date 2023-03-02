@@ -1,12 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  addDoc,
-  collection,
-  doc,
-  Firestore,
-  getDoc,
-  setDoc,
-} from '@angular/fire/firestore';
+import { addDoc, collection, doc, Firestore, getDoc, setDoc, getDocs, where, query } from '@angular/fire/firestore';
 import { File } from '../model/file.model';
 
 @Injectable({
@@ -14,10 +7,22 @@ import { File } from '../model/file.model';
 })
 export class FileService {
   constructor(private fireStore: Firestore) {}
+  currentFile!: any;
 
   db = collection(this.fireStore, 'excelFiles');
 
-  async createFile(file: File) {
+  async getAllFile() {
+    return await getDocs(this.db);
+  }
+
+  async getFileById(id: string){
+    const q = query(this.db, where("fileId", "==", id));
+    (await getDocs(q)).docs.forEach((file) => {
+      this.currentFile = file;
+    });
+  }
+
+  async createFile(file: File){
     return await setDoc(doc(this.db), file);
   }
 

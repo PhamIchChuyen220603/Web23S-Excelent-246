@@ -1,7 +1,12 @@
 import { MenuItemModel } from './../../../../../../node_modules/@syncfusion/ej2-navigations/src/common/menu-base-model.d';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
+import { MenuEventArgs } from '@syncfusion/ej2-navigations';
+// import { MenuClickEventArgs } from '@syncfusion/ej2-angular-filemanager';
+import { MatDialog } from '@angular/material/dialog';
+import { OpenFileDialogComponent } from '../open-file-dialog/open-file-dialog.component';
+import { FileService } from 'src/app/service/file.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,15 +14,42 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  constructor(private router: Router, protected authService: AuthService) {}
+  constructor(private router: Router, protected authService: AuthService, private dailog: MatDialog, protected fileService: FileService) {}
+
+  @ViewChild('menu') menu!: ElementRef;
+
+
+  open(){
+    this.dailog.open(OpenFileDialogComponent);
+  }
+
+  ngAfterViewInit() {
+    // console.log(this.menu);
+  }
+
+  menuItemText: string[] = [
+    'Open',
+    'Save',
+    'Exit',
+    'Cut',
+    'Copy',
+    'Paste',
+    'Toolbar',
+    'Sidebar',
+    'Full Screen',
+    'Spelling & Grammar',
+    'Customize',
+    'Options',
+  ];
 
   menuItems: MenuItemModel[] | any = [
     {
       text: 'File',
       items: [
-        { text: 'Open',id: 'open'},
+        { text: 'Open',},
         { text: 'Save',},
-        { text: 'Exit' },
+        { text: 'Exit', },
+
       ],
     },
     {
@@ -44,16 +76,14 @@ export class NavbarComponent {
         { text: 'Options' },
       ],
     },
-    { text: 'Go' },
-    { text: 'Help' },
   ];
 
-  subItem1 = document.createElement('e-menu-item');
-  // open = document.getElementById('open')
 
-  openN(){
-    let open:HTMLElement = document.getElementById(this.menuItems[0].items[0]) as HTMLElement;
-    console.log(open);
+  openN(args: MenuEventArgs){
+    let temp = this.menuItemText.find((item) => item == args.item.text);
+    if(temp == 'Open'){
+      this.open();
+    }
   }
 
 
