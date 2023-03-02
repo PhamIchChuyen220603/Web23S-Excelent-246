@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SheetComponent } from './components/sheet/sheet.component';
 import { FileManagerModule } from '@syncfusion/ej2-angular-filemanager';
-
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -22,7 +22,8 @@ import { FileManagerModule } from '@syncfusion/ej2-angular-filemanager';
     SpreadsheetRoutingModule,
     SpreadsheetAllModule,
     FormsModule,
-    FileManagerModule
+    FileManagerModule,
+    SharedModule,
   ]
 })
 export class SpreadsheetModule { }

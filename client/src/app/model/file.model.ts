@@ -5,7 +5,7 @@ export interface File {
   title: string;
   createdDate: number;
   modifiedDate: number;
-  modifiedBy: string
+  modifiedBy: string;
   createdBy: string;
   data: any;
   status: 'private' | 'public';

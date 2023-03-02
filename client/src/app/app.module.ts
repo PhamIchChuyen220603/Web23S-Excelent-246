@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -9,8 +10,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import { environment } from '../app/env/environment'
+import { environment } from '../app/env/environment';
 // syncfusion module
+import { ToolbarModule } from '@syncfusion/ej2-angular-navigations';
+import { MenuModule } from '@syncfusion/ej2-angular-navigations';
+
 
 // ngrx
 import { EffectsModule } from '@ngrx/effects';
@@ -18,15 +22,19 @@ import { StoreModule } from '@ngrx/store';
 import { AuthReducer } from 'src/ngrx/reducers/auth.reducers';
 import { AuthEffects } from 'src/ngrx/effects/auth.effects';
 
-@NgModule({
-  declarations: [
-    AppComponent,
+// syncfusion components
 
-  ],
+
+
+
+@NgModule({
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ToolbarModule,
+    MenuModule,
     HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
@@ -34,11 +42,9 @@ import { AuthEffects } from 'src/ngrx/effects/auth.effects';
     StoreModule.forRoot({
       auth: AuthReducer,
     }),
-    EffectsModule.forRoot([
-      AuthEffects
-    ]),
+    EffectsModule.forRoot([AuthEffects]),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
