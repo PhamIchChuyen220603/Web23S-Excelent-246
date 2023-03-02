@@ -1,164 +1,109 @@
-<<<<<<< HEAD
-*{
+* {
   font-family: 'Source Sans Pro', sans-serif;
 
 }
-.container{
-  background-color: #f8f9fa;
-=======
-#navbar {
-  width: 100%;
-  height: 8%;
-}
 
-#body {
-  display: flex;
->>>>>>> 9613062335065d0567888f55d68f2681caeeb86e
+.container {
+  background-color: #f8f9fa;
+
   width: 100vw;
-  height:100vh;
+  height: 100vh;
   overflow: hidden;
 }
 
-<<<<<<< HEAD
-.left-right{
-=======
-.left-body {
-  width: 40%;
-  height: 100%;
->>>>>>> 9613062335065d0567888f55d68f2681caeeb86e
+
+.left-right {
+
   display: flex;
   justify-content: space-between;
 }
-.font{
+
+.font {
   padding-top: 17rem;
   margin-left: 5.375rem;
-  color:#737373;
-  
+  color: #737373;
+
 }
-#make_data{
+
+#make_data {
   margin-bottom: 1.25rem;
 }
-#text{
+
+#text {
   font-size: 50px;
   font-weight: bolder;
 }
-#EXCELENT{
+
+#EXCELENT {
   margin-top: 2.5rem;
   font-size: 4.75rem;
   color: #E11E5D;
   font-weight: bolder;
 }
 
-<<<<<<< HEAD
-.text2{
+.text2 {
   font-size: 1.5rem;
 }
-#create{
+
+#create {
   margin-top: 6.25rem;
 }
-#online{
+
+#online {
   margin-bottom: 1.563rem;
 }
-#buttonAgency{
+
+#buttonAgency {
   font-size: 1.3rem;
   font-weight: bolder;
-  color:#f8f9fa;
+  color: #f8f9fa;
   margin-right: 2rem;
   padding: 0.625rem;
   border: none;
   border-radius: 6px;
   background-color: #E11E5D;
-=======
-.title {
-  width: fit-content;
-  height: fit-content;
-  margin: 12rem 0 3rem 8rem;
-}
 
-.title h1 {
-  font-size: 2.5rem;
-  font-weight: 600;
-}
-
-.content {
-  width: fit-content;
-  height: fit-content;
-  margin-left: 8rem;
-  color: #7a7a7a;
-}
-
-.start-trial {
-  margin-top: 3.5rem;
-  margin-left: 8rem;
-}
-
-.start-trial button {
-  padding: 1.1rem 0;
-  width: 8rem;
-  margin-right: 2.5rem;
-  border: none;
-  border-radius: 5px;
-  font-weight: 500;
-  font-size: 1rem;
-}
-
-.start {
-  background-color: #1e84e5;
-  color: #fff;
-}
-
-.start:hover {
-  background-color: #0469bd;
->>>>>>> 9613062335065d0567888f55d68f2681caeeb86e
   cursor: pointer;
   transition: 0.5s;
 }
 
-<<<<<<< HEAD
-#buttonAgency:hover{
-  background-color: #FF2B72; 
-}
-
-#buttonAccess{
-  font-size:  1.3rem;
-  font-weight: bolder;
-  color:#f8f9fa;
-  padding:  0.625rem;
-  border: none;
-  border-radius: 6px;
-  background-color:#E11E5D;
-=======
-.trial {
-  color: #1e84e5;
-}
-
-.trial:hover {
-  background-color: #e1e1e1;
->>>>>>> 9613062335065d0567888f55d68f2681caeeb86e
-  cursor: pointer;
-  transition: 0.5s;
-}
-#buttonAccess:hover{
+#buttonAgency:hover {
   background-color: #FF2B72;
 }
 
-<<<<<<< HEAD
-.image{
-=======
-.right-body {
-  width: 60%;
-  height: 100%;
->>>>>>> 9613062335065d0567888f55d68f2681caeeb86e
+#buttonAccess {
+  font-size: 1.3rem;
+  font-weight: bolder;
+  color: #f8f9fa;
+  padding: 0.625rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #E11E5D;
+
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+#buttonAccess:hover {
+  background-color: #FF2B72;
+}
+
+
+.image {
+
   display: flex;
   justify-content: space-around;
 }
-#image{
+
+#image {
   position: absolute;
-  margin-right:42rem;
-  margin-top: 16rem;
+  margin-right: 42rem;
+  margin-top: 20.7rem;
+  width: 650px;
 }
-#image2{
-  margin-right:52rem;
+
+#image2 {
+  margin-right: 52rem;
   margin-top: 3rem;
   border: 1.2rem #E11E5D solid;
   border-radius: 6px;
@@ -166,39 +111,151 @@
   // margin-top: 5rem;
 }
 
-<<<<<<< HEAD
-#image3{
+#image3 {
   margin-top: 19rem;
   margin-right: 80%;
   border: 1rem #E11E5D solid;
   border-radius: 6px;
   position: absolute;
 }
-=======
-.demo-sheet {
-  width: 80%;
-  height: 50%;
-  background-color: #1e84e5;
-  display: flex;
-  justify-content: center;
-  border-radius: 5px;
+
+// @keyframes image {
+//   from{
+//     transform: translateY(15px) scale(1.1);
+//     opacity: 0%;
+// }
+// to{
+
+//     transform: translateY(0px) scale(1);
+//     opacity: 100%;
+// }
+// }
+
+// // #image{
+// //   animation-name: image;
+// //     animation-duration: 1.2s;
+// //     animation-timing-function: ease-in-out;
+// //     animation-delay: 1.3s;
+// // }
+
+
+@keyframes image3 {
+  from {
+    transform: translateY(15px) scale(1.1);
+    opacity: 0%;
+  }
+
+  to {
+    transform: translateY(0px) scale(1);
+    opacity: 100%;
+  }
 }
 
-.back-ground {
-  width: 95%;
-  height: 26rem;
-  background-color: rgba(255, 255, 255, 0.3);
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 40px 50px;
-  border-radius: 5px;
-  margin-top: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#image3 {
+  animation-name: image3;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 1.3s;
 }
 
-.back-ground img {
-  width: 94%;
-  height: 92%;
-  border-radius: 5px;
+@keyframes image2 {
+  from {
+    transform: translateY(15px) scale(1.1);
+    opacity: 0%;
+  }
+
+  to {
+
+    transform: translateY(0px) scale(1);
+    opacity: 100%;
+  }
 }
->>>>>>> 9613062335065d0567888f55d68f2681caeeb86e
+
+#image2 {
+  animation-name: image2;
+  animation-duration: 1.4s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 1.3s;
+
+}
+
+@keyframes text {
+  from {
+    transform: translateY(15px);
+    opacity: 0%;
+  }
+
+  to {
+    transform: translateY(0px);
+    opacity: 100%;
+  }
+}
+
+#text {
+  animation-name: text;
+  animation-duration: 1.1s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 1.3s;
+
+}
+
+@keyframes EXCELENT {
+  from {
+    transform: translateY(15px);
+    opacity: 0%;
+  }
+
+  to {
+    transform: translateY(0px);
+    opacity: 100%;
+  }
+}
+
+#EXCELENT {
+  animation-name: EXCELENT;
+  animation-duration: 1.15s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 1.3s;
+  
+}
+
+@keyframes text2 {
+  from {
+    transform: translateY(15px);
+    opacity: 0%;
+  }
+
+  to {
+    transform: translateY(0px);
+    opacity: 100%;
+  }
+}
+
+.text2 {
+  animation-name: text2;
+  animation-duration: 1.2s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 1.3s;
+
+}
+
+
+
+@keyframes button {
+  from {
+    transform: translateY(15px);
+    opacity: 0%;
+  }
+
+  to {
+    transform: translateY(0px);
+    opacity: 100%;
+  }
+}
+
+.button {
+  animation-name: button;
+  animation-duration: 1.3s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 1.3s;
+}
