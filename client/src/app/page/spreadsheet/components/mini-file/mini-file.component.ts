@@ -7,10 +7,16 @@ import { FileService } from 'src/app/service/file.service';
   styleUrls: ['./mini-file.component.scss']
 })
 export class MiniFileComponent {
-  constructor(private fileService: FileService) { }
+  createdDate = 123;
+  data:any[] = [];
+  constructor(private fileService: FileService) {
+    this.fileService.getAllFile().then((res) => {
+      res.forEach((file) => {
+        this.data.push(file.data());
+      })});
+  }
 
   getAllFile(){
-    let tmp = this.fileService.getAllFile();
-    console.log(tmp);
+    console.log(this.data);
   }
 }

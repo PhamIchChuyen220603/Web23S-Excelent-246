@@ -1,1 +1,13 @@
-<p>mini-file works!</p>
+<div class="container">
+    <div    *ngFor="let data of this.data" class="example-card">
+        <div *ngIf="data.createdDate == createdDate">
+            <div class="header">
+                <img src="../../../../../assets/logo/logo2.png">
+                <div class="content">
+                    <img src="../../../../../assets/logo/logo1.png" alt="">
+                    <p>{{data.title}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -7,12 +7,17 @@ import { FileService } from 'src/app/service/file.service';
   styleUrls: ['./open-file-dialog.component.scss']
 })
 export class OpenFileDialogComponent {
-  constructor(private fileService: FileService) { }
+  // data:any[] = [];
 
-  getAllFile(){
-    this.fileService.getAllFile().then((res) => {
-      res.forEach((file) => {
-        console.log(file.data());
-      })});
-    };
-  }
+
+  // constructor(private fileService: FileService) {
+  //   this.fileService.getAllFile().then((res) => {
+  //     res.forEach((file) => {
+  //       this.data.push(file.data());
+  //     })});
+  // }
+
+  // getAllData(){
+  //   console.log(this.data); 
+  // }
+}

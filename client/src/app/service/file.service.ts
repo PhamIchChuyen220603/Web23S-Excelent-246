@@ -12,12 +12,6 @@ export class FileService {
 
   async getAllFile() {
     return await getDocs(this.db);
-    // snapShot.forEach((doc) => {
-    //   console.log(doc.id, '=>', doc.data());
-    // })
-    // return await getDocs(doc())    // let data!:an
-    // return (await getDoc(doc(this.db))).data();
-    // return data as File[];
   }
 
   async createFile(file: File){
