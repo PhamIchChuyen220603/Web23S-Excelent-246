@@ -7,7 +7,7 @@
         </div>
         <div class="file-name-and-tools">
           <div class="file-name">
-            <h2 *ngIf="this.fileService.currentFile != null" >{{this.fileService.currentFile?.data().title}}</h2>
+            <h2 *ngIf="this.fileService.currentFile != null" >{{this.fileService.currentFile?.title}}</h2>
             <h2 *ngIf="this.fileService.currentFile == null" >Untitled Sheet</h2>
           </div>
           <ejs-menu (select)="openN($event)" #menu id="menu" [items]=menuItems>              

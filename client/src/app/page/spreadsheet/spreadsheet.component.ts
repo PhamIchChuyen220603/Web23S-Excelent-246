@@ -30,6 +30,7 @@ export class SpreadsheetComponent implements OnInit{
     });
   }
   ngOnInit(): void {
+
   }
 
   openUrl = 'https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/open';
@@ -52,7 +53,7 @@ export class SpreadsheetComponent implements OnInit{
       modifiedBy: "Quân",
       modifiedDate: 123,
       ownerId: this.id,
-      data: null,
+      data: response,
       status: "private"
     }  
     this.FileService.createFile(fileToUpLoad);    
@@ -60,8 +61,7 @@ export class SpreadsheetComponent implements OnInit{
 
   async open(event: BeforeOpenEventArgs){
     if(this.FileService.currentFile != null){
-      
+      this.spreadsheetObj.openFromJson(this.FileService.currentFile.data);
     }
-    await this.spreadsheetObj.openFromJson(this.FileService.currentFile.data().data);
   }
 }

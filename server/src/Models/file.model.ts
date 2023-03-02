@@ -1,10 +1,14 @@
 export interface FileModel {
-    FileId: string;
-    name: string;
-    createdDate: string;
-    modifiedDate: string;
-    size: number;
-    type: string;
+    fileId: string;
+    ownerId: string,
+    // name: string;
+    title: string,
+    createdDate: number;
+    modifiedDate: number;
+    modifiedBy: string;
     createdBy: string;
     data: any;
+    status: 'private' | 'public';
+    // size: number;
+    // type: string;
 }
