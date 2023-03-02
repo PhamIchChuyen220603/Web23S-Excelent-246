@@ -1,15 +1,35 @@
 import { createAction, props } from '@ngrx/store';
 import { File } from '../../app/model/file.model';
 export const FileActions = {
-  createFile: createAction('[File] Create File'),
+  createFile: createAction('[File] Create File', props<{ userId: string,file: File }>()),
   createFileSuccess: createAction('[File] Create File Success', props<{ file: File }>()),
   createFileFailure: createAction('[File] Create File Failure', props<{ error: string }>()),
 
-  getFileById: createAction('[File] Get File'),
-  getFileSuccessById: createAction('[File] Get File Success', props<{ file: File }>()),
-  getFileFailureById: createAction('[File] Get File Failure', props<{ error: string }>()),
+  deleteFile: createAction('[File] Delete File', props<{ fileId: string }>()),
+  deleteFileSuccess: createAction('[File] Delete File Success'),
+  deleteFileFailure: createAction('[File] Delete File Failure', props<{ error: string }>()),
 
-  saveFile: createAction('[File] Save File'),
-  saveFileSuccess: createAction('[File] Save File Success', props<{ file: File }>()),
+  updateFile: createAction('[File] Update File', props<{ fileId: string, file: File }>()),
+  updateFileSuccess: createAction('[File] Update File Success', props<{file: File}>()),
+  updateFileFailure: createAction('[File] Update File Failure', props<{ error: string }>()),
+
+  getFileById: createAction('[File] Get File', props<{ fileId: string }>()),
+  getFileByIdSuccess: createAction('[File] Get File Success', props<{ file: File }>()),
+  getFileByIdFailure: createAction('[File] Get File Failure', props<{ error: string }>()),
+
+  getAllFiles: createAction('[File] Get All File'),
+  getAllFilesSuccess: createAction('[File] Get All File Success', props<{ files: File[] }>()),
+  getAllFilesFailure: createAction('[File] Get All File Failure', props<{ error: string }>()),
+
+  getFilesByUserId: createAction('[File] Get File By User Id', props<{ userId: string }>()),
+  getFilesByUserIdSuccess: createAction('[File] Get File By User Id Success', props<{ files: File[] }>()),
+  getFilesByUserIdFailure: createAction('[File] Get File By User Id Failure', props<{ error: string }>()),
+
+  getFilesByDate: createAction('[File] Get File By Date', props<{ date: number }>()),
+  getFilesByDateSuccess: createAction('[File] Get File By Date Success', props<{ files: File[] }>()),
+  getFilesByDateFailure: createAction('[File] Get File By Date Failure', props<{ error: string }>()),
+
+  saveFile: createAction('[File] Save File', props<{ file: File }>()),
+  saveFileSuccess: createAction('[File] Save File Success'),
   saveFileFailure: createAction('[File] Save File Failure', props<{ error: string }>()),
 }

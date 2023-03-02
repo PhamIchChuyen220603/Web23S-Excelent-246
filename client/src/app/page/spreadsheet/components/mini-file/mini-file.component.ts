@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { File } from 'src/app/model/file.model';
 import { FileService } from 'src/app/service/file.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { FileService } from 'src/app/service/file.service';
   styleUrls: ['./mini-file.component.scss']
 })
 export class MiniFileComponent {
-  createdDate = 123;
+  file!: File;
   data:any[] = [];
   constructor(private fileService: FileService) {
     this.fileService.getAllFile().then((res) => {
@@ -16,7 +17,10 @@ export class MiniFileComponent {
       })});
   }
 
-  getAllFile(){
-    console.log(this.data);
+  async getFileById(file: File){
+    await this.fileService.getFileById(file.fileId);
+    this.file = this.fileService.currentFile;
+    console.log(this.file.data().fileId);
+    // console.log(this.fileService.currentFile.data());
   }
 }

@@ -57,4 +57,11 @@ export class SpreadsheetComponent implements OnInit{
     }  
     this.FileService.createFile(fileToUpLoad);    
   }
+
+  async open(event: BeforeOpenEventArgs){
+    if(this.FileService.currentFile != null){
+      
+    }
+    await this.spreadsheetObj.openFromJson(this.FileService.currentFile.data().data);
+  }
 }

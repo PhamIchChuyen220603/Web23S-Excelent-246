@@ -6,6 +6,7 @@ import { MenuEventArgs } from '@syncfusion/ej2-navigations';
 // import { MenuClickEventArgs } from '@syncfusion/ej2-angular-filemanager';
 import { MatDialog } from '@angular/material/dialog';
 import { OpenFileDialogComponent } from '../open-file-dialog/open-file-dialog.component';
+import { FileService } from 'src/app/service/file.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +14,7 @@ import { OpenFileDialogComponent } from '../open-file-dialog/open-file-dialog.co
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  constructor(private router: Router, protected authService: AuthService, private dailog: MatDialog) {}
+  constructor(private router: Router, protected authService: AuthService, private dailog: MatDialog, protected fileService: FileService) {}
 
   @ViewChild('menu') menu!: ElementRef;
 
