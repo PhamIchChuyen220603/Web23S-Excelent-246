@@ -2,12 +2,21 @@
 <div class="templates-contain">
   <div class="template-top">
     <span>Start a new sheet</span>
-    <span>Template library</span>
+    <div>
+      <span>Template library</span>
+      <img class="logos" src="../../../assets/home_logos/updown.png" />
+      <img class="logos" src="../../../assets/home_logos/threedots.png" />
+    </div>
   </div>
   <div class="template-bottom">
     <div *ngFor="let a of this.file$">
-      <p class="pic"><img src="../../../assets/home_logos/plus.png" /></p>
-      <p>{{a.title}</p>
+      <p class="background">
+        <img
+          class="pic"
+          src="../../../assets/home_logos/microsoft-excel-logo.png"
+        />
+      </p>
+      <p class="title">{{ a.title }}</p>
     </div>
   </div>
 </div>
@@ -32,7 +41,11 @@
       <img class="logos" src="../../../../../assets/home_logos/folder.png" />
     </div>
   </div>
-  <div class="histories-content"></div>
+  <div class="histories-content" *ngFor="let a of this.file$">
+    <p>{{ a.title }}</p>
+    <p>{{ a.createdBy }}</p>
+    <p>{{ a.createdDate }}</p>
+  </div>
 </div>
 <div class="histories-bottom">
   <div class="left"></div>
