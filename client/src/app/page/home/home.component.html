@@ -20,38 +20,44 @@
     </div>
   </div>
 </div>
+
 <div class="histories-contain">
-  <div class="fillters">
-    <div>
-      <span class="fillters-leftside">Recently</span>
+  <div class="histories-fillters">
+    <div class="histories-fillters-time">Recently</div>
+    <div class="histories-fillters-owner">
+      <select class="histories-fillters-owner-options">
+        <option value="OwnedByPeople">Owned by people</option>
+        <option value="OwnedByMe">Owned by me</option>
+        <option value="NotOwnedByPeople">Not owned by people</option>
+      </select>
     </div>
-
-    <div>
-      <span class="fillters-rightside"
-        >Owned by people
-        <img
-          class="logos"
-          src="../../../../../assets/home_logos/down_arrow.png"
-        />
-      </span>
-
-      <span class="fillters-rightside">Last opened by me</span>
-      <img class="logos" src="../../../../../assets/home_logos/grid.png" />
-      <img class="logos" src="../../../../../assets/home_logos/az.png" />
-      <img class="logos" src="../../../../../assets/home_logos/folder.png" />
+    <div class="histories-fillters-date">Last opened by me</div>
+    <div class="histories-fillters-options">
+      <img
+        class="histories-fillters-logos"
+        src="../../../../../assets/home_logos/grid.png"
+      />
+      <img
+        class="histories-fillters-logos"
+        src="../../../../../assets/home_logos/az.png"
+      />
+      <img
+        class="histories-fillters-logos"
+        src="../../../../../assets/home_logos/folder.png"
+      />
     </div>
   </div>
-  <div class="histories-content" *ngFor="let a of this.file$">
-    <p>{{ a.title }}</p>
-    <p>{{ a.createdBy }}</p>
-    <p>{{ a.createdDate }}</p>
-  </div>
-</div>
-<div class="histories-bottom">
-  <div class="left"></div>
-  <div class="right">
-    <button class="create-file">
-      <img class="create-logo" src="../../../assets/home_logos/plus.png" />
-    </button>
+  <div *ngFor="let f of this.file$" class="histories-contents">
+    <img
+      class="histories-contents-file-logo"
+      src="../../../assets/home_logos/microsoft-excel-logo.png"
+    />
+    <span class="histories-contents-title">{{ f.title }}</span>
+    <span class="histories-contents-owner">{{ f.createdBy }}</span>
+    <span class="histories-contents-date">{{ f.createdDate }}</span>
+    <img
+      class="histories-contents-options"
+      src="../../../assets/home_logos/threedots.png"
+    />
   </div>
 </div>
