@@ -10,13 +10,13 @@ import { NavbarLandingPageComponent } from './components/navbar-landing-page/nav
 @NgModule({
   declarations: [
     LandingPageComponent,
-    NavbarLandingPageComponent
+    NavbarLandingPageComponent,
   ],
   imports: [
     CommonModule,
     LandingPageRoutingModule,
-    SharedModule
+    SharedModule,
 
   ]
 })
-export class LandingPageModule { }
+export class LandingPageModule {}

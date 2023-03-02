@@ -6,7 +6,6 @@ import { AuthState } from '../states/auth.states'
 const initialState: AuthState = {
   user: null,
   isAuthenticated: false,
-  inProcess: false,
   loading: false,
   error: '',
 };

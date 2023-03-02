@@ -3,7 +3,6 @@ export interface AuthState {
   user: User | null;
   isAuthenticated: boolean;
   loading: boolean;
-  inProcess: boolean;
   error: string;
 }
 

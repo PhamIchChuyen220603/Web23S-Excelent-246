@@ -10,10 +10,12 @@ export class FileController {
     get() {
         return this.fileService.getAll();
     }
+
     @Get('get/:id')
     getById(@Param('id') id: string) {
-        return this.fileService.getById(id);
+        return this.fileService.getByFileId(id);
     }
+
     @Post('create')
     create(@Body() file: FileModel) {
         return this.fileService.create(file);

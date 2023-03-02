@@ -33,11 +33,10 @@
   font-size: 50px;
   font-weight: bolder;
 }
-
 #EXCELENT {
   margin-top: 2.5rem;
   font-size: 4.75rem;
-  color: #E11E5D;
+  color: #e11e5d;
   font-weight: bolder;
 }
 
@@ -62,7 +61,6 @@
   border: none;
   border-radius: 6px;
   background-color: #E11E5D;
-
   cursor: pointer;
   transition: 0.5s;
 }
@@ -105,7 +103,7 @@
 #image2 {
   margin-right: 52rem;
   margin-top: 3rem;
-  border: 1.2rem #E11E5D solid;
+  border: 1.2rem #e11e5d solid;
   border-radius: 6px;
   position: absolute;
   // margin-top: 5rem;
@@ -114,29 +112,11 @@
 #image3 {
   margin-top: 19rem;
   margin-right: 80%;
-  border: 1rem #E11E5D solid;
+  border: 1rem #e11e5d solid;
   border-radius: 6px;
   position: absolute;
 }
 
-// @keyframes image {
-//   from{
-//     transform: translateY(15px) scale(1.1);
-//     opacity: 0%;
-// }
-// to{
-
-//     transform: translateY(0px) scale(1);
-//     opacity: 100%;
-// }
-// }
-
-// // #image{
-// //   animation-name: image;
-// //     animation-duration: 1.2s;
-// //     animation-timing-function: ease-in-out;
-// //     animation-delay: 1.3s;
-// // }
 
 
 @keyframes image3 {

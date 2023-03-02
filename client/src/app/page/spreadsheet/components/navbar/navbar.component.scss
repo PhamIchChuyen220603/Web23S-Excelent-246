@@ -1,3 +1,9 @@
+// @import '../node_modules/@syncfusion/ej2-base/styles/material.css';  
+// @import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';  
+// @import '../node_modules/@syncfusion/ej2-popups/styles/material.css';  
+// @import '../node_modules/@syncfusion/ej2-navigations/styles/material.css';
+
+
 #container{
     width: 100vw;
     height: 10vh;
@@ -52,7 +58,7 @@
 
 .file-name h2{
     margin:0;
-    padding-left: 5px;
+    padding-left: 6px;
 }
 
 .tools{
@@ -136,3 +142,44 @@
     width: auto;
     border-radius: 50px;
 }
+
+.e-menu-wrapper{
+    background-color: #fff;
+}
+
+// .e-menu-wrapper:hover{
+//     background-color: #fff;
+// }
+
+// .e-menu-wrapper ul .e-menu-item:hover{
+//     background-color:transparent;
+//     color: #000;
+//     // border-bottom: 2px solid #e3165b;
+// }
+
+// .e-menu-wrapper ul .e-menu-item{
+//     color: #737373;
+//     font-weight: 500;
+//     // border-radius: 6px;
+// }
+
+// .e-menu-wrapper ul .e-menu-item:hover{
+//     color: #000;
+//     background-color: #fff;
+// }
+
+
+// .e-menu-wrapper.e-menu-popup .e-menu-item:hover{
+//     color: #000;
+//     background: #fff;
+// }
+
+// .e-menu-wrapper.e-menu-popup{
+//     background-color: #fff;
+// }
+
+// .e-menu-wrapper.e-menu-popup :hover{
+//     background-color: transparent;
+//     width: fit-content;
+//     height: fit-content;
+// }
