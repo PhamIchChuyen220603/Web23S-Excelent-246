@@ -8,7 +8,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
   styleUrls: ['./open-file-dialog.component.scss']
 })
 export class OpenFileDialogComponent {
-  // data:any[] = [];
   constructor(public dialogRef: MatDialogRef<OpenFileDialogComponent>) {
 
   }
@@ -16,14 +15,4 @@ export class OpenFileDialogComponent {
     this.dialogRef.close();
   }
 
-  // constructor(private fileService: FileService) {
-  //   this.fileService.getAllFile().then((res) => {
-  //     res.forEach((file) => {
-  //       this.data.push(file.data());
-  //     })});
-  // }
-
-  // getAllData(){
-  //   console.log(this.data);
-  // }
 }

@@ -25,9 +25,15 @@ export class FileService {
     return this.http.get(`${environment.baseUrl}file/getAll`) as Observable<File[]>;
   }
 
-  async getFileById(id: string){
+  getFileById(id: string){
     return this.http.get(`${environment.baseUrl}file/get?id=${id}`) as Observable<File>;
   }
+
+  getFilesByOwner(ownerId: string) {
+    return this.http.get(`${environment.baseUrl}file/getByUser?id=${ownerId}`) as Observable<File[]>;
+  }
+
+  
 
   async createFile(file: File){
     return await setDoc(doc(this.db), file);
