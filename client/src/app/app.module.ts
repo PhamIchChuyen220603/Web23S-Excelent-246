@@ -21,6 +21,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { AuthReducer } from 'src/ngrx/reducers/auth.reducers';
 import { AuthEffects } from 'src/ngrx/effects/auth.effects';
+import { FileReducer } from 'src/ngrx/reducers/file.reducers';
+import { FileEffects } from 'src/ngrx/effects/file.effects';
 
 // syncfusion components
 
@@ -41,8 +43,12 @@ import { AuthEffects } from 'src/ngrx/effects/auth.effects';
     provideFirestore(() => getFirestore()),
     StoreModule.forRoot({
       auth: AuthReducer,
+      file: FileReducer,
     }),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([
+      AuthEffects,
+      FileEffects,
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent],

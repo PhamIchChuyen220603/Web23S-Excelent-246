@@ -1,6 +1,7 @@
 # compiled output
 /dist
 /node_modules
+/keys
 
 # Logs
 logs
@@ -37,5 +38,3 @@ lerna-debug.log*
 # enviorment
 .env
 
-
-/keys/firebase-admin.json

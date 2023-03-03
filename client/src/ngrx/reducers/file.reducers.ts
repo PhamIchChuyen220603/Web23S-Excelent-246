@@ -79,7 +79,7 @@ export const FileReducer = createReducer(
   on(FileActions.getAllFilesSuccess, (state, { files }) => {
     return {
       ...state,
-      files: files,
+      files: <[]>files,
       inProcess: false,
       loading: false,
       error: '',
