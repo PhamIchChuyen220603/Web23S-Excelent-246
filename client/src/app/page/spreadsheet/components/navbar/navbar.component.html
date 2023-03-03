@@ -3,20 +3,14 @@
     <div class="left-side">
       <div class="left-side-content">
         <div (click)="navigateToHome()" class="logo">
-          <img src="../../../../../assets/logo/logoExcel.png" alt="logo" />
+          <img src="../../../../../assets/logo/E-logo.png" alt="logo" />
         </div>
         <div class="file-name-and-tools">
           <div class="file-name">
-            <h2>Trung gay lọ</h2>
+            <h2 *ngIf="this.fileService.currentFile != null">{{this.fileService.currentFile?.data().title}}</h2>
+            <h2 *ngIf="this.fileService.currentFile == null">Untitled Sheet</h2>
           </div>
-          <ejs-menu>
-            <e-menu-items>
-                <e-menu-item text="Tải lên">
-                  <ul></ul>
-                </e-menu-item>
-                <e-menu-item text="Lưu"></e-menu-item>
-                <e-menu-item text="Lưu dưới dạng"></e-menu-item>
-            </e-menu-items>
+          <ejs-menu (select)="openN($event)" #menu id="menu" [items]=menuItems>
           </ejs-menu>
         </div>
       </div>

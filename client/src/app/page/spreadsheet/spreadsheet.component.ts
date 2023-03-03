@@ -20,7 +20,6 @@ export class SpreadsheetComponent implements OnInit{
 
   hide(){
     this.spreadsheetObj.hideFileMenuItems(['File'],true);
-    // this.spreadsheetObj.hideRibbonTabs(['Insert','Formulas','Data','View'],true);
   }
 
   auth$ = this.store.select('auth');
@@ -57,5 +56,12 @@ export class SpreadsheetComponent implements OnInit{
       status: "private"
     }  
     this.FileService.createFile(fileToUpLoad);    
+  }
+
+  async open(event: BeforeOpenEventArgs){
+    if(this.FileService.currentFile != null){
+      
+    }
+    await this.spreadsheetObj.openFromJson(this.FileService.currentFile.data().data);
   }
 }

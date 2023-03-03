@@ -6,5 +6,5 @@ export interface FileModel {
     size: number;
     type: string;
     createdBy: string;
-    data: {}
+    data: any;
 }

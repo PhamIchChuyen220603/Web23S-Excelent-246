@@ -9,13 +9,17 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SheetComponent } from './components/sheet/sheet.component';
 import { FileManagerModule } from '@syncfusion/ej2-angular-filemanager';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { OpenFileDialogComponent } from './components/open-file-dialog/open-file-dialog.component';
+import { MiniFileComponent } from './components/mini-file/mini-file.component';
 
 
 @NgModule({
   declarations: [
     SpreadsheetComponent,
     NavbarComponent,
-    SheetComponent
+    SheetComponent,
+    OpenFileDialogComponent,
+    MiniFileComponent,
   ],
   imports: [
     CommonModule,

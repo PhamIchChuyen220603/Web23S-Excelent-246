@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collection, doc, Firestore, getDoc, setDoc } from '@angular/fire/firestore';
+import { addDoc, collection, doc, Firestore, getDoc, setDoc, getDocs, where, query } from '@angular/fire/firestore';
 import { File } from '../model/file.model';
 
 @Injectable({
@@ -7,20 +7,32 @@ import { File } from '../model/file.model';
 })
 export class FileService {
   constructor(private fireStore: Firestore) {}
+  currentFile!: any;
 
   db = collection(this.fireStore, 'excelFiles');
+
+  async getAllFile() {
+    return await getDocs(this.db);
+  }
+
+  async getFileById(id: string){
+    const q = query(this.db, where("fileId", "==", id));
+    (await getDocs(q)).docs.forEach((file) => {
+      this.currentFile = file;
+    });
+  }
 
   async createFile(file: File){
     return await setDoc(doc(this.db), file);
   }
 
-  async updateFile(file: File){
+  async updateFile(file: File) {
     let tmp = Date.now();
     console.log(file);
-    return await addDoc(this.db,file);
+    return await addDoc(this.db, file);
   }
 
-  async getSheet(id: string){
+  async getSheet(id: string) {
     console.log(id);
     return (await getDoc(doc(this.db, id))).data();
   }
@@ -29,10 +41,10 @@ export class FileService {
     {
       fileId: '1',
       ownerId: 'owner1',
-      createdDate: 123,
+      createdDate: 2032023,
       modifiedDate: 123,
       modifiedBy: 'owner123',
-      createdBy: 'owner',
+      createdBy: 'me',
       title: 'Empty',
       // data: any,
       status: 'private',
@@ -40,10 +52,10 @@ export class FileService {
     {
       fileId: '2',
       ownerId: 'owner2',
-      createdDate: 456,
+      createdDate: 2032023,
       modifiedDate: 456,
       modifiedBy: 'owner456',
-      createdBy: 'owner2',
+      createdBy: 'me',
       title: 'Monthly budget',
       // data: any,
       status: 'private',
@@ -51,10 +63,10 @@ export class FileService {
     {
       fileId: '2',
       ownerId: 'owner2',
-      createdDate: 456,
+      createdDate: 2032023,
       modifiedDate: 456,
       modifiedBy: 'owner456',
-      createdBy: 'owner2',
+      createdBy: 'me',
       title: 'Annual budget',
       // data: any,
       status: 'private',
@@ -62,10 +74,10 @@ export class FileService {
     {
       fileId: '2',
       ownerId: 'owner2',
-      createdDate: 456,
+      createdDate: 2032023,
       modifiedDate: 456,
       modifiedBy: 'owner456',
-      createdBy: 'owner2',
+      createdBy: 'me',
       title: 'To-do list',
       // data: any,
       status: 'private',
@@ -73,10 +85,10 @@ export class FileService {
     {
       fileId: '2',
       ownerId: 'owner2',
-      createdDate: 456,
+      createdDate: 2032023,
       modifiedDate: 456,
       modifiedBy: 'owner456',
-      createdBy: 'owner2',
+      createdBy: 'me',
       title: 'Investment tracker',
       // data: any,
       status: 'private',
@@ -84,10 +96,10 @@ export class FileService {
     {
       fileId: '2',
       ownerId: 'owner2',
-      createdDate: 456,
+      createdDate: 2032023,
       modifiedDate: 456,
       modifiedBy: 'owner456',
-      createdBy: 'owner2',
+      createdBy: 'me',
       title: 'Work schedule',
       // data: any,
       status: 'private',
