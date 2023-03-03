@@ -57,9 +57,10 @@ export class SpreadsheetComponent implements OnInit {
       modifiedDate: 123,
       ownerId: this.id,
       data: response,
-      status: 'private',
-    };
-    this.FileService.createFile(fileToUpLoad);
+      status: "private",
+      member: [],
+    }  
+    this.FileService.createFile(fileToUpLoad);    
   }
 
   async open(event: BeforeOpenEventArgs) {

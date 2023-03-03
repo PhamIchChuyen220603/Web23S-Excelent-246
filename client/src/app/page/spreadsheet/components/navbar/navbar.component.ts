@@ -1,3 +1,4 @@
+import { ShareDialogComponent } from './../share-dialog/share-dialog.component';
 import { MenuItemModel } from './../../../../../../node_modules/@syncfusion/ej2-navigations/src/common/menu-base-model.d';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
@@ -21,6 +22,9 @@ export class NavbarComponent {
 
   open(){
     this.dailog.open(OpenFileDialogComponent);
+  }
+  share(){
+    this.dailog.open(ShareDialogComponent);
   }
 
   ngAfterViewInit() {

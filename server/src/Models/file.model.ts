@@ -1,7 +1,6 @@
 export interface FileModel {
     fileId: string;
     ownerId: string,
-    // name: string;
     title: string,
     createdDate: number;
     modifiedDate: number;
@@ -9,6 +8,5 @@ export interface FileModel {
     createdBy: string;
     data: any;
     status: 'private' | 'public';
-    // size: number;
-    // type: string;
+    memeber: string[];
 }

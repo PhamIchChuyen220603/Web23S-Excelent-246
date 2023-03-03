@@ -13,6 +13,7 @@ import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { AuthState } from 'src/ngrx/states/auth.states';
 import { AuthActions } from 'src/ngrx/actions/auth.actions';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -83,5 +84,10 @@ export class AuthService {
         reject(err);
       }
     });
+  }
+
+
+  getAllUser(){
+    return this.http.get(environment.baseUrl + 'auth/getAllUsers') as Observable<User[]>;
   }
 }
