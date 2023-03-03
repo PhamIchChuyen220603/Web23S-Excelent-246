@@ -1,0 +1,244 @@
+* {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.container-navbar {
+    width: 100vw;
+    height: 4.25rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: #f8f9fa;
+    border-bottom: 1px #737373 solid;
+    align-items: center;
+}
+
+.right-navbar {
+    margin-top: 19px;
+    display: flex;
+}
+
+.right-navbar button {
+    margin-right: 5.375rem;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #737373;
+    background-color: #f8f9fa;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+
+.right-navbar button:hover {
+    color: #FF2B72;
+    text-decoration: underline;
+}
+
+#login {
+    color: #E11E5D
+}
+
+#login:hover {
+    color: #737373
+}
+
+
+
+#excelent {
+    color: #E11E5D;
+    font-size: 2.5rem;
+    font-weight: bolder;
+    margin-left: 5.375rem;
+    margin-top: 1.188rem;
+    margin-bottom: 1.5rem;
+}
+
+.right-navbar #contact #about-us:hover {
+    color: aquamarine !important;
+}
+
+@keyframes excelent {
+    from {
+        transform: translateY(15px);
+        opacity: 0%;
+    }
+
+    to {
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+
+    // from{
+    //     transform: translateX(-50px);
+    //     opacity: 0%;
+    // }
+    // to{
+    //     transform: translateX(0px);
+    //     opacity: 100%;
+    // }
+}
+
+#excelent {
+    animation-name: excelent;
+    animation-duration: 1.2s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 1s;
+}
+
+@keyframes button {
+    0% {
+        transform: translateY(15px);
+        opacity: 0%;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+}
+
+.right-navbar button {
+    animation-name: button;
+    animation-duration: 1.2s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 1.3s;
+}
+
+@keyframes container-navbar {
+    0% {
+        transform: translateY(15px);
+        opacity: 0%;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+}
+
+.container-navbar {
+    animation-name: container;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 1s;
+}
+
+
+#top .Contact {
+    font-size: 60px;
+    color: #737373;
+    margin-top: 1rem;
+    margin-left: 37%;
+}
+
+#top .Excelent {
+    font-size: 60px;
+    color: #E11E5D;
+    margin-top: 1.3rem;
+    margin-left: 50%;
+}
+
+.left {
+    width: 39%;
+    height: 100%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 60px;
+    img {
+        height: 20rem;
+        width: 80%;
+    }
+}
+
+.right{
+    width: 50%;
+    height: 100%;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    p{
+        margin-top: 2rem;
+        font-size: 40px;
+        color: #737373;
+    }
+}
+
+.name{
+    font-size: 25px;
+    width: 70%;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    border-radius: 6px;
+    background-color: #EEECEC;
+    margin-top: 1.25rem;
+}
+
+.email{
+    font-size: 25px;
+    width: 70%;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    border-radius: 6px;
+    background-color: #EEECEC;
+    margin-top: 1.5rem;
+}
+
+.phone{
+    font-size: 25px;
+    width: 70%;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    border-radius: 6px;
+    background-color: #EEECEC;
+    margin-top: 1.5rem;
+}
+
+.ask{
+    font-size: 25px;
+    width: 70%;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    border-radius: 6px;
+    background-color: #EEECEC;
+    margin-top: 1.5rem;
+}
+
+#click-send{
+    width: 30%;
+    height: 3rem;
+    margin-top: 1rem;
+}
+
+.right .send{
+    color: #F8F9FA;
+    font-size: 35px;
+}
+
+.send{
+    width: 70%;
+    height: 4rem;
+    background-color: #E11E5D;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#excelent{
+    cursor: pointer;
+}
+
