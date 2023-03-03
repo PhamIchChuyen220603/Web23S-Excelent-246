@@ -3,12 +3,12 @@
 </style>
 <div class="container-navbar">
     <img id="excelent" src="../../../assets/Screenshot 2023-03-02 181134.png" alt="excel"
-        style="width: 13.438rem;height: 2.5rem; ">
+        style="width: 13.438rem;height: 2.5rem; " [routerLink]="['']">
 
     <div class="right-navbar">
         <button id="feedback" style="color: #FF2B72; text-decoration: underline;">Feedback</button>
         <button id="about-us">About us</button>
-        <button id="login">Login</button>
+        <button id="login" [routerLink]="['/login']">Login</button>
     </div>
 </div>
 
@@ -1123,9 +1123,9 @@
         <div class="right">
             <p>Send us a questions</p>
             <input class="name" type="Your Name" placeholder="Your Name...">
-            <input class="email" type="Email" placeholder="Email">
+            <input class="email" type="Email" placeholder="Email...">
             <input class="phone" type="Phone Number" placeholder="Phone Number...">
-            <input class="ask" type="Ask a question here" placeholder="Ask a question here...">
+            <textarea class="ask" type="Ask a question here" placeholder="Ask a question here..."></textarea>
             <div id="click-send">
                 <p class="send">Send us</p>
             </div>

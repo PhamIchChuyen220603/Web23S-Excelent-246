@@ -167,7 +167,7 @@
     justify-content: center;
     margin: 0 auto;
     border-radius: 6px;
-    background-color: #EEECEC;
+    background-color: #f8f9fa;
     margin-top: 1.25rem;
     padding-left: 0.6rem;
 }
@@ -180,7 +180,7 @@
     justify-content: center;
     margin: 0 auto;
     border-radius: 6px;
-    background-color: #EEECEC;
+    background-color: #f8f9fa;
     margin-top: 1.5rem;
     padding-left: 0.6rem;
 }
@@ -193,7 +193,7 @@
     justify-content: center;
     margin: 0 auto;
     border-radius: 6px;
-    background-color: #EEECEC;
+    background-color: #f8f9fa;
     margin-top: 1.5rem;
     padding-left: 0.6rem;
 }
@@ -201,14 +201,15 @@
 .ask{
     font-size: 25px;
     width: 70%;
-    height: 5rem;
+    height: 9rem;
     display: flex;
     justify-content: center;
     margin: 0 auto;
     border-radius: 6px;
-    background-color: #EEECEC;
+    background-color: #f8f9fa;
     margin-top: 1.5rem;
     padding-left: 0.6rem;
+    resize: vertical;
 }
 
 #click-send{
