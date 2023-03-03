@@ -21,6 +21,11 @@ export class FileController {
         return this.fileService.getByUserId(userId);
     }
 
+    @Get('getByMember')
+    getByMember(@Query('id') userId: string) {
+        return this.fileService.getByMemberId(userId);
+    }
+
     @Delete('delete')
     deleteById(@Query('id') fileId: string) {
         return this.fileService.deleteById(fileId);

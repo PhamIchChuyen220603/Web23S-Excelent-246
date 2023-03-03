@@ -85,5 +85,16 @@ export class FileService {
         }
     }
 
+    async getByMemberId(memberId: string): Promise<FileModel[] | null>{
+        try{
+            const snapshot = await this.docRef.where('member', 'array-contains', memberId).get();
+            const files = snapshot.docs.map(doc => doc.data()) as FileModel[];
+            return files;
+        }
+        catch(err){
+            console.log(err);
+            return null;
+        }
+    }
 
 }

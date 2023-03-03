@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { AuthState } from 'src/ngrx/states/auth.states';
 import { AuthActions } from 'src/ngrx/actions/auth.actions';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -49,6 +50,7 @@ export class AuthService {
             photoURL: result.user?.photoURL,
           };
           resolve(user);
+          this.router.navigate(['home']);
           this.http
             .post(environment.baseUrl + 'auth/sign-in', {
               userId: user.userId,
@@ -76,5 +78,10 @@ export class AuthService {
         reject(err);
       }
     });
+  }
+
+
+  getAllUser(){
+    return this.http.get(environment.baseUrl + 'auth/getAllUsers') as Observable<User[]>;
   }
 }

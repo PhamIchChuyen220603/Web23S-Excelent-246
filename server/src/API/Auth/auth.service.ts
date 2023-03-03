@@ -13,11 +13,16 @@ export class AuthService {
         let createdUser = new this.authModel(user);
         await createdUser.save();
     }
-    findUserById(id: string) {
-        return this.authModel.findOne({ userId: id });
+    
+    async findUserById(id: string) {
+        return await this.authModel.findOne({ userId: id });
     }
     signUp() {
         console.log('sign up');
+    }
+
+    async getAllUsers(){
+        return await this.authModel.find();
     }
 
 }

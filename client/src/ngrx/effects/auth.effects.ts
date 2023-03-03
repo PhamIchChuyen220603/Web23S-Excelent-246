@@ -32,4 +32,15 @@ export class AuthEffects {
       catchError((error) => of(AuthActions.logoutFailure({ error })))
     )
   );
+
+  getAllUsers$ = createEffect(() =>{
+    return this.actions$.pipe(
+      ofType(AuthActions.getAllUsers),
+      switchMap(() => this.authService.getAllUser()),
+      map((users) => {
+        return AuthActions.getAllUsersSuccess({ users: users });
+      }),
+      catchError((error) => of(AuthActions.getAllUsersFailure({ error })))
+    )
+  })
 }
