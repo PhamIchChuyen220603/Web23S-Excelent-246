@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent {
+  constructor(public authSrvc: AuthService) { }
 
 }
