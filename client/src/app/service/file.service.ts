@@ -2,7 +2,17 @@ import { Spreadsheet } from '@syncfusion/ej2-angular-spreadsheet';
 import { environment } from './../env/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { addDoc, collection, doc, Firestore, getDoc, setDoc, getDocs, where, query } from '@angular/fire/firestore';
+import {
+  addDoc,
+  collection,
+  doc,
+  Firestore,
+  getDoc,
+  setDoc,
+  getDocs,
+  where,
+  query,
+} from '@angular/fire/firestore';
 import { File } from '../model/file.model';
 import { Observable } from 'rxjs';
 
@@ -16,26 +26,30 @@ export class FileService {
 
   db = collection(this.fireStore, 'excelFiles');
 
-  openFile(sheet: Spreadsheet,file:any) {
+  openFile(sheet: Spreadsheet, file: any) {
     sheet.openFromJson(file);
   }
 
   getAllFiles() {
     // this.currentFile = this.http.get(`${environment.baseUrl}file/getAll`);
-    return this.http.get(`${environment.baseUrl}file/getAll`) as Observable<File[]>;
+    return this.http.get(`${environment.baseUrl}file/getAll`) as Observable<
+      File[]
+    >;
   }
 
-  getFileById(id: string){
-    return this.http.get(`${environment.baseUrl}file/get?id=${id}`) as Observable<File>;
+  getFileById(id: string) {
+    return this.http.get(
+      `${environment.baseUrl}file/get?id=${id}`
+    ) as Observable<File>;
   }
 
   getFilesByOwner(ownerId: string) {
-    return this.http.get(`${environment.baseUrl}file/getByUser?id=${ownerId}`) as Observable<File[]>;
+    return this.http.get(
+      `${environment.baseUrl}file/getByUser?id=${ownerId}`
+    ) as Observable<File[]>;
   }
 
-  
-
-  async createFile(file: File){
+  async createFile(file: File) {
     return await setDoc(doc(this.db), file);
   }
 
@@ -49,73 +63,4 @@ export class FileService {
     console.log(id);
     return (await getDoc(doc(this.db, id))).data();
   }
-
-  fileArr = [
-    {
-      fileId: '1',
-      ownerId: 'owner1',
-      createdDate: 2032023,
-      modifiedDate: 123,
-      modifiedBy: 'owner123',
-      createdBy: 'me',
-      title: 'Empty',
-      // data: any,
-      status: 'private',
-    },
-    {
-      fileId: '2',
-      ownerId: 'owner2',
-      createdDate: 2032023,
-      modifiedDate: 456,
-      modifiedBy: 'owner456',
-      createdBy: 'me',
-      title: 'Monthly budget',
-      // data: any,
-      status: 'private',
-    },
-    {
-      fileId: '2',
-      ownerId: 'owner2',
-      createdDate: 2032023,
-      modifiedDate: 456,
-      modifiedBy: 'owner456',
-      createdBy: 'me',
-      title: 'Annual budget',
-      // data: any,
-      status: 'private',
-    },
-    {
-      fileId: '2',
-      ownerId: 'owner2',
-      createdDate: 2032023,
-      modifiedDate: 456,
-      modifiedBy: 'owner456',
-      createdBy: 'me',
-      title: 'To-do list',
-      // data: any,
-      status: 'private',
-    },
-    {
-      fileId: '2',
-      ownerId: 'owner2',
-      createdDate: 2032023,
-      modifiedDate: 456,
-      modifiedBy: 'owner456',
-      createdBy: 'me',
-      title: 'Investment tracker',
-      // data: any,
-      status: 'private',
-    },
-    {
-      fileId: '2',
-      ownerId: 'owner2',
-      createdDate: 2032023,
-      modifiedDate: 456,
-      modifiedBy: 'owner456',
-      createdBy: 'me',
-      title: 'Work schedule',
-      // data: any,
-      status: 'private',
-    },
-  ];
 }
