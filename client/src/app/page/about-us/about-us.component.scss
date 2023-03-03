@@ -1,0 +1,287 @@
+
+*{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.container{
+    width: 100vw;
+    height: 4.25rem;
+    display: flex;
+    justify-content: space-between;
+    background-color:#f8f9fa;
+    border-bottom: 1px #737373 solid ;
+    align-items: center;
+}
+.right-navbar {
+    margin-top: 19px;
+    display: flex;
+}
+
+.right-navbar button{
+    margin-right: 5.375rem;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: #737373;
+        background-color: #f8f9fa;
+        border: none;
+        cursor: pointer;
+        transition: 0.5s;
+}
+
+.right-navbar button:hover{
+    color: #FF2B72;
+    text-decoration:underline;
+    transition: 0.5s;
+}
+
+#login{
+    color:#E11E5D
+}
+
+#login:hover{
+    color:#737373
+}
+
+
+
+#excelent{
+    color: #E11E5D;
+    font-size: 2.5rem;
+    font-weight: bolder;
+    margin-left: 5.375rem;
+    margin-top: 1.188rem;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+}
+
+.right-navbar #contact  #about-us:hover{
+    color: aquamarine !important;
+}
+
+@keyframes excelent {
+    from{
+        transform: translateY(15px);
+        opacity: 0%;
+    }
+    to{
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+}
+
+#excelent{
+    animation-name: excelent;
+    animation-duration: 1.2s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 1s;
+}
+
+@keyframes button {
+    0%{
+        transform: translateY(15px);
+        opacity: 0%;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+}
+
+.right-navbar button{
+    animation-name: button;
+    animation-duration: 1.2s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 1.3s;
+}
+
+@keyframes container {
+    0%{
+        transform: translateY(15px);
+        opacity: 0%;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+}
+
+.container{
+    animation-name: container;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 1s;
+}
+
+
+
+#font{
+    text-align: center;
+}
+
+
+#about{
+    color:#737373;
+    font-size: 4.75rem;
+    margin-top: 1.7rem;
+    margin-right: 13.5rem;
+}
+
+@keyframes about {
+    0%{
+        transform: translateY(15px);
+        opacity: 0%;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+}
+
+#about{
+    animation-name: about;
+    animation-duration: 1.2s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 1.3s;
+}
+
+
+#excelentus{
+    color:#737373;
+    display: flex;
+    justify-content: center;
+    margin-top: 3.5rem;
+    font-size: 4.75rem;
+}
+
+@keyframes excelentus {
+    0%{
+        transform: translateY(15px);
+        opacity: 0%;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+}
+
+#excelentus{
+    animation-name: excelentus;
+    animation-duration: 1.3s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 1.3s;
+}
+
+#excel{
+    margin-left: 12rem;
+    color: #E11E5D;
+    font-weight: bolder;
+}
+
+#us{
+    margin-left: 0.5rem;
+}
+
+
+.word{
+    display: flex;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+}
+
+
+
+#Recently{
+    color:#737373;
+    position: absolute;
+    width: 35%;
+    word-break: break-word;
+    margin-right: 5.375rem;
+    margin-left: 25rem;
+    margin-top: 6rem;
+}
+
+@keyframes Recently {
+    0%{
+        transform: translateY(15px);
+        opacity: 0%;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+}
+
+#Recently{
+    animation-name: Recently;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 1.3s;
+}
+
+.imageExcel{
+    position: absolute;
+    width: 500px;
+    margin-top:7.5rem;
+    margin-left: 35rem;
+}
+
+
+#theName{
+    color:#737373;
+    position: absolute;
+    margin-top: 2rem;
+    width: 45%;
+    margin-left: 5.375rem;
+    word-spacing: 1px;
+}
+
+@keyframes theName {
+    0%{
+        transform: translateY(15px);
+        opacity: 0%;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+}
+
+#theName{
+    animation-name: theName;
+    animation-duration: 1.8s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 1.3s;
+}
+
+.imageUser{
+    margin-top: 1rem;
+   margin-left: 10rem;
+    width: 500px;
+}
+.imageCenter{
+    margin-right: 5.375rem;
+}
+#inOurWeb{
+    color:#737373;
+    position: absolute;
+    width: 45%;
+    margin-left: 5.375rem;
+    margin-bottom: 2rem;
+}
+
+@keyframes inOurWeb {
+    0%{
+        transform: translateY(15px);
+        opacity: 0%;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+}
+
+#inOurWeb{
+    animation-name: inOurWeb;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 1.3s;
+}
