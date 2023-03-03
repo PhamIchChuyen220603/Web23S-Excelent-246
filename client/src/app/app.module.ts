@@ -15,7 +15,6 @@ import { environment } from '../app/env/environment';
 import { ToolbarModule } from '@syncfusion/ej2-angular-navigations';
 import { MenuModule } from '@syncfusion/ej2-angular-navigations';
 
-
 // ngrx
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -26,9 +25,6 @@ import { FileEffects } from 'src/ngrx/effects/file.effects';
 
 // syncfusion components
 
-
-
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -38,6 +34,7 @@ import { FileEffects } from 'src/ngrx/effects/file.effects';
     ToolbarModule,
     MenuModule,
     HttpClientModule,
+
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
@@ -45,10 +42,7 @@ import { FileEffects } from 'src/ngrx/effects/file.effects';
       auth: AuthReducer,
       file: FileReducer,
     }),
-    EffectsModule.forRoot([
-      AuthEffects,
-      FileEffects,
-    ]),
+    EffectsModule.forRoot([AuthEffects, FileEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

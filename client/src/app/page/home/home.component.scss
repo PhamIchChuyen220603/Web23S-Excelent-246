@@ -1,40 +1,3 @@
-.templates-contain {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 18rem;
-  background-color: #f1f3f4;
-  border: 0.05rem;
-  border-style: solid;
-  border-color: #a8a8a8;
-  justify-content: center;
-  align-items: center;
-}
-.template-top {
-  width: 69%;
-  height: fit-content;
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  font-weight: normal;
-  font-size: 1.125rem;
-  color: #737373;
-}
-
-.pic {
-  width: 15rem;
-  height: 10rem;
-}
-
-.template-bottom {
-  display: flex;
-  width: 70%;
-  justify-items: flex-start;
-  position: relative;
-  top: 1rem;
-  justify-content: space-around;
-}
-
 .histories-contain {
   display: flex;
   flex-direction: column;
@@ -74,8 +37,9 @@
   height: 3.75rem;
 }
 .title {
-  font-size: 1rem;
+  font-size: 0.875rem;
   color: #737373;
+  font-weight: lighter;
 }
 
 .histories-fillters {
@@ -83,7 +47,6 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  font-size: 1.25rem;
 }
 
 .histories-fillters-time {
@@ -91,15 +54,20 @@
   margin: 0 1.875rem 0 0;
   padding: 1.3125rem 0 1.1875rem 4rem;
   color: #737373;
+  font-size: 1rem;
+  font-weight: bold;
 }
 .histories-fillters-owner {
   width: 12.9375rem;
-  padding: 1.0625rem 0 0;
+  padding: 1.3125rem 0 0;
+  font-size: 1rem;
+  font-weight: bold;
 }
 .histories-fillters-date {
   width: 13rem;
-  margin: 1.25rem 0 0;
-  font-size: 1.25rem;
+  margin: 1.3125rem 0 0;
+  font-size: 1rem;
+  font-weight: bold;
   color: #737373;
 }
 .histories-fillters-options {
@@ -109,16 +77,17 @@
   color: #737373;
 }
 .histories-fillters-logos {
-  width: 1.625rem;
-  height: 1.625rem;
+  width: 1.425rem;
+  height: 1.425rem;
   margin: 0.1875rem 0;
-  padding: 0.75rem 0.5rem;
+  padding: 0.95rem 0.5rem;
 
   color: #737373;
 }
 
 .histories-fillters-owner-options {
-  font-size: 1.25rem;
+  font-size: 1rem;
+  font-weight: bold;
   color: #737373;
   border: none;
 }
@@ -134,7 +103,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 .histories-contents-file-logo {
   width: 1.625rem;
@@ -155,15 +124,17 @@
   margin: 0 0.75rem 0 0.875rem;
   padding: 0 0.125rem;
   padding-top: 1rem;
-  font-size: 1.25rem;
+  font-size: 0.875rem;
+  font-weight: lighter;
   color: #737373;
+  cursor: pointer;
 }
 
 .histories-contents-owner {
   width: 13rem;
   margin: 0 1rem 0 0;
   padding-top: 1rem;
-  font-size: 1.25rem;
+  font-size: 0.875rem;
   color: #737373;
 }
 
@@ -176,7 +147,7 @@
   width: 14.5rem;
   margin: 0 1rem 0 0;
   padding-top: 1rem;
-  font-size: 1.25rem;
+  font-size: 0.875rem;
   color: #737373;
 }
 

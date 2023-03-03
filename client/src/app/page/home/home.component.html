@@ -1,34 +1,17 @@
 <app-navbar> </app-navbar>
-<div class="templates-contain">
-  <div class="template-top">
-    <span>Start a new sheet</span>
-    <div>
-      <span>Template library</span>
-      <img class="logos" src="../../../assets/home_logos/updown.png" />
-      <img class="logos" src="../../../assets/home_logos/threedots.png" />
-    </div>
-  </div>
-  <div class="template-bottom">
-    <div *ngFor="let a of this.file$">
-      <p class="background">
-        <img
-          class="pic"
-          src="../../../assets/home_logos/microsoft-excel-logo.png"
-        />
-      </p>
-      <p class="title">{{ a.title }}</p>
-    </div>
-  </div>
-</div>
+<app-template></app-template>
 
 <div class="histories-contain">
   <div class="histories-fillters">
     <div class="histories-fillters-time">Recently</div>
     <div class="histories-fillters-owner">
-      <select class="histories-fillters-owner-options">
-        <option value="OwnedByPeople">Owned by people</option>
-        <option value="OwnedByMe">Owned by me</option>
-        <option value="NotOwnedByPeople">Not owned by people</option>
+      <select
+        (change)="onChange($event)"
+        class="histories-fillters-owner-options"
+      >
+        <option *ngFor="let choice of optionChoices" [value]="choice.value">
+          {{ choice.name }}
+        </option>
       </select>
     </div>
     <div class="histories-fillters-date">Last opened by me</div>
@@ -47,7 +30,10 @@
       />
     </div>
   </div>
-  <div *ngFor="let f of this.file$" class="histories-contents">
+  <div
+    *ngFor="let f of (this.files$ | async)?.files"
+    class="histories-contents"
+  >
     <img
       class="histories-contents-file-logo"
       src="../../../assets/home_logos/microsoft-excel-logo.png"
