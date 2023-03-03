@@ -1,25 +1,32 @@
+import { Spreadsheet } from '@syncfusion/ej2-angular-spreadsheet';
+import { environment } from './../env/environment';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { addDoc, collection, doc, Firestore, getDoc, setDoc, getDocs, where, query } from '@angular/fire/firestore';
 import { File } from '../model/file.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FileService {
-  constructor(private fireStore: Firestore) {}
+  constructor(private fireStore: Firestore, private http: HttpClient) {}
   currentFile!: any;
+  // spreadSheetObj!: Spreadsheet
 
   db = collection(this.fireStore, 'excelFiles');
 
-  async getAllFile() {
-    return await getDocs(this.db);
+  openFile(sheet: Spreadsheet,file:any) {
+    sheet.openFromJson(file);
+  }
+
+  getAllFiles() {
+    // this.currentFile = this.http.get(`${environment.baseUrl}file/getAll`);
+    return this.http.get(`${environment.baseUrl}file/getAll`) as Observable<File[]>;
   }
 
   async getFileById(id: string){
-    const q = query(this.db, where("fileId", "==", id));
-    (await getDocs(q)).docs.forEach((file) => {
-      this.currentFile = file;
-    });
+    return this.http.get(`${environment.baseUrl}file/get?id=${id}`) as Observable<File>;
   }
 
   async createFile(file: File){

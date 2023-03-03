@@ -10,19 +10,17 @@ import { FileActions } from '../actions/file.actions';
 export class FileEffects{
     constructor(private actions$: Actions, private fileService: FileService, private route: Router) {}
 
-    createdFile$ = createEffect(() => {
-        return this.actions$.pipe(
-            ofType(FileActions.createFile),
-            switchMap((action) => {
-                return from(this.fileService.createFile(action.file)).pipe(
-                    map((data:any) => {
-                        return FileActions.createFileSuccess({file: data}) 
-                    }),
-                    catchError((error) => {
-                        return of(FileActions.createFileFailure({error: error}))
-                    })
-                )
-            })
-        )
-    })
+    getAllFiles$ = createEffect(() => this.actions$.pipe(
+        ofType(FileActions.getAllFiles),
+        switchMap((action) => {
+            return from(this.fileService.getAllFiles()).pipe(
+                map((result:any) => {
+                    return FileActions.getAllFilesSuccess({files: result})
+                }),
+                catchError((error) => {
+                    return of(FileActions.getAllFilesFailure({error: error}))
+                })
+            )
+        })
+    ))
 }
