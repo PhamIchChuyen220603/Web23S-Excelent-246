@@ -40,7 +40,7 @@
     align-items: center;
     justify-content: center;
     display: flex;
-    font-size: 30px;
+    font-size: 40px;
     color: #E11E5D;
     margin-top: 1.2rem;
 }
@@ -52,8 +52,9 @@
 }
 
 .Account{
+    font-size: 18px;
     width: 68%;
-    height: 2.4rem;
+    height: 3.1rem;
     flex-direction: column;
     border-radius: 6px;
     display: flex;
@@ -65,8 +66,9 @@
 }
 
 .Password{
+    font-size: 18px;
     width: 68%;
-    height: 2.4rem;
+    height: 3.1rem;
     border-radius: 6px;
     display: flex;
     justify-content: center;
@@ -77,20 +79,22 @@
 }
 
 .middle p{
-    font-size: 17px;
     align-items: center;
     display: flex;
     justify-content: center;
     margin: 0 auto;
     color: #E11E5D;
     cursor: pointer;
+    margin-top: 0.4rem;
 }
 
 .buttom-login{
     width: 68%;
-    height: 2.4rem;
+    height: 3.1rem;
     background-color: #E11E5D;
     p{
+        margin-bottom: 5px;
+        font-size: 20px;
         font-size: 20px;
         color: white;
         padding: 10px;
@@ -105,19 +109,21 @@
 }
 
 .RA{
-    font-size: 15px;
+    font-size: 18px;
     margin-left: 15%;
     margin-top: 0.5rem;
     color: #E11E5D;
 }
 
 .RA input{
+    font-size: 18px;
     accent-color: #E11E5D;
 }
 
 .Google{
+    font-size: 20px;
     width: 68%;
-    height: 2.4rem;
+    height: 3.1rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -155,6 +161,7 @@
 }
 
 .bottom p{
+    font-size: 18px;
     display: flex;
     justify-content: center;
     margin-top: 15%;
