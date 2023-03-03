@@ -13,14 +13,17 @@ import { FileActions } from 'src/ngrx/actions/file.actions';
   styleUrls: ['./mini-file.component.scss']
 })
 export class MiniFileComponent {
+  userId!:string | undefined;
   files$:Observable<FileState>;
   auth$ = this.store.select('auth');
-  // file$ =
   constructor(private fileService: FileService, private store: Store<{auth:AuthState, file: FileState}>) {
+    this.auth$.subscribe((res) => {
+      this.userId = res.user?.userId;
+    })
     this.files$ = this.store.select('file');
-    this.store.dispatch(FileActions.getAllFiles());
+    this.store.dispatch(FileActions.getFilesByUserId({userId: this.userId!}));
     this.files$.subscribe((res) => {
-      console.log(res.files); 
+      console.log(res); 
     })
   }
 
