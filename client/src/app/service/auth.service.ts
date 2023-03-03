@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
-import { signInWithPopup, GoogleAuthProvider, Auth, authState, signOut } from '@angular/fire/auth'
-import { environment } from '../env/environment'
-import { User } from '../model/user.model'
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  Auth,
+  authState,
+  signOut,
+} from '@angular/fire/auth';
+import { environment } from '../env/environment';
+import { User } from '../model/user.model';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
@@ -49,6 +55,7 @@ export class AuthService {
             photoURL: result.user?.photoURL,
           };
           resolve(user);
+          this.router.navigate(['home']);
           this.http
             .post(environment.baseUrl + 'auth/sign-in', {
               userId: user.userId,

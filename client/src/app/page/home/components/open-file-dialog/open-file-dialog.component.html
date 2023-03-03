@@ -1,0 +1,72 @@
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<div id="container">
+  <!-- <h1 mat-dialog-title>Dialog with elements</h1>
+  <div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+  </div> -->
+  <div class="content">
+    <div class="top">
+      <div class="first">
+        <div class="logo-title">
+          <img src="../../../../../assets/logo/logo1.png" alt="">
+          <p>Open a file</p>
+        </div>
+        <div class="search">
+          <div class="search-container">
+            <span id="find" class="material-symbols-outlined">
+              search
+            </span>
+            <input type="text">
+            <span id="filter" class="material-symbols-outlined">
+              tune
+            </span>
+          </div>
+        </div>
+        <div (click)="closeDialog()" class="close">
+          <span class="material-symbols-outlined">
+            close
+          </span>
+        </div>
+      </div>
+
+      <div class="second">
+        <div class="second-content">
+          <div class="recent">RECENT</div>
+          <div class="my-drive">MY DRIVE</div>
+          <div class="shared">SHARED WITH ME</div>
+          <div class="starred">STARRED</div>
+          <div class="computers">COMPUTERS</div>
+          <div class="upload">UPLOAD</div>
+        </div>
+      </div>
+
+      <div class="third">
+        <p>Recent</p>
+      </div>
+    </div>
+
+    <div class="file-container">
+      <div class="today">
+        <p>
+          Today
+        </p>
+        <div class="today-file">
+          <app-mini-file></app-mini-file>
+        </div>
+
+      </div>
+      <div class="yesterday">
+        <p>
+          Yesterday
+        </p>
+        <div class="yesterday-file">
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
