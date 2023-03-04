@@ -22,6 +22,8 @@
   border: none;
   font-size: 24px;
   padding-left: 2rem;
+  outline: none;
+  transition: 0.5s;
 }
 
 .search-bar:focus {
@@ -30,6 +32,7 @@
   background-color: #f1f3f4;
   border: none;
   border-color: #f1f3f4;
+  transition: 0.5s;
 }
 
 .find-logo {
