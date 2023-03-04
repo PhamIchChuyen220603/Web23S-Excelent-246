@@ -22,6 +22,8 @@ import { AuthReducer } from 'src/ngrx/reducers/auth.reducers';
 import { AuthEffects } from 'src/ngrx/effects/auth.effects';
 import { FileReducer } from 'src/ngrx/reducers/file.reducers';
 import { FileEffects } from 'src/ngrx/effects/file.effects';
+import { InvitationEffect } from 'src/ngrx/effects/invitation.effect';
+import { InvitationReducer } from 'src/ngrx/reducers/invitation.reducer';
 
 // syncfusion components
 
@@ -41,8 +43,11 @@ import { FileEffects } from 'src/ngrx/effects/file.effects';
     StoreModule.forRoot({
       auth: AuthReducer,
       file: FileReducer,
+      invite: InvitationReducer,
     }),
-    EffectsModule.forRoot([AuthEffects, FileEffects]),
+    EffectsModule.forRoot([AuthEffects,
+    FileEffects,
+    InvitationEffect]),
   ],
   providers: [],
   bootstrap: [AppComponent],

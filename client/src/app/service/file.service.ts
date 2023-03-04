@@ -32,9 +32,7 @@ export class FileService {
 
   getAllFiles() {
     // this.currentFile = this.http.get(`${environment.baseUrl}file/getAll`);
-    return this.http.get(`${environment.baseUrl}file/getAll`) as Observable<
-      File[]
-    >;
+    return this.http.get(`${environment.baseUrl}file/getAll`) as Observable<File[]>;
   }
 
   getFileById(id: string) {
@@ -50,7 +48,7 @@ export class FileService {
   }
 
   async createFile(file: File) {
-    return await setDoc(doc(this.db), file);
+    return setDoc(doc(this.db), file);
   }
 
   async updateFile(file: File) {

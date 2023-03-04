@@ -6,6 +6,10 @@ export type InvitationDocument = HydratedDocument<Invitation>;
 
 @Schema()
 export class Invitation {
+
+  @Prop()
+  id: string;
+
   @Prop()
   from: string
 
@@ -13,7 +17,7 @@ export class Invitation {
   to: string;
 
   @Prop()
-  isAccepted: boolean;
+  status: 'pending' | 'accepted' | 'rejected';
 
   @Prop()
   file: string;

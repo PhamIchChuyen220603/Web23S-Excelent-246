@@ -1,14 +1,14 @@
+import { Observable } from 'rxjs';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
-import {
-  Spreadsheet,
-  BeforeOpenEventArgs,
+import { Spreadsheet, BeforeOpenEventArgs,
 } from '@syncfusion/ej2-angular-spreadsheet';
 import { getApp } from 'firebase/app';
 import { File } from 'src/app/model/file.model';
 import { AuthService } from 'src/app/service/auth.service';
 import { FileService } from 'src/app/service/file.service';
 import { AuthState } from 'src/ngrx/states/auth.states';
+import { InvitationState } from 'src/ngrx/states/invitation.state';
 
 @Component({
   selector: 'app-spreadsheet',
@@ -23,13 +23,15 @@ export class SpreadsheetComponent implements OnInit {
     this.spreadsheetObj.hideFileMenuItems(['File'], true);
   }
 
-  auth$ = this.store.select('auth');
+  auth$!:Observable<AuthState>
+
   id!: string;
   constructor(
     private FileService: FileService,
     private authService: AuthService,
-    private store: Store<{ auth: AuthState }>
+    private store: Store<{ auth: AuthState, invite: InvitationState }>
   ) {
+    this.auth$ = this.store.select('auth');
     this.auth$.subscribe((auth) => {
       this.id = auth.user?.userId || 'kh co user';
     });
