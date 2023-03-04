@@ -2,13 +2,15 @@
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700&family=Roboto+Condensed:ital,wght@0,400;1,300;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
 </style>
 <div class="container-navbar">
-    <img id="excelent" src="../../../assets/Screenshot 2023-03-02 181134.png" alt="excel"
-        style="width: 13.438rem;height: 2.5rem; ">
+    <img id="excelent" src="../../../assets/logo/logo.png" alt="excel"
+        style="width: 13.438rem;height: 3.5rem; " [routerLink]="['']">
 
     <div class="right-navbar">
         <button id="feedback" style="color: #FF2B72; text-decoration: underline;">Feedback</button>
-        <button id="about-us">About us</button>
-        <button id="login">Login</button>
+        <button id="about-us" >About us</button>
+        <button id="about-us"[routerLink]="['/aboutus']">About us</button>
+
+<button id="login" [routerLink]="['/login']">Login</button>
     </div>
 </div>
 
@@ -1123,9 +1125,9 @@
         <div class="right">
             <p>Send us a questions</p>
             <input class="name" type="Your Name" placeholder="Your Name...">
-            <input class="email" type="Email" placeholder="Email">
+            <input class="email" type="Email" placeholder="Email...">
             <input class="phone" type="Phone Number" placeholder="Phone Number...">
-            <input class="ask" type="Ask a question here" placeholder="Ask a question here...">
+            <textarea class="ask" type="Ask a question here" placeholder="Ask a question here..."></textarea>
             <div id="click-send">
                 <p class="send">Send us</p>
             </div>

@@ -5,6 +5,7 @@ import { AuthActions } from '../actions/auth.actions';
 import { AuthState } from '../states/auth.states'
 const initialState: AuthState = {
   user: null,
+  users:[],
   isAuthenticated: false,
   loading: false,
   error: '',
@@ -63,6 +64,35 @@ export const AuthReducer = createReducer(
       error,
     };
   }),
+
+
+  on(AuthActions.getAllUsers, (state) => {
+    return {
+      ...state,
+      inProcess: true,
+      loading: true,
+      error: '',
+    };
+  }),
+  on(AuthActions.getAllUsersSuccess, (state, { users }) => {
+    return {
+      ...state,
+      users: users,
+      inProcess: false,
+      loading: false,
+      error: '',
+    };
+  }),
+  on(AuthActions.getAllUsersFailure, (state, { error }) => {
+    return {
+      ...state,
+      inProcess: false,
+      loading: false,
+      error,
+    };
+  })
+
+
   // on(AuthActions.getProfile, (state) => {
   //   return {
   //     ...state,

@@ -11,6 +11,7 @@ import { FileManagerModule } from '@syncfusion/ej2-angular-filemanager';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { OpenFileDialogComponent } from './components/open-file-dialog/open-file-dialog.component';
 import { MiniFileComponent } from './components/mini-file/mini-file.component';
+import { ShareDialogComponent } from './components/share-dialog/share-dialog.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { MiniFileComponent } from './components/mini-file/mini-file.component';
     SheetComponent,
     OpenFileDialogComponent,
     MiniFileComponent,
+    ShareDialogComponent,
   ],
   imports: [
     CommonModule,

@@ -2,7 +2,9 @@ import { ToolbarModule } from '@syncfusion/ej2-angular-navigations';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuModule } from '@syncfusion/ej2-angular-navigations';
+// components
 import { NavbarOneComponent } from '../components/navbar-one/navbar-one.component';
+import { LoadingComponent } from '../components/loading/loading.component';
 import { A11yModule } from '@angular/cdk/a11y';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { ClipboardModule } from '@angular/cdk/clipboard';
@@ -53,7 +55,7 @@ import { DialogModule } from '@angular/cdk/dialog';
 
 
 @NgModule({
-  declarations: [NavbarOneComponent],
+  declarations: [NavbarOneComponent, LoadingComponent],
   imports: [
     CommonModule,
     ToolbarModule,
@@ -110,6 +112,11 @@ import { DialogModule } from '@angular/cdk/dialog';
   ],
   exports: [
     NavbarOneComponent,
+    LoadingComponent,
+
+
+
+    // Material
     ToolbarModule,
     MenuModule,
     A11yModule,

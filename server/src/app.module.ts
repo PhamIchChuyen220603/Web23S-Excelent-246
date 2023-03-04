@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './API/Auth/auth.module';
 import { ChatModule } from './API/chat/chat.module';
 import { FileModule } from './API/file/file.module';
+import { InvitationModule } from './api/invitation/invitation.module';
 
 
 
@@ -18,6 +19,8 @@ import { FileModule } from './API/file/file.module';
     MongooseModule.forRoot('mongodb+srv://admin:123@cluster0.o8n39ex.mongodb.net/?retryWrites=true&w=majority'),
 
     ConfigModule.forRoot(),
+
+    InvitationModule,
   ],
   controllers: [
   ],
