@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/service/auth.service';
@@ -14,11 +15,22 @@ import { FileState } from 'src/ngrx/states/file.states';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  optionChoices = [
+    {
+      name: 'Shared with me',
+      value: 1,
+    },
+    {
+      name: 'Owned by me',
+      value: 0,
+    },
+  ];
   id!: string | undefined;
   userId!: string | null;
   files$: Observable<FileState>;
   auth$ = this.store.select('auth');
   constructor(
+    private route: Router,
     private fileService: FileService,
     private store: Store<{ auth: AuthState; file: FileState }>
   ) {
@@ -34,6 +46,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(FileActions.getAllFiles());
   }
+  selectFile(fileId: string) {
+    console.log(fileId)
+    this.route.navigate([`/spreadsheet/${fileId}`]);
+  }
 
   onChange(event: any) {
     if (event?.target.value == 0) {
@@ -48,14 +64,5 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  optionChoices = [
-    {
-      name: 'Shared with me',
-      value: 1,
-    },
-    {
-      name: 'Owned by me',
-      value: 0,
-    },
-  ];
+
 }
