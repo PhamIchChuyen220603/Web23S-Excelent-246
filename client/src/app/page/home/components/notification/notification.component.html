@@ -1,0 +1,25 @@
+<div id="container">
+    <!-- <div class="invitation"> -->
+        <div class="space">
+            <p>Your notifications</p>
+        </div>
+        <div *ngIf="((this.invites$|async)?.loading == true)">
+            <app-loading></app-loading>
+        </div>
+        <div class="invitation-container" *ngIf="(this.invites$|async)?.loading == false">
+            <div *ngFor="let invite of (invites$|async)?.invitations" class="content">
+                <div class="message">
+                    <p><span>{{invite.name}}</span> invited you to join in file <span>{{invite.fileName}}</span></p>
+                </div>
+                <div class="choice">
+                    <div (click)="accept(invite.fileId,this.userId,invite.id)" class="accept">
+                        <p>Accept</p>
+                    </div>
+                    <div (click)="reject(invite.id)" class="reject">
+                        <p>Reject</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- </div> -->
+</div>

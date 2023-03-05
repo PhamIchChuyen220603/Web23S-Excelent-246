@@ -13,12 +13,12 @@ export const InvitationActions = {
     getInvitationSuccess: createAction('[Invitation] Get Invitations Success', props<{ invitations: Invitation[] }>()),
     getInvitationFailure: createAction('[Invitation] Get Invitations Failure', props<{ error: string }>()),
 
-    acceptInvitation: createAction('[Invitation] Accept Invitation', props<{ idReciever: string, idFile: string, idInvitation: string}>()),
+    acceptInvitation: createAction('[Invitation] Accept Invitation', props<{ idFile: string, idReciever: string, idInvitation: string}>()),
     acceptInvitationSuccess: createAction('[Invitation] Accept Invitation Success'),
     acceptInvitationFailure: createAction('[Invitation] Accept Invitation Failure', props<{ error: string }>()),
 
-    rejectInvivation: createAction('[Invitation] Reject Invitation', props<{ idReciever: string, idFile: string, idInvitation: string}>()),
-    rejectInvivationSuccess: createAction('[Invitation] Reject Invitation Success'),
-    rejectInvivationFailure: createAction('[Invitation] Reject Invitation Failure', props<{ error: string }>()),
+    rejectInvitation: createAction('[Invitation] Reject Invitation', props<{ idInvitation: string}>()),
+    rejectInvitationSuccess: createAction('[Invitation] Reject Invitation Success'),
+    rejectInvitationFailure: createAction('[Invitation] Reject Invitation Failure', props<{ error: string }>()),
 
 }

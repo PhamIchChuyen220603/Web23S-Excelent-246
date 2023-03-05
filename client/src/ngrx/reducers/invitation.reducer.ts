@@ -68,7 +68,7 @@ export const InvitationReducer = createReducer(
         };
     }),
 
-    on(InvitationActions.acceptInvitation, (state,) => {
+    on(InvitationActions.acceptInvitation, (state) => {
         return {
             ...state,
             inProcess: true,
@@ -95,7 +95,7 @@ export const InvitationReducer = createReducer(
         };
     }),
 
-    on(InvitationActions.rejectInvivation, (state,) => {
+    on(InvitationActions.rejectInvitation, (state,) => {
         return {
             ...state,
             inProcess: true,
@@ -104,7 +104,7 @@ export const InvitationReducer = createReducer(
         };
     }),
 
-    on(InvitationActions.rejectInvivationSuccess, (state) => {
+    on(InvitationActions.rejectInvitationSuccess, (state) => {
         return {
             ...state,
             inProcess: false,
@@ -113,7 +113,7 @@ export const InvitationReducer = createReducer(
         };
     }),
 
-    on(InvitationActions.rejectInvivationFailure, (state, { error }) => {
+    on(InvitationActions.rejectInvitationFailure, (state, { error }) => {
         return {
             ...state,
             inProcess: false,

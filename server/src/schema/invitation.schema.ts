@@ -14,13 +14,19 @@ export class Invitation {
   from: string
 
   @Prop()
+  name: string
+
+  @Prop()
   to: string;
 
   @Prop()
   status: 'pending' | 'accepted' | 'rejected';
 
   @Prop()
-  file: string;
+  fileId: string;
+
+  @Prop()
+  fileName: string;
 
 
 }
