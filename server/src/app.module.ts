@@ -12,9 +12,10 @@ import { InvitationModule } from './api/invitation/invitation.module';
   imports: [
 
     // api module
-    AuthModule,
     FileModule,
+    AuthModule,
     ChatModule,
+    InvitationModule,
     // database mongo config
     MongooseModule.forRoot('mongodb+srv://admin:123@cluster0.o8n39ex.mongodb.net/?retryWrites=true&w=majority'),
 
