@@ -3,6 +3,7 @@
 <div class="navbar">
   <div class="logo">
     <img
+      (click)="navigateToLandingPage()"
       style="height: 60%"
       class="logo"
       src="../../../../../assets/logo/logo.png"
@@ -10,11 +11,15 @@
     />
   </div>
 
-  <div class="search">
-    <input class="search-bar" type="search" placeholder="Search" />
+  <div class="search-bar">
+    <button mat-icon-button class="search-icon">
+      <mat-icon>search</mat-icon>
+    </button>
+    <input class="search-place" type="search" placeholder="Search" />
   </div>
 
   <div class="profile">
-    <img class="profile" [src]="(this.auth$ | async)?.user?.photoURL" />
+    <span class="userName">{{ (this.auth$ | async)?.user?.userName }}</span>
+    <img class="photo" [src]="(this.auth$ | async)?.user?.photoURL" />
   </div>
 </div>

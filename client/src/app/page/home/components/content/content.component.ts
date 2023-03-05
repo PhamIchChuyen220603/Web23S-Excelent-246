@@ -1,19 +1,17 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { AuthService } from 'src/app/service/auth.service';
 import { FileService } from 'src/app/service/file.service';
-import { AuthActions } from 'src/ngrx/actions/auth.actions';
 import { FileActions } from 'src/ngrx/actions/file.actions';
 import { AuthState } from 'src/ngrx/states/auth.states';
 import { FileState } from 'src/ngrx/states/file.states';
-
+import { MatMenuModule } from '@angular/material/menu';
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-content',
+  templateUrl: './content.component.html',
+  styleUrls: ['./content.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class ContentComponent {
   id!: string | undefined;
   userId!: string | null;
   files$: Observable<FileState>;
@@ -30,8 +28,5 @@ export class HomeComponent implements OnInit {
     this.files$.subscribe((res) => {
       console.log(res);
     });
-  }
-  ngOnInit() {
-    this.store.dispatch(FileActions.getAllFiles());
   }
 }

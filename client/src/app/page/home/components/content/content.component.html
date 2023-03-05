@@ -1,0 +1,35 @@
+<div *ngIf="(this.files$ | async)?.loading == true" class="histories-contents">
+  <app-loading></app-loading>
+</div>
+<div class="divTo" *ngIf="(this.files$ | async)?.loading == false">
+  <div *ngFor="let f of (this.files$ | async)?.files" class="divToVua">
+    <img
+      class="histories-contents-file-logo"
+      src="../../../assets/home_logos/microsoft-excel-logo.png"
+    />
+    <span class="histories-contents-title">{{ f.title }}</span>
+    <span class="histories-contents-owner">{{ f.createdBy }}</span>
+    <span class="histories-contents-date">{{ f.createdDate }}</span>
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>text_fields</mat-icon>
+        <span>Rename</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>delete_outline</mat-icon>
+        <span>Delete</span>
+      </button>
+    </mat-menu>
+    <!-- <img
+      class="histories-contents-options"
+      src="../../../assets/home_logos/threedots.png"
+    /> -->
+  </div>
+</div>

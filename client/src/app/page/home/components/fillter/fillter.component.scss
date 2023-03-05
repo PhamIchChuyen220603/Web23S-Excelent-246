@@ -1,0 +1,74 @@
+.histories-fillters {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.histories-fillters-time {
+  width: 32rem;
+  margin: 0 1.875rem 0 0;
+  padding: 1.3125rem 0 1.1875rem 4rem;
+  color: #737373;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.histories-fillters-owner {
+  width: 12.9375rem;
+  padding: 1.3125rem 0 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.histories-fillters-date {
+  width: 13rem;
+  margin: 1.3125rem 0 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #737373;
+}
+.histories-fillters-options {
+  width: 10.8125rem;
+  padding: 0 1.5rem;
+  font-size: 1.25rem;
+  color: #737373;
+}
+.histories-fillters-logos {
+  width: 1.425rem;
+  height: 1.425rem;
+  margin: 0.1875rem 0;
+  padding: 0.95rem 0.5rem;
+
+  color: #737373;
+  cursor: pointer;
+}
+
+.histories-fillters-owner-options {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #737373;
+  border: none;
+  outline: none;
+}
+
+.histories-fillters-owner-options > {
+  border-radius: 6px;
+  background-color: #f1f3f4;
+  border-color: #f1f3f4;
+}
+
+.histories-fillters-logos:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+
+.histories-fillters-owner-options:hover {
+  background-color: #fcb7cdf2;
+  border-radius: 6px;
+  outline: none;
+}
+.histories-fillters-sort,
+.histories-fillters-view,
+.histories-fillters-open-file {
+  margin-top: 0.5rem;
+  // margin-bottom: 1rem;
+}

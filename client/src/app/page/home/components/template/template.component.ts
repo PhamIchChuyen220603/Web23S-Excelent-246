@@ -15,5 +15,12 @@ export class TemplateComponent {
   ) {}
   auth$ = this.authState.select('auth');
 
-  templates = [{}, {}, {}, {}, {}, {}];
+  templates = [
+    { name: 'Empty' },
+    { name: 'Monthly budget' },
+    { name: 'Annual budget' },
+    { name: 'To-do list' },
+    { name: 'Investment tracker' },
+    { name: 'Work schedule' },
+  ];
 }
