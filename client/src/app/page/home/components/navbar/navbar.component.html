@@ -13,6 +13,15 @@
   <div class="search">
     <input class="search-bar" type="search" placeholder="Search" />
   </div>
+  
+  <div class="notification">
+    <div class="demo-section">
+      <mat-icon [matBadge]="(this.invites$|async)?.invitations?.length" matBadgeColor="accent" (click)="open()">notifications</mat-icon>
+        <!-- Include text description of the icon's meaning for screen-readers -->
+        <!-- <span class="cdk-visually-hidden">
+        </span> -->
+    </div>
+  </div>
 
   <div class="profile">
     <img class="profile" [src]="(this.auth$ | async)?.user?.photoURL" />

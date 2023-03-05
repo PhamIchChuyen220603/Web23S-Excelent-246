@@ -218,5 +218,30 @@ export const FileReducer = createReducer(
       loading: false,
       error: error,
     };
+  }),
+  on(FileActions.getFilesByMemberId, (state, {memberId}) => {
+    return {
+      ...state,
+      inProcess: true,
+      loading: true,
+      error: '',
+    };
+  }),
+  on(FileActions.getFilesByMemberIdSuccess, (state, { files }) => {
+    return {
+      ...state,
+      files: files,
+      inProcess: false,
+      loading: false,
+      error: '',
+    };
+  }),
+  on(FileActions.getFilesByMemberIdFailure, (state, { error }) => {
+    return {
+      ...state,
+      inProcess: false,
+      loading: false,
+      error: error,
+    };
   })
 )

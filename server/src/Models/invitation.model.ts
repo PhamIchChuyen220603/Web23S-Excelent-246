@@ -1,8 +1,9 @@
-import { FileModel } from "./file.model";
 export interface InvitationModel {
     id: string | null;
     from: string;
+    name: string;
     to: string;
-    isAccepted: boolean;
-    file: string;
+    status: 'pending' | 'accepted' | 'rejected';
+    fileId: string;
+    fileName: string;
 }

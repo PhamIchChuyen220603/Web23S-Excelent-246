@@ -46,3 +46,21 @@
   border-radius: 50%;
   margin: 0.5rem 2rem 0.5rem 0.5rem;
 }
+
+
+.notification{
+  height: 100%;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-icon{
+  color: #737373;
+  cursor: pointer;
+}
+
+mat-icon:hover{
+  color:#e11e5d;
+}

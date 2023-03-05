@@ -10,9 +10,9 @@ export class InvitationController {
     constructor(private invitationService: InvitationService, private fileService: FileService) {}
 
 
-    @Post('send')
-    send(@Body() invitation: Invitation) {
-        this.invitationService.send(invitation);
+    @Post('send/:id')
+    send(@Body() invitation: Invitation, @Param('id') idReciever: string) {
+        return this.invitationService.send(invitation, idReciever);
     }
 
     @Get('get/:id')
@@ -20,9 +20,9 @@ export class InvitationController {
         return this.invitationService.getInvitations(idReciever);
     }
 
-    @Put('accept/:idUser/:idFile/:idInvitation')
-    acceptInvitation(@Param('idUser') idUser: string, @Param('idFile') idFile: string, @Param('idInvitation') idInvitation: string) {
-       return this.invitationService.acceptInvitation(idUser, idFile, idInvitation);
+    @Delete('accept/:idFile/:idReciever/:idInvitation')
+    acceptInvitation(@Param('idFile') idFile: string, @Param('idReciever') idReciever: string, @Param('idInvitation') idInvitation: string) {
+       return this.invitationService.acceptInvitation(idFile, idReciever, idInvitation);
     }
 
     @Delete('reject/:idInvitation')
