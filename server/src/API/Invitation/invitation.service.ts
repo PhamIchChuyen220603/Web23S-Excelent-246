@@ -11,11 +11,11 @@ export class InvitationService {
 
 
     async send(invitation: Invitation, idReciever: string) {
-        // if(invitation.to == idReciever) {
-        //     return{
-        //         message: 'The user is already a member of the file',
-        //     }
-        // }
+        if(invitation.to == idReciever) {
+            return{
+                message: 'The user is already a member of the file',
+            }
+        }
         let createdInvitation = new this.invitationModel(invitation);
         await createdInvitation.save();
     }
@@ -26,16 +26,10 @@ export class InvitationService {
 
 
     async acceptInvitation(idFile: string, idReciever: string, idInvitation: string) {
-        let isAdded = false;
         let file = await this.fileService.getById(idFile);
-        if(!file.members.includes(idReciever)) {
             file.members.push(idReciever);
-            isAdded = true;
-        }
         await this.fileService.update(idFile,file);
-        if(isAdded == true){
             return await this.invitationModel.findOneAndDelete({id: idInvitation});
-        }
     }
 
     async rejectInvitation(idInvitation: string) {

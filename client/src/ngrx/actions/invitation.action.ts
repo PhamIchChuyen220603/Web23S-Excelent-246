@@ -14,7 +14,7 @@ export const InvitationActions = {
     getInvitationFailure: createAction('[Invitation] Get Invitations Failure', props<{ error: string }>()),
 
     acceptInvitation: createAction('[Invitation] Accept Invitation', props<{ idFile: string, idReciever: string, idInvitation: string}>()),
-    acceptInvitationSuccess: createAction('[Invitation] Accept Invitation Success'),
+    acceptInvitationSuccess: createAction('[Invitation] Accept Invitation Success', props<{idInvitation: string}>()),
     acceptInvitationFailure: createAction('[Invitation] Accept Invitation Failure', props<{ error: string }>()),
 
     rejectInvitation: createAction('[Invitation] Reject Invitation', props<{ idInvitation: string}>()),

@@ -77,9 +77,11 @@ export const InvitationReducer = createReducer(
         };
     }),
 
-    on(InvitationActions.acceptInvitationSuccess, (state) => {
+    on(InvitationActions.acceptInvitationSuccess, (state,{idInvitation}) => {
+        let newInvitations = state.invitations.filter(invitation => invitation.id != idInvitation);
         return {
             ...state,
+            invitations: newInvitations,
             inProcess: false,
             loading: false,
             error: '',

@@ -31,10 +31,10 @@ export class NavbarComponent implements OnInit{
     })
 
     this.invites$ = this.store.select('invite');
+    this.store.dispatch(InvitationActions.getInvitations({idReciever: this.userId}));
   }
 
   open(){
-    this.store.dispatch(InvitationActions.getInvitations({idReciever: this.userId}));
     this.dialog.open(NotificationComponent)
   }
 
