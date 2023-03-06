@@ -12,6 +12,7 @@ import {
   getDocs,
   where,
   query,
+  deleteDoc,
 } from '@angular/fire/firestore';
 import { File } from '../model/file.model';
 import { Observable } from 'rxjs';
@@ -32,7 +33,9 @@ export class FileService {
 
   getAllFiles() {
     // this.currentFile = this.http.get(`${environment.baseUrl}file/getAll`);
-    return this.http.get(`${environment.baseUrl}file/getAll`) as Observable<File[]>;
+    return this.http.get(`${environment.baseUrl}file/getAll`) as Observable<
+      File[]
+    >;
   }
 
   getFileById(id: string) {
@@ -64,5 +67,9 @@ export class FileService {
   async getSheet(id: string) {
     console.log(id);
     return (await getDoc(doc(this.db, id))).data();
+  }
+
+  async deleteFile(id: string) {
+    // return deleteDoc()
   }
 }

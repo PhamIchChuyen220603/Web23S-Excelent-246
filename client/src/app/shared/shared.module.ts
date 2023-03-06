@@ -53,7 +53,6 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { CdkMenuModule } from '@angular/cdk/menu';
 import { DialogModule } from '@angular/cdk/dialog';
 
-
 @NgModule({
   declarations: [NavbarOneComponent, LoadingComponent],
   imports: [
@@ -108,13 +107,10 @@ import { DialogModule } from '@angular/cdk/dialog';
     PortalModule,
     ScrollingModule,
     DialogModule,
-
   ],
   exports: [
     NavbarOneComponent,
     LoadingComponent,
-
-
 
     // Material
     ToolbarModule,
@@ -167,6 +163,6 @@ import { DialogModule } from '@angular/cdk/dialog';
     PortalModule,
     ScrollingModule,
     DialogModule,
-  ]
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}
