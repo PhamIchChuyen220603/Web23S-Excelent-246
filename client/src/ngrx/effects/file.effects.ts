@@ -83,7 +83,7 @@ export class FileEffects{
     updateFileById$ = createEffect(() => this.actions$.pipe(
         ofType(FileActions.updateFile),
         switchMap((action) => {
-            return from(this.fileService.deleteById(action.fileId)).pipe(
+            return from(this.fileService.updateById(action.fileId, action.file)).pipe(
                 map(() => {
                     return FileActions.updateFileSuccess({fileId: action.fileId})
                 }),

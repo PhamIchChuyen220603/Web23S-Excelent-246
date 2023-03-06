@@ -46,11 +46,11 @@ export class ContentComponent {
     else return false;
   }
 
-  deleleFile(fileId: string) {
-    // if(fileId == )c
-    console.log(fileId);
-    this.fileService.deleteFile(fileId);
-  }
+  // deleleFile(fileId: string) {
+  //   // if(fileId == )c
+  //   console.log(fileId);
+  //   this.fileService.deleteFile(fileId);
+  // }
 
   testString!: string;
 

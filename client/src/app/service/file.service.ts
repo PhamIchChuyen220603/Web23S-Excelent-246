@@ -34,7 +34,7 @@ export class FileService {
     return this.http.get(`${environment.baseUrl}file/getAll`) as Observable<File[]>;
   }
 
-  
+
   getFileById(id: string) {
     return this.http.get(`${environment.baseUrl}file/get?id=${id}`) as Observable<File>;
   }
@@ -53,22 +53,22 @@ export class FileService {
     return this.http.delete(`${environment.baseUrl}file/delete?id=${id}`)
   }
 
+  updateById(id: string, file: File){
+    return this.http.put(`${environment.baseUrl}file/update?id=${id}`, file);
+  }
+
   async createFile(file: File) {
     return setDoc(doc(this.db), file);
   }
 
-  async updateFile(file: File) {
-    let tmp = Date.now();
-    console.log(file);
-    return await addDoc(this.db, file);
-  }
 
-  async getSheet(id: string) {
-    console.log(id);
-    return (await getDoc(doc(this.db, id))).data();
-  }
 
-  async deleteFile(id: string) {
-    // return deleteDoc()
-  }
+  // async getSheet(id: string) {
+  //   console.log(id);
+  //   return (await getDoc(doc(this.db, id))).data();
+  // }
+
+  // async deleteFile(id: string) {
+  //   // return deleteDoc()
+  // }
 }
