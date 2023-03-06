@@ -5,10 +5,8 @@
 
 .container {
   background-color: #f8f9fa;
-
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  height: 93.5vh;
 }
 
 
@@ -19,7 +17,7 @@
 }
 
 .font {
-  padding-top: 17rem;
+  padding-top: 20rem;
   margin-left: 5.375rem;
   color: #737373;
 
@@ -88,15 +86,15 @@
 
 
 .image {
-
+  margin-top: 2rem;
   display: flex;
   justify-content: space-around;
 }
 
 #image {
   position: absolute;
-  margin-right: 42rem;
-  margin-top: 20.7rem;
+  margin-right: 43rem;
+  margin-top: 21.4rem;
   width: 650px;
 }
 
