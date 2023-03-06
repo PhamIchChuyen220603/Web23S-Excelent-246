@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
   ) {
     this.auth$.subscribe((auth) => {
       this.userId = auth.user?.userId ?? '';
-      console.log(auth.user);
+      // console.log(auth.user);
     });
 
     this.invites$ = this.store.select('invite');

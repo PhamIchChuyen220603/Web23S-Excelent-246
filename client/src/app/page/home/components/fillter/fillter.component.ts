@@ -13,7 +13,7 @@ import { MatMenuModule } from '@angular/material/menu';
   templateUrl: './fillter.component.html',
   styleUrls: ['./fillter.component.scss'],
 })
-export class FillterComponent implements OnInit{
+export class FillterComponent{
   id!: string | undefined;
   userId!: string | null;
   files$: Observable<FileState>;
@@ -28,8 +28,6 @@ export class FillterComponent implements OnInit{
     });
     this.files$ = this.store.select('file');
     this.store.dispatch(FileActions.getFilesByUserId({ userId: this.userId! }));
-    this.files$.subscribe((res) => {
-    });
   }
 
   onChange(event: any) {
@@ -37,30 +35,25 @@ export class FillterComponent implements OnInit{
       this.store.dispatch(
         FileActions.getFilesByUserId({ userId: this.userId! })
       );
-      this.files$.subscribe((res) => {
-      });
     } else {
-      // this.store.dispatch(FileActions.getFilesByMemberId({memberId: this.userId!}));
-      this.store.dispatch(FileActions.getAllFiles());
+      this.store.dispatch(FileActions.getFilesByMemberId({memberId: this.userId!}));
     }
   }
 
   optionChoices = [
     {
-      name: 'Shared with me',
-      value: 1,
-    },
-    {
       name: 'Owned by me',
       value: 0,
     },
+    {
+      name: 'Shared with me',
+      value: 1,
+    },
+    
   ];
 
   openFile() {
     this.dailog.open(OpenFileDialogComponent);
   }
 
-  ngOnInit() {
-    this.store.dispatch(FileActions.getFilesByMemberId({memberId: this.userId!}));
-  }
 }
