@@ -63,21 +63,21 @@ export class SpreadsheetComponent implements OnInit {
 
   firebaseApp = getApp();
 
-  async upload(event: BeforeOpenEventArgs) {
+  async upload() {
     let response!: any;
     await this.spreadsheetObj.saveAsJson().then((JsonFile) => {
       response = JsonFile;
     });
     let fileToUpLoad: File = {
-      fileId: '1',
-      title: 'test',
-      createdBy: 'Truong',
+      fileId: '5',
+      title: 'test5',
+      createdBy: 'Trung',
       createdDate: 123,
       modifiedBy: 'Truong',
       modifiedDate: 123,
       ownerId: this.id,
       data: response,
-      status: "private",
+      status: "public",
       member: [],
     }
     this.FileService.createFile(fileToUpLoad);

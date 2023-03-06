@@ -1,12 +1,12 @@
 <div id="container">
     <div class="navbar">
+        <button (click)="upload()">open</button>
         <app-navbar></app-navbar>
     </div>
     <div *ngIf="(this.file$|async)?.loading == true">
         <app-loading></app-loading>
     </div>
     <div  *ngIf="(this.file$|async)?.loading == false" class="sheet-container">
-        <!-- <button (click)="open()">open</button> -->
             <ejs-spreadsheet
             (created)="open()"
             id="spreadsheet" #spreadsheet 
