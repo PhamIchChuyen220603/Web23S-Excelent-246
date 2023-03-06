@@ -34,6 +34,7 @@ export class FileService {
     return this.http.get(`${environment.baseUrl}file/getAll`) as Observable<File[]>;
   }
 
+  
   getFileById(id: string) {
     return this.http.get(`${environment.baseUrl}file/get?id=${id}`) as Observable<File>;
   }
