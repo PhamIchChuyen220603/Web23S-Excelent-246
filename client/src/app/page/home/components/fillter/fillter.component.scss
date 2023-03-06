@@ -61,14 +61,18 @@
   transition: 0.5s;
 }
 
+.histories-fillters-owner-options {
+  // background-color: #fcb7cdf2;
+  border-radius: 6px;
+  outline: none !important;
+  border: none !important;
+}
 .histories-fillters-owner-options:hover {
   background-color: #fcb7cdf2;
-  border-radius: 6px;
-  outline: none;
+  // border-radius: 6px;
 }
 .histories-fillters-sort,
 .histories-fillters-view,
 .histories-fillters-open-file {
   margin-top: 0.5rem;
-  // margin-bottom: 1rem;
 }

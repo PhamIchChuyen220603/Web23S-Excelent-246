@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -13,7 +13,7 @@ import { MatMenuModule } from '@angular/material/menu';
   templateUrl: './fillter.component.html',
   styleUrls: ['./fillter.component.scss'],
 })
-export class FillterComponent {
+export class FillterComponent implements OnInit{
   id!: string | undefined;
   userId!: string | null;
   files$: Observable<FileState>;
@@ -29,7 +29,6 @@ export class FillterComponent {
     this.files$ = this.store.select('file');
     this.store.dispatch(FileActions.getFilesByUserId({ userId: this.userId! }));
     this.files$.subscribe((res) => {
-      console.log(res);
     });
   }
 
@@ -39,9 +38,9 @@ export class FillterComponent {
         FileActions.getFilesByUserId({ userId: this.userId! })
       );
       this.files$.subscribe((res) => {
-        console.log(res);
       });
     } else {
+      // this.store.dispatch(FileActions.getFilesByMemberId({memberId: this.userId!}));
       this.store.dispatch(FileActions.getAllFiles());
     }
   }
@@ -59,5 +58,9 @@ export class FillterComponent {
 
   openFile() {
     this.dailog.open(OpenFileDialogComponent);
+  }
+
+  ngOnInit() {
+    this.store.dispatch(FileActions.getFilesByMemberId({memberId: this.userId!}));
   }
 }

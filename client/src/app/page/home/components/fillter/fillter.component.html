@@ -1,12 +1,9 @@
 <div class="histories-fillters">
   <div class="histories-fillters-time">Recently</div>
   <div class="histories-fillters-owner">
-    <select
-      (change)="onChange($event)"
-      class="histories-fillters-owner-options"
-    >
+    <select (change)="onChange($event)"class="histories-fillters-owner-options">
       <option *ngFor="let choice of optionChoices" [value]="choice.value">
-        {{ choice.name }}
+        <p>{{choice.name}}</p>
       </option>
     </select>
   </div>
@@ -24,16 +21,20 @@
       <mat-icon>sort_by_alpha</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
+      <button mat-menu-item value="1">
+        <mat-icon></mat-icon>
         <span>Last opened by me</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item value="2">
+        <mat-icon></mat-icon>
         <span>Last modified by me</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item value="3">
+        <mat-icon></mat-icon>
         <span>Most recent edits</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item value="4">
+        <mat-icon></mat-icon>
         <span>Title</span>
       </button>
     </mat-menu>
@@ -47,3 +48,4 @@
     </button>
   </div>
 </div>
+
