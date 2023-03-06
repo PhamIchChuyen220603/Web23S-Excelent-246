@@ -13,7 +13,7 @@
     <span class="histories-contents-owner">{{ f.createdBy }}</span>
     <span class="histories-contents-date">{{ f.createdDate }}</span>
     <button
-      mat-icon-button
+      mat-icon-button (click)="getId(f.fileId)"
       [matMenuTriggerFor]="menu"
       aria-label="Example icon-button with a menu"
     >
@@ -21,7 +21,7 @@
     </button>
     <mat-menu #menu="matMenu">
       <button
-        (click)="getId(f.fileId)"
+        
         mat-menu-item
         *ngIf="canRename(f.ownerId) == false"
         disabled

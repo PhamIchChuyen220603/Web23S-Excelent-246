@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
 })
 export class InviteService {
 
-  inviteCount!: number;
 
   constructor(private http: HttpClient) {}
 

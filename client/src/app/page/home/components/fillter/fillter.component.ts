@@ -29,7 +29,7 @@ export class FillterComponent {
     this.files$ = this.store.select('file');
     this.store.dispatch(FileActions.getFilesByUserId({ userId: this.userId! }));
     this.files$.subscribe((res) => {
-      console.log(res);
+      // console.log(res);
     });
   }
 

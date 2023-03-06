@@ -35,12 +35,12 @@ export class ContentComponent {
     this.files$ = this.store.select('file');
     this.store.dispatch(FileActions.getFilesByUserId({ userId: this.userId! }));
     this.files$.subscribe((res) => {
-      console.log(res);
+      // console.log(res);
     });
   }
 
   selectFile(fileId: string) {
-    console.log(fileId);
+    // console.log(fileId);
     this.route.navigate([`/spreadsheet/${fileId}`]);
   }
 
@@ -50,8 +50,7 @@ export class ContentComponent {
   }
 
   deleleFile(fileId: string) {
-    console.log(fileId);
-    this.fileService.deleteFileById(fileId);
+  //  this.store.dispatch(FileActions.deleteById({fileId: fileId}))
   }
 
   openDialog() {
@@ -59,7 +58,7 @@ export class ContentComponent {
   }
 
   getId(fileId: string) {
-    this.fileService.idToDelete = fileId;
-    console.log(fileId);
+    this.fileService.idToUpdate = fileId;
+    console.log(this.fileService.idToUpdate);
   }
 }

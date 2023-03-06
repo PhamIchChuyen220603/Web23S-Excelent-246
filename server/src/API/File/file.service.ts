@@ -48,31 +48,45 @@ export class FileService {
     }
   }
 
-  async getById(fileId: string): Promise<FileModel | null> {
-    try {
-      const fileRef = this.docRef.where('fileId', '==', fileId);
-      await fileRef.get().then((snapshot) => {
-        snapshot.forEach((doc) => {
-          this.currentFile = doc.data() as FileModel;
-        });
-      });
-      return this.currentFile as FileModel;
-    } catch (err) {
-      console.log(err);
-      return null;
+    async getById(fileId: string): Promise<FileModel | null>{
+        try{
+            let file!:FileModel;
+            const fileRef = this.docRef.where('fileId', '==', fileId)
+            await fileRef.get().then(snapshot => {
+                snapshot.forEach(doc => {
+                    file = doc.data() as FileModel;
+                })
+            })
+            return file as FileModel;
+        }
+        catch(err){
+            console.log(err);
+            return null;
+        }
     }
-  }
 
-  async deleteById(fileId: string): Promise<boolean> {
-    try {
-      const fileRef = this.docRef.doc(fileId);
-      await fileRef.delete();
-      return true;
-    } catch (err) {
-      console.log(err);
-      return false;
+    async deleteById(id:string){
+        const fileRef = this.docRef.where('fileId', '==', id);
+        await fileRef.get().then(snapshot => {
+            snapshot.forEach(doc => {
+                doc.ref.delete()
+            })
+        })
     }
-  }
+
+    
+
+    // async deleteById(fileId: string): Promise<boolean>{
+    //     try{
+    //         const fileRef = this.docRef.doc(fileId);
+    //         await fileRef.delete();
+    //         return true;
+    //     }
+    //     catch(err){
+    //         console.log(err);
+    //         return false;
+    //     }
+    // }
 
   async getByUserId(userId: string): Promise<FileModel[] | null> {
     try {
@@ -85,16 +99,15 @@ export class FileService {
     }
   }
 
-  async getByMemberId(memberId: string): Promise<FileModel[] | null> {
-    try {
-      const snapshot = await this.docRef
-        .where('members', 'array-contains', memberId)
-        .get();
-      const files = snapshot.docs.map((doc) => doc.data()) as FileModel[];
-      return files;
-    } catch (err) {
-      console.log(err);
-      return null;
+    async getByMemberId(memberId: string): Promise<FileModel[] | null>{
+        try{
+            const snapshot = await this.docRef.where('members', 'array-contains', memberId).get();
+            const files = snapshot.docs.map(doc => doc.data()) as FileModel[];
+            return files;
+        }
+        catch(err){
+            console.log(err);
+            return null;
+        }
     }
-  }
 }

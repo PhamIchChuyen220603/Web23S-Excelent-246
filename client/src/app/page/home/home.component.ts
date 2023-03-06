@@ -43,14 +43,14 @@ export class HomeComponent implements OnInit {
     this.files$ = this.store.select('file');
     this.store.dispatch(FileActions.getFilesByUserId({ userId: this.userId! }));
     this.files$.subscribe((res) => {
-      console.log(res);
+      // console.log(res);
     });
   }
   ngOnInit() {
     this.store.dispatch(FileActions.getFilesByMemberId({memberId: this.userId!}));
   }
   selectFile(fileId: string) {
-    console.log(fileId);
+    // console.log(fileId);
     this.route.navigate([`/spreadsheet/${fileId}`]);
   }
 
@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
         FileActions.getFilesByUserId({ userId: this.userId! })
       );
       this.files$.subscribe((res) => {
-        console.log(res);
+        // console.log(res);
       });
     } else {
       this.store.dispatch(FileActions.getFilesByMemberId({memberId: this.userId!}));
