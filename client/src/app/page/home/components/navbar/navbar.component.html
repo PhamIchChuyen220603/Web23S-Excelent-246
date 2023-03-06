@@ -17,6 +17,15 @@
     </button>
     <input class="search-place" type="search" placeholder="Search" />
   </div>
+  
+  <div class="notification">
+    <div class="demo-section">
+      <mat-icon [matBadge]="(this.invites$|async)?.invitations?.length" matBadgeColor="accent" (click)="open()">notifications</mat-icon>
+        <!-- Include text description of the icon's meaning for screen-readers -->
+        <!-- <span class="cdk-visually-hidden">
+        </span> -->
+    </div>
+  </div>
 
   <div class="profile">
     <span class="userName">{{ (this.auth$ | async)?.user?.userName }}</span>

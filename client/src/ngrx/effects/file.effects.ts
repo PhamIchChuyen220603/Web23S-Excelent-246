@@ -37,4 +37,18 @@ export class FileEffects{
             )
         })
     ))
+
+    getFilesByMemberId$ = createEffect(() => this.actions$.pipe(
+        ofType(FileActions.getFilesByMemberId),
+        switchMap((action) => {
+            return from(this.fileService.getFilesByMember(action.memberId)).pipe(
+                map((result:any) => {
+                    return FileActions.getFilesByMemberIdSuccess({files: result});
+                }),
+                catchError((error) => {
+                    return of(FileActions.getFilesByMemberIdFailure({error: error}))
+                })
+            )
+        })
+    ))
 }

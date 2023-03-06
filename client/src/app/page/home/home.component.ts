@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -15,6 +16,8 @@ import { FileState } from 'src/ngrx/states/file.states';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   optionChoices = [
     {
       name: 'Shared with me',
@@ -44,7 +47,7 @@ export class HomeComponent implements OnInit {
     });
   }
   ngOnInit() {
-    this.store.dispatch(FileActions.getAllFiles());
+    this.store.dispatch(FileActions.getFilesByMemberId({memberId: this.userId!}));
   }
   selectFile(fileId: string) {
     console.log(fileId);
@@ -60,7 +63,7 @@ export class HomeComponent implements OnInit {
         console.log(res);
       });
     } else {
-      this.store.dispatch(FileActions.getAllFiles());
+      this.store.dispatch(FileActions.getFilesByMemberId({memberId: this.userId!}));
     }
   }
 }

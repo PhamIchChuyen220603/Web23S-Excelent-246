@@ -42,9 +42,9 @@ export class InvitationEffect {
     acceptInvitation$ = createEffect(() => this.action.pipe(
         ofType(InvitationActions.acceptInvitation),
         switchMap((action) => {
-            return from(this.inviteService.accept(action.idReciever, action.idFile)).pipe(
+            return from(this.inviteService.accept(action.idFile, action.idReciever, action.idInvitation)).pipe(
                 map(() => {
-                    return InvitationActions.acceptInvitationSuccess()
+                    return InvitationActions.acceptInvitationSuccess({idInvitation: action.idInvitation});
                 }),
                 catchError((error) => {
                     return of(InvitationActions.acceptInvitationFailure({error: error}))
@@ -54,14 +54,14 @@ export class InvitationEffect {
     ))
 
     rejectInvitation$ = createEffect(() => this.action.pipe(
-        ofType(InvitationActions.rejectInvivation),
+        ofType(InvitationActions.rejectInvitation),
         switchMap((action) => {
             return from(this.inviteService.reject(action.idInvitation)).pipe(
                 map(() => {
-                    return InvitationActions.rejectInvivationSuccess()
+                    return InvitationActions.rejectInvitationSuccess()
                 }),
                 catchError((error) => {
-                    return of(InvitationActions.rejectInvivationFailure({error: error}))
+                    return of(InvitationActions.rejectInvitationFailure({error: error}))
                 })
             )
         })

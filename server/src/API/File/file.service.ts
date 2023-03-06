@@ -6,7 +6,7 @@ import { getFirestore, Timestamp, FieldValue } from 'firebase-admin/firestore'
 
 @Injectable({})
 export class FileService {
-    currentFile!:any;
+    currentFile!:FileModel;
     db = getFirestore();
     docRef = this.db.collection('excelFiles');
 
@@ -39,10 +39,12 @@ export class FileService {
 
     async update(id:string,file: FileModel): Promise<FileModel | any>{
         try{
-            const fileRef = this.docRef.doc(id);
-            const doc = await fileRef.update({...file});
-            return doc;
-            
+            const fileRef = this.docRef.where('fileId', '==', id);
+            await fileRef.get().then(snapshot => {
+                snapshot.forEach(doc => {
+                    doc.ref.update({...file});
+                })
+            })
         }
         catch(err){
             console.log(err);
@@ -52,9 +54,13 @@ export class FileService {
 
     async getById(fileId: string): Promise<FileModel | null>{
         try{
-            const fileRef = this.docRef.doc(fileId);
-            const doc = await fileRef.get();
-            return doc.data() as FileModel;
+            const fileRef = this.docRef.where('fileId', '==', fileId)
+            await fileRef.get().then(snapshot => {
+                snapshot.forEach(doc => {
+                    this.currentFile = doc.data() as FileModel;
+                })
+            })
+            return this.currentFile as FileModel;
         }
         catch(err){
             console.log(err);
@@ -88,7 +94,7 @@ export class FileService {
 
     async getByMemberId(memberId: string): Promise<FileModel[] | null>{
         try{
-            const snapshot = await this.docRef.where('member', 'array-contains', memberId).get();
+            const snapshot = await this.docRef.where('members', 'array-contains', memberId).get();
             const files = snapshot.docs.map(doc => doc.data()) as FileModel[];
             return files;
         }

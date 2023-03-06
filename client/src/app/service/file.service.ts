@@ -50,6 +50,10 @@ export class FileService {
     ) as Observable<File[]>;
   }
 
+  getFilesByMember(memberId: string) {
+    return this.http.get(`${environment.baseUrl}file/getByMember?id=${memberId}`) as Observable<File[]>;
+  }
+
   async createFile(file: File) {
     return setDoc(doc(this.db), file);
   }

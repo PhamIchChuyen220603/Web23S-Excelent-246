@@ -68,7 +68,7 @@ export const InvitationReducer = createReducer(
         };
     }),
 
-    on(InvitationActions.acceptInvitation, (state,) => {
+    on(InvitationActions.acceptInvitation, (state) => {
         return {
             ...state,
             inProcess: true,
@@ -77,9 +77,11 @@ export const InvitationReducer = createReducer(
         };
     }),
 
-    on(InvitationActions.acceptInvitationSuccess, (state) => {
+    on(InvitationActions.acceptInvitationSuccess, (state,{idInvitation}) => {
+        let newInvitations = state.invitations.filter(invitation => invitation.id != idInvitation);
         return {
             ...state,
+            invitations: newInvitations,
             inProcess: false,
             loading: false,
             error: '',
@@ -95,7 +97,7 @@ export const InvitationReducer = createReducer(
         };
     }),
 
-    on(InvitationActions.rejectInvivation, (state,) => {
+    on(InvitationActions.rejectInvitation, (state,) => {
         return {
             ...state,
             inProcess: true,
@@ -104,7 +106,7 @@ export const InvitationReducer = createReducer(
         };
     }),
 
-    on(InvitationActions.rejectInvivationSuccess, (state) => {
+    on(InvitationActions.rejectInvitationSuccess, (state) => {
         return {
             ...state,
             inProcess: false,
@@ -113,7 +115,7 @@ export const InvitationReducer = createReducer(
         };
     }),
 
-    on(InvitationActions.rejectInvivationFailure, (state, { error }) => {
+    on(InvitationActions.rejectInvitationFailure, (state, { error }) => {
         return {
             ...state,
             inProcess: false,

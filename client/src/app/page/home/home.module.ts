@@ -7,34 +7,18 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { TemplateComponent } from './components/template/template.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
-import { ContentComponent } from './components/content/content.component';
+import { NotificationComponent } from './components/notification/notification.component';
 import { FillterComponent } from './components/fillter/fillter.component';
-import { OpenFileDialogComponent } from './components/open-file-dialog/open-file-dialog.component';
-import { MiniFileComponent } from './components/mini-file/mini-file.component';
-import { ViewModeComponent } from './components/view-mode/view-mode.component';
-
-import { MatTableModule } from '@angular/material/table';
-import { MatButtonModule } from '@angular/material/button';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { ContentComponent } from './components/content/content.component';
 @NgModule({
   declarations: [
     HomeComponent,
     NavbarComponent,
     TemplateComponent,
-    ContentComponent,
+    NotificationComponent,
     FillterComponent,
-    OpenFileDialogComponent,
-    MiniFileComponent,
-    ViewModeComponent,
+    ContentComponent,
   ],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    FormsModule,
-    SharedModule,
-    MatTableModule,
-    MatButtonModule,
-    MatPaginatorModule,
-  ],
+  imports: [CommonModule, HomeRoutingModule, FormsModule, SharedModule],
 })
 export class HomeModule {}

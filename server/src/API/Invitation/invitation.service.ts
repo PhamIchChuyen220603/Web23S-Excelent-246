@@ -10,7 +10,12 @@ export class InvitationService {
     constructor(@InjectModel(Invitation.name) private invitationModel: Model<InvitationDocument>,  private fileService: FileService,) { }
 
 
-    async send(invitation: Invitation) {
+    async send(invitation: Invitation, idReciever: string) {
+        if(invitation.to == idReciever) {
+            return{
+                message: 'The user is already a member of the file',
+            }
+        }
         let createdInvitation = new this.invitationModel(invitation);
         await createdInvitation.save();
     }
@@ -20,11 +25,11 @@ export class InvitationService {
     }
 
 
-    async acceptInvitation(idReciever: string, idFile: string, idInvitation: string) {
+    async acceptInvitation(idFile: string, idReciever: string, idInvitation: string) {
         let file = await this.fileService.getById(idFile);
-        file.members.push(idReciever);
-        await this.fileService.update(idFile, {...file});
-        await this.invitationModel.findOneAndDelete({id: idInvitation});
+            file.members.push(idReciever);
+        await this.fileService.update(idFile,file);
+            return await this.invitationModel.findOneAndDelete({id: idInvitation});
     }
 
     async rejectInvitation(idInvitation: string) {

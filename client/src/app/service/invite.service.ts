@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class InviteService {
 
+  inviteCount!: number;
+
   constructor(private http: HttpClient) {}
 
   send(invitation: Invitation){
@@ -19,8 +21,8 @@ export class InviteService {
     return this.http.get(`${environment.baseUrl}invitation/get/${id}`) as Observable<Invitation[]>;
   }
 
-  accept(idUser: string, idFile: string){
-    return this.http.put(`${environment.baseUrl}invitation/accept/${idUser}/${idFile}`,{});
+  accept(idFile: string, idReciever: string, idInvitation: string){
+    return this.http.delete(`${environment.baseUrl}invitation/accept/${idFile}/${idReciever}/${idInvitation}`);
   }
 
   reject(idInvitation: string){
