@@ -154,10 +154,16 @@ export const FileReducer = createReducer(
       error: '',
     };
   }),
-  on(FileActions.updateFileSuccess, (state, { file }) => {
+
+  on(FileActions.updateFileSuccess, (state, { fileId }) => {
+    let newFiles = {...state.files};
+    let index = newFiles.findIndex(f => f.fileId == fileId);
+    if(index != -1){
+      newFiles[index] = {...newFiles[index]};
+    }
     return {
       ...state,
-      file: file,
+      files: newFiles,
       inProcess: false,
       loading: false,
       error: '',
@@ -179,9 +185,11 @@ export const FileReducer = createReducer(
       error: '',
     };
   }),
-  on(FileActions.deleteFileSuccess, (state) => {
+  on(FileActions.deleteFileSuccess, (state, {fileId}) => {
+    let newFiles = state.files.filter(f => f.fileId != fileId);
     return {
       ...state,
+      files: newFiles,
       inProcess: false,
       loading: false,
       error: '',

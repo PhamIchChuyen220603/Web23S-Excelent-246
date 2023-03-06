@@ -65,4 +65,33 @@ export class FileEffects{
             )
         })
     ))
+
+    deleteFileById$ = createEffect(() => this.actions$.pipe(
+        ofType(FileActions.deleteFile),
+        switchMap((action) => {
+            return from(this.fileService.deleteById(action.fileId)).pipe(
+                map((result:any) => {
+                    return FileActions.deleteFileSuccess({fileId: action.fileId})
+                }),
+                catchError((error) => {
+                    return of(FileActions.deleteFileFailure({error: error}))
+                })
+            )
+        })
+    ))
+    
+    updateFileById$ = createEffect(() => this.actions$.pipe(
+        ofType(FileActions.updateFile),
+        switchMap((action) => {
+            return from(this.fileService.deleteById(action.fileId)).pipe(
+                map(() => {
+                    return FileActions.updateFileSuccess({fileId: action.fileId})
+                }),
+                catchError((error) => {
+                    return of(FileActions.updateFileFailure({error: error}))
+                })
+            )
+        })
+    ))
+
 }

@@ -1,12 +1,9 @@
 <div class="histories-fillters">
   <div class="histories-fillters-time">Recently</div>
   <div class="histories-fillters-owner">
-    <select
-      (change)="onChange($event)"
-      class="histories-fillters-owner-options"
-    >
+    <select (change)="onChange($event)"class="histories-fillters-owner-options">
       <option *ngFor="let choice of optionChoices" [value]="choice.value">
-        {{ choice.name }}
+        <p>{{choice.name}}</p>
       </option>
     </select>
   </div>
@@ -51,3 +48,4 @@
     </button>
   </div>
 </div>
+
