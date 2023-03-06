@@ -24,6 +24,20 @@ export class FileEffects{
         })
     ))
 
+    getFileById$ = createEffect(() => this.actions$.pipe(
+        ofType(FileActions.getFileById),
+        switchMap((action) => {
+            return from(this.fileService.getFileById(action.fileId).pipe(
+                map((result:any) => {
+                    return FileActions.getFileByIdSuccess({file: result});
+                }),
+                catchError((error) => {
+                    return of(FileActions.getFileByIdFailure({error: error}))
+                })
+            ))
+        })
+    ))
+
     getFilesByUserId$ = createEffect(() => this.actions$.pipe(
         ofType(FileActions.getFilesByUserId),
         switchMap((action) => {

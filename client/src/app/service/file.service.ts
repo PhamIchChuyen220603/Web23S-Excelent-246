@@ -22,8 +22,7 @@ import { Observable } from 'rxjs';
 })
 export class FileService {
   constructor(private fireStore: Firestore, private http: HttpClient) {}
-  currentFile!: any;
-  // spreadSheetObj!: Spreadsheet
+  currentFile!: File | null;
 
   db = collection(this.fireStore, 'excelFiles');
 
@@ -32,16 +31,11 @@ export class FileService {
   }
 
   getAllFiles() {
-    // this.currentFile = this.http.get(`${environment.baseUrl}file/getAll`);
-    return this.http.get(`${environment.baseUrl}file/getAll`) as Observable<
-      File[]
-    >;
+    return this.http.get(`${environment.baseUrl}file/getAll`) as Observable<File[]>;
   }
 
   getFileById(id: string) {
-    return this.http.get(
-      `${environment.baseUrl}file/get?id=${id}`
-    ) as Observable<File>;
+    return this.http.get(`${environment.baseUrl}file/get?id=${id}`) as Observable<File>;
   }
 
   getFilesByOwner(ownerId: string) {
@@ -52,6 +46,10 @@ export class FileService {
 
   getFilesByMember(memberId: string) {
     return this.http.get(`${environment.baseUrl}file/getByMember?id=${memberId}`) as Observable<File[]>;
+  }
+
+  deleteById(id: string){
+    return this.http.delete(`${environment.baseUrl}file/delete?id=${id}`)
   }
 
   async createFile(file: File) {

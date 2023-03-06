@@ -1,7 +1,7 @@
 import { Invitation } from "src/app/model/invitation.model";
 
 export interface InvitationState {
-  invitation: Invitation | any;
+  invitation: Invitation | null;
   invitations: Invitation[];
   loading: boolean;
   inProcess: boolean;

@@ -36,4 +36,8 @@ export const FileActions = {
   saveFile: createAction('[File] Save File', props<{ file: File }>()),
   saveFileSuccess: createAction('[File] Save File Success'),
   saveFileFailure: createAction('[File] Save File Failure', props<{ error: string }>()),
+
+  openFile: createAction('[File] Open File', props<{ file: File }>()),
+  openFileSuccess: createAction('[File] Open File Success'),
+  openFileFailure: createAction('[File] Open File Failure', props<{ error: string }>()),
 }
