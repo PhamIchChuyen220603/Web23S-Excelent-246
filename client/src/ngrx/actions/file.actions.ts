@@ -6,11 +6,11 @@ export const FileActions = {
   createFileFailure: createAction('[File] Create File Failure', props<{ error: string }>()),
 
   deleteFile: createAction('[File] Delete File', props<{ fileId: string }>()),
-  deleteFileSuccess: createAction('[File] Delete File Success'),
+  deleteFileSuccess: createAction('[File] Delete File Success', props<{ fileId: string }>()),
   deleteFileFailure: createAction('[File] Delete File Failure', props<{ error: string }>()),
 
   updateFile: createAction('[File] Update File', props<{ fileId: string, file: File }>()),
-  updateFileSuccess: createAction('[File] Update File Success', props<{file: File}>()),
+  updateFileSuccess: createAction('[File] Update File Success', props<{ fileId: string}>()),
   updateFileFailure: createAction('[File] Update File Failure', props<{ error: string }>()),
 
   getFileById: createAction('[File] Get File', props<{ fileId: string }>()),
