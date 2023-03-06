@@ -43,8 +43,8 @@ export class InvitationEffect {
         ofType(InvitationActions.acceptInvitation),
         switchMap((action) => {
             return from(this.inviteService.accept(action.idFile, action.idReciever, action.idInvitation)).pipe(
-                map((invitations) => {
-                    return InvitationActions.acceptInvitationSuccess();
+                map(() => {
+                    return InvitationActions.acceptInvitationSuccess({idInvitation: action.idInvitation});
                 }),
                 catchError((error) => {
                     return of(InvitationActions.acceptInvitationFailure({error: error}))
