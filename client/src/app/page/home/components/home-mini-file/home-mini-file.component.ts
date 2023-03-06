@@ -8,11 +8,11 @@ import { FileState } from 'src/ngrx/states/file.states';
 import { FileActions } from 'src/ngrx/actions/file.actions';
 
 @Component({
-  selector: 'app-mini-file',
-  templateUrl: './mini-file.component.html',
-  styleUrls: ['./mini-file.component.scss']
+  selector: 'app-home-mini-file',
+  templateUrl: './home-mini-file.component.html',
+  styleUrls: ['./home-mini-file.component.scss']
 })
-export class MiniFileComponent {
+export class HomeMiniFileComponent {
   userId!:string | null;
   files$:Observable<FileState>;
   auth$ = this.store.select('auth');

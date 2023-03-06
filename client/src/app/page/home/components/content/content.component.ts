@@ -19,18 +19,6 @@ import { RenameDialogComponent } from '../rename-dialog/rename-dialog.component'
   styleUrls: ['./content.component.scss'],
 })
 export class ContentComponent  implements OnInit{
-  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
-  optionChoices = [
-    {
-      name: 'Shared with me',
-      value: 1,
-    },
-    {
-      name: 'Owned by me',
-      value: 0,
-    },
-  ];
-  id!: string | undefined;
   userId!: string | null;
   files$: Observable<FileState>;
   auth$ = this.store.select('auth');
@@ -40,19 +28,22 @@ export class ContentComponent  implements OnInit{
     private store: Store<{ auth: AuthState; file: FileState }>,
     private dialog: MatDialog
   ) {
-    this.auth$.subscribe((res) => {
-      this.userId = res.user?.userId!;
-    });
+    this.auth$ = this.store.select('auth')
     this.files$ = this.store.select('file');
+    this.auth$.subscribe((res) => {
+      if(res.loading == false){
+        this.userId = res.user?.userId!;
+        console.log(this.userId)
+      }
+    })
     this.store.dispatch(FileActions.getFilesByUserId({ userId: this.userId! }));
-    this.files$.subscribe((res) => {
-    });
   }
 
   ngOnInit() {
-    // this.store.dispatch(FileActions.getFilesByMemberId({memberId: this.userId!}));
-    this.store.dispatch(FileActions.getAllFiles());
+    console.log(this.userId)
+    this.store.dispatch(FileActions.getFilesByMemberId({memberId: this.userId!}));
   }
+
 
   selectFile(fileId: string) {
     this.route.navigate([`/spreadsheet/${fileId}`]);
