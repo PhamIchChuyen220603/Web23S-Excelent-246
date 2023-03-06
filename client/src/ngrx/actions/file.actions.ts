@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { File } from '../../app/model/file.model';
 export const FileActions = {
-  createFile: createAction('[File] Create File', props<{ userId: string,file: File }>()),
+  createFile: createAction('[File] Create File', props<{ userId: string, file: File }>()),
   createFileSuccess: createAction('[File] Create File Success', props<{ file: File }>()),
   createFileFailure: createAction('[File] Create File Failure', props<{ error: string }>()),
 
@@ -10,7 +10,7 @@ export const FileActions = {
   deleteFileFailure: createAction('[File] Delete File Failure', props<{ error: string }>()),
 
   updateFile: createAction('[File] Update File', props<{ fileId: string, file: File }>()),
-  updateFileSuccess: createAction('[File] Update File Success', props<{ fileId: string}>()),
+  updateFileSuccess: createAction('[File] Update File Success', props<{ fileId: string, file: File}>()),
   updateFileFailure: createAction('[File] Update File Failure', props<{ error: string }>()),
 
   getFileById: createAction('[File] Get File', props<{ fileId: string }>()),

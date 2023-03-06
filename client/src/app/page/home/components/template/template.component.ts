@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthService } from 'src/app/service/auth.service';
 import { FileService } from 'src/app/service/file.service';
+import { FileActions } from 'src/ngrx/actions/file.actions';
 import { AuthState } from 'src/ngrx/states/auth.states';
 import { FileState } from 'src/ngrx/states/file.states';
 
@@ -14,13 +15,12 @@ import { FileState } from 'src/ngrx/states/file.states';
 export class TemplateComponent {
   constructor(
     public auth: AuthService,
-    private authState: Store<{ auth: AuthState }>,
+
     private fileService: FileService,
-    private fileState: Store<{ file: FileState }>,
+    private store: Store<{ auth: AuthState; file: FileState }>,
     private router: Router
   ) {}
-  auth$ = this.authState.select('auth');
-  file$ = this.fileState.select('file');
+
   templates = [
     { name: 'Empty' },
     { name: 'Monthly budget' },
@@ -33,4 +33,8 @@ export class TemplateComponent {
   startNewFile() {
     this.router.navigate(['/spreadsheet']);
   }
+
+  // createFile(){
+  //   this.store.dispatch(FileActions.createFile({file: File}))
+  // }
 }
