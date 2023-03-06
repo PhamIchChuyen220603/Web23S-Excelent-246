@@ -54,13 +54,14 @@ export class FileService {
 
     async getById(fileId: string): Promise<FileModel | null>{
         try{
+            let file!:FileModel;
             const fileRef = this.docRef.where('fileId', '==', fileId)
             await fileRef.get().then(snapshot => {
                 snapshot.forEach(doc => {
-                    this.currentFile = doc.data() as FileModel;
+                    file = doc.data() as FileModel;
                 })
             })
-            return this.currentFile as FileModel;
+            return file as FileModel;
         }
         catch(err){
             console.log(err);
@@ -68,17 +69,28 @@ export class FileService {
         }
     }
 
-    async deleteById(fileId: string): Promise<boolean>{
-        try{
-            const fileRef = this.docRef.doc(fileId);
-            await fileRef.delete();
-            return true;
-        }
-        catch(err){
-            console.log(err);
-            return false;
-        }
+    async deleteById(id:string){
+        const fileRef = this.docRef.where('fileId', '==', id);
+        await fileRef.get().then(snapshot => {
+            snapshot.forEach(doc => {
+                doc.ref.delete()
+            })
+        })
     }
+
+    
+
+    // async deleteById(fileId: string): Promise<boolean>{
+    //     try{
+    //         const fileRef = this.docRef.doc(fileId);
+    //         await fileRef.delete();
+    //         return true;
+    //     }
+    //     catch(err){
+    //         console.log(err);
+    //         return false;
+    //     }
+    // }
 
     async getByUserId(userId: string): Promise<FileModel[] | null>{
         try{
@@ -103,5 +115,4 @@ export class FileService {
             return null;
         }
     }
-
 }

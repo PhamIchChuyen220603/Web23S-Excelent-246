@@ -17,7 +17,7 @@ export class InvitationService {
             }
         }
         let createdInvitation = new this.invitationModel(invitation);
-        await createdInvitation.save();
+        return await createdInvitation.save();
     }
 
     async getInvitations(id: string) {
