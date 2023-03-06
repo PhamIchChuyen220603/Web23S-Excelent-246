@@ -10,6 +10,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { NotificationComponent } from './components/notification/notification.component';
 import { FillterComponent } from './components/fillter/fillter.component';
 import { ContentComponent } from './components/content/content.component';
+import { RenameDialogComponent } from './components/rename-dialog/rename-dialog.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -18,6 +19,7 @@ import { ContentComponent } from './components/content/content.component';
     NotificationComponent,
     FillterComponent,
     ContentComponent,
+    RenameDialogComponent,
   ],
   imports: [CommonModule, HomeRoutingModule, FormsModule, SharedModule],
 })

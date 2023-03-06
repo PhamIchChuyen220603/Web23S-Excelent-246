@@ -155,11 +155,11 @@ export const FileReducer = createReducer(
     };
   }),
 
-  on(FileActions.updateFileSuccess, (state, { fileId }) => {
-    let newFiles = {...state.files};
+  on(FileActions.updateFileSuccess, (state, { fileId, file }) => {
+    let newFiles = [...state.files];
     let index = newFiles.findIndex(f => f.fileId == fileId);
     if(index != -1){
-      newFiles[index] = {...newFiles[index]};
+      newFiles[index] = {...file};
     }
     return {
       ...state,

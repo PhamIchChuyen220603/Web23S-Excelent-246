@@ -1,0 +1,16 @@
+<div class="dialog-contain">
+  <span class="dialog-contain-rename">Rename</span>
+  <span class="dialog-contain-notion">Enter a new name here</span>
+  <input
+    #inputId class="dialog-contain-input"
+    type="text"
+    placeholder="Untitled spreadsheet"
+    id="inputId"
+  />
+  <div class="dialog-contain-button">
+    <button (click)="closeDialog()" class="dialog-contain-button-cancel">
+      CANCEL
+    </button>
+    <button (click)="test()" class="dialog-contain-button-submit">OK</button>
+  </div>
+</div>

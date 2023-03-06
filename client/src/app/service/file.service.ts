@@ -22,7 +22,10 @@ import { Observable } from 'rxjs';
 })
 export class FileService {
   constructor(private fireStore: Firestore, private http: HttpClient) {}
-  currentFile!: File | null;
+  public idToDelete!: string;
+  public idToUpdate!: string
+  currentFile!: any;
+  // spreadSheetObj!: Spreadsheet
 
   db = collection(this.fireStore, 'excelFiles');
 
@@ -46,7 +49,13 @@ export class FileService {
   }
 
   getFilesByMember(memberId: string) {
-    return this.http.get(`${environment.baseUrl}file/getByMember?id=${memberId}`) as Observable<File[]>;
+    return this.http.get(
+      `${environment.baseUrl}file/getByMember?id=${memberId}`
+    ) as Observable<File[]>;
+  }
+  
+  updateById(id:string, file: File){
+    return this.http.put(`${environment.baseUrl}file/update?id=${id}`, file);
   }
 
   deleteById(id: string){
@@ -68,7 +77,10 @@ export class FileService {
     return (await getDoc(doc(this.db, id))).data();
   }
 
-  async deleteFile(id: string) {
-    // return deleteDoc()
+  deleteFileById(fileId: string) {
+    return this.http.delete(
+      `${environment.baseUrl}file/delete?id=${fileId}`
+    ) as Observable<File[]>;
   }
+
 }
