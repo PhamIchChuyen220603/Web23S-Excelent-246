@@ -7,7 +7,6 @@
         <app-loading></app-loading>
     </div>
     <div  *ngIf="(this.file$|async)?.loading == false" class="sheet-container">
-        <!-- <button (click)="open()">open</button> -->
             <ejs-spreadsheet
             (created)="open()"
             id="spreadsheet" #spreadsheet 
