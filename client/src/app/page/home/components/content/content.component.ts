@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { FileService } from 'src/app/service/file.service';
@@ -18,16 +18,27 @@ import { RenameDialogComponent } from '../rename-dialog/rename-dialog.component'
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.scss'],
 })
-export class ContentComponent {
+export class ContentComponent  implements OnInit{
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+  optionChoices = [
+    {
+      name: 'Shared with me',
+      value: 1,
+    },
+    {
+      name: 'Owned by me',
+      value: 0,
+    },
+  ];
   id!: string | undefined;
   userId!: string | null;
   files$: Observable<FileState>;
   auth$ = this.store.select('auth');
   constructor(
+    private route: Router,
     private fileService: FileService,
     private store: Store<{ auth: AuthState; file: FileState }>,
-    private route: Router,
-    public dialog: MatDialog
+    private dialog: MatDialog
   ) {
     this.auth$.subscribe((res) => {
       this.userId = res.user?.userId!;
@@ -35,14 +46,18 @@ export class ContentComponent {
     this.files$ = this.store.select('file');
     this.store.dispatch(FileActions.getFilesByUserId({ userId: this.userId! }));
     this.files$.subscribe((res) => {
-      // console.log(res);
     });
   }
 
+  ngOnInit() {
+    // this.store.dispatch(FileActions.getFilesByMemberId({memberId: this.userId!}));
+    this.store.dispatch(FileActions.getAllFiles());
+  }
+
   selectFile(fileId: string) {
-    // console.log(fileId);
     this.route.navigate([`/spreadsheet/${fileId}`]);
   }
+
 
   canRename(ownerId: string) {
     if (ownerId == this.userId) return true;
@@ -50,7 +65,7 @@ export class ContentComponent {
   }
 
   deleleFile(fileId: string) {
-  //  this.store.dispatch(FileActions.deleteById({fileId: fileId}))
+   this.store.dispatch(FileActions.deleteFile({fileId: fileId}))
   }
 
   openDialog() {
@@ -61,4 +76,6 @@ export class ContentComponent {
     this.fileService.idToUpdate = fileId;
     console.log(this.fileService.idToUpdate);
   }
+
+  
 }

@@ -21,7 +21,7 @@
     </button>
     <mat-menu #menu="matMenu">
       <button
-        
+      (click)="openDialog()"
         mat-menu-item
         *ngIf="canRename(f.ownerId) == false"
         disabled

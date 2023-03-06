@@ -22,8 +22,8 @@ import { Observable } from 'rxjs';
 })
 export class FileService {
   constructor(private fireStore: Firestore, private http: HttpClient) {}
-  idToDelete!: string;
-  idToUpdate!: string
+  public idToDelete!: string;
+  public idToUpdate!: string
   currentFile!: any;
   // spreadSheetObj!: Spreadsheet
 
@@ -52,6 +52,10 @@ export class FileService {
     return this.http.get(
       `${environment.baseUrl}file/getByMember?id=${memberId}`
     ) as Observable<File[]>;
+  }
+  
+  updateById(id:string, file: File){
+    return this.http.put(`${environment.baseUrl}file/update?id=${id}`, file);
   }
 
   deleteById(id: string){
