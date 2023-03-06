@@ -20,12 +20,21 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item *ngIf="canRename(f.ownerId) == false" disabled>
+      <button
+        (click)="getId(f.fileId)"
+        mat-menu-item
+        *ngIf="canRename(f.ownerId) == false"
+        disabled
+      >
         <mat-icon>text_fields </mat-icon>
 
         <span>Rename</span>
       </button>
-      <button mat-menu-item *ngIf="canRename(f.ownerId) == true">
+      <button
+        (click)="openDialog()"
+        mat-menu-item
+        *ngIf="canRename(f.ownerId) == true"
+      >
         <mat-icon>text_fields</mat-icon>
         <!-- <mat-icon (click)="test()">{{ testString }}</mat-icon> -->
         <span>Rename</span>
