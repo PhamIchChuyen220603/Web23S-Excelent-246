@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
@@ -7,6 +7,9 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent {
-  constructor(public authSrvc: AuthService) { }
+  constructor(public authSrvc: AuthService) {
+
+
+  }
 
 }
