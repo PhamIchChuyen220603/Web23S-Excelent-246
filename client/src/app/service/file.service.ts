@@ -22,6 +22,8 @@ import { Observable } from 'rxjs';
 })
 export class FileService {
   constructor(private fireStore: Firestore, private http: HttpClient) {}
+  public idToDelete!: string;
+  public idToUpdate!: string
   currentFile!: any;
   // spreadSheetObj!: Spreadsheet
 
@@ -32,16 +34,12 @@ export class FileService {
   }
 
   getAllFiles() {
-    // this.currentFile = this.http.get(`${environment.baseUrl}file/getAll`);
-    return this.http.get(`${environment.baseUrl}file/getAll`) as Observable<
-      File[]
-    >;
+    return this.http.get(`${environment.baseUrl}file/getAll`) as Observable<File[]>;
   }
 
+  
   getFileById(id: string) {
-    return this.http.get(
-      `${environment.baseUrl}file/get?id=${id}`
-    ) as Observable<File>;
+    return this.http.get(`${environment.baseUrl}file/get?id=${id}`) as Observable<File>;
   }
 
   getFilesByOwner(ownerId: string) {
@@ -51,7 +49,17 @@ export class FileService {
   }
 
   getFilesByMember(memberId: string) {
-    return this.http.get(`${environment.baseUrl}file/getByMember?id=${memberId}`) as Observable<File[]>;
+    return this.http.get(
+      `${environment.baseUrl}file/getByMember?id=${memberId}`
+    ) as Observable<File[]>;
+  }
+  
+  updateById(id:string, file: File){
+    return this.http.put(`${environment.baseUrl}file/update?id=${id}`, file);
+  }
+
+  deleteById(id: string){
+    return this.http.delete(`${environment.baseUrl}file/delete?id=${id}`)
   }
 
   async createFile(file: File) {
@@ -69,7 +77,10 @@ export class FileService {
     return (await getDoc(doc(this.db, id))).data();
   }
 
-  async deleteFile(id: string) {
-    // return deleteDoc()
+  deleteFileById(fileId: string) {
+    return this.http.delete(
+      `${environment.baseUrl}file/delete?id=${fileId}`
+    ) as Observable<File[]>;
   }
+
 }

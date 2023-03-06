@@ -24,6 +24,20 @@ export class FileEffects{
         })
     ))
 
+    getFileById$ = createEffect(() => this.actions$.pipe(
+        ofType(FileActions.getFileById),
+        switchMap((action) => {
+            return from(this.fileService.getFileById(action.fileId).pipe(
+                map((result:any) => {
+                    return FileActions.getFileByIdSuccess({file: result});
+                }),
+                catchError((error) => {
+                    return of(FileActions.getFileByIdFailure({error: error}))
+                })
+            ))
+        })
+    ))
+
     getFilesByUserId$ = createEffect(() => this.actions$.pipe(
         ofType(FileActions.getFilesByUserId),
         switchMap((action) => {
@@ -51,4 +65,33 @@ export class FileEffects{
             )
         })
     ))
+
+    deleteFileById$ = createEffect(() => this.actions$.pipe(
+        ofType(FileActions.deleteFile),
+        switchMap((action) => {
+            return from(this.fileService.deleteById(action.fileId)).pipe(
+                map((result:any) => {
+                    return FileActions.deleteFileSuccess({fileId: action.fileId})
+                }),
+                catchError((error) => {
+                    return of(FileActions.deleteFileFailure({error: error}))
+                })
+            )
+        })
+    ))
+    
+    updateFileById$ = createEffect(() => this.actions$.pipe(
+        ofType(FileActions.updateFile),
+        switchMap((action) => {
+            return from(this.fileService.updateById(action.fileId, action.file)).pipe(
+                map(() => {
+                    return FileActions.updateFileSuccess({fileId: action.fileId, file: action.file})
+                }),
+                catchError((error) => {
+                    return of(FileActions.updateFileFailure({error: error}))
+                })
+            )
+        })
+    ))
+
 }

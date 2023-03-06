@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
-  Spreadsheet, BeforeOpenEventArgs,
+  Spreadsheet, BeforeOpenEventArgs, ActionEventArgs, Workbook,
 } from '@syncfusion/ej2-angular-spreadsheet';
 import { getApp } from 'firebase/app';
 import { File } from 'src/app/model/file.model';
@@ -25,10 +25,11 @@ export class SpreadsheetComponent implements OnInit {
   hide() {
     this.spreadsheetObj.hideFileMenuItems(['File'], true);
   }
-
+  file!:File;
   auth$!: Observable<AuthState>
   file$!: Observable<FileState>
   id!: string;
+  idParam!:string | null;
   constructor(
     private FileService: FileService,
     private authService: AuthService,
@@ -39,13 +40,20 @@ export class SpreadsheetComponent implements OnInit {
     this.auth$.subscribe((auth) => {
       this.id = auth.user?.userId || 'kh co user';
     });
+    this.file$ = this.store.select('file');
+    this.route.paramMap.subscribe(params => {
+      this.idParam = params.get('id');
+      console.log(this.idParam);
+    });
+    this.store.dispatch(FileActions.getFileById({ fileId: this.idParam! }));
   }
   ngOnInit(): void {
-    // subscribe to url params
-    this.route.paramMap.subscribe(params => {
-      let filedId = params.get('id');
-      this.store.dispatch(FileActions.getFileById({ fileId: filedId! }));
-    });
+    this.file$.subscribe((file) => {
+      if(file!=null){
+        this.file = file.file!;
+        console.log(this.file)
+      }
+    })
   }
 
   openUrl =
@@ -75,9 +83,22 @@ export class SpreadsheetComponent implements OnInit {
     this.FileService.createFile(fileToUpLoad);
   }
 
-  async open(event: BeforeOpenEventArgs) {
-    if (this.FileService.currentFile != null) {
-      this.spreadsheetObj.openFromJson(this.FileService.currentFile.data);
-    }
+  // async open() {
+  //   let file = this.FileService.getFileById(this.idParam!);
+  //   file.subscribe((data) => {
+  //     console.log(data.data.jsonObject.Workbook);
+  //     this.spreadsheetObj.openFromJson({
+  //       file: data.data.jsonObject,
+  //     });
+  //   })
+  // }
+
+  //set Timeout
+  
+
+  async open(){
+    this.spreadsheetObj.openFromJson({
+      file: this.file.data.jsonObject, 
+    })
   }
 }
