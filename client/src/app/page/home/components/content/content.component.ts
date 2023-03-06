@@ -64,11 +64,9 @@ export class ContentComponent  implements OnInit{
     else return false;
   }
 
-  // deleleFile(fileId: string) {
-  //   // if(fileId == )c
-  //   console.log(fileId);
-  //   this.fileService.deleteFile(fileId);
-  // }
+  deleleFile(fileId: string) {
+   this.store.dispatch(FileActions.deleteFile({fileId: fileId}))
+  }
 
   openDialog() {
     this.dialog.open(RenameDialogComponent);
