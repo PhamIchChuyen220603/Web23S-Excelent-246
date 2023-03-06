@@ -85,7 +85,7 @@ export class FileEffects{
         switchMap((action) => {
             return from(this.fileService.updateById(action.fileId, action.file)).pipe(
                 map(() => {
-                    return FileActions.updateFileSuccess({fileId: action.fileId})
+                    return FileActions.updateFileSuccess({fileId: action.fileId, file: action.file})
                 }),
                 catchError((error) => {
                     return of(FileActions.updateFileFailure({error: error}))
