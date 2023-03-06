@@ -1,0 +1,83 @@
+<div *ngIf="(this.files$ | async)?.loading == true" class="histories-contents">
+  <app-loading></app-loading>
+</div>
+<div class="divTo" *ngIf="(this.files$ | async)?.loading == false">
+  <div *ngFor="let f of (this.files$ | async)?.files" class="divToVua">
+    <img
+      class="histories-contents-file-logo"
+      src="../../../assets/home_logos/microsoft-excel-logo.png"
+    />
+    <span (click)="selectFile(f.fileId)" class="histories-contents-title">{{
+      f.title
+    }}</span>
+    <span class="histories-contents-owner">{{ f.createdBy }}</span>
+    <span class="histories-contents-date">{{ f.createdDate }}</span>
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item *ngIf="canRename(f.ownerId) == false" disabled>
+        <mat-icon>text_fields </mat-icon>
+
+        <span>Rename</span>
+      </button>
+      <button mat-menu-item *ngIf="canRename(f.ownerId) == true">
+        <mat-icon>text_fields</mat-icon>
+        <!-- <mat-icon (click)="test()">{{ testString }}</mat-icon> -->
+        <span>Rename</span>
+      </button>
+      <button mat-menu-item (click)="deleleFile(f.fileId)">
+        <mat-icon>delete_outline</mat-icon>
+        <span>Delete</span>
+      </button>
+    </mat-menu>
+  </div>
+</div>
+
+<!-- Test Paginator -->
+<!-- <div>
+  <table mat-table matSort [dataSource]="dataSource">
+    <tbody>
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>
+        <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Weight</th>
+        <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Symbol</th>
+        <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </tbody>
+  </table>
+
+  <table>
+    <tr *ngIf="!dataSource.data.length">
+      <td style="text-align: center" [attr.colspan]="displayedColumns.length">
+        No Records Found!
+      </td>
+    </tr>
+  </table>
+</div>
+<mat-paginator
+  [pageSize]="5"
+  [pageSizeOptions]="[5, 10, 15]"
+  showFirstLastButtons
+>
+</mat-paginator> -->

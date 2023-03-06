@@ -1,41 +1,27 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { AuthService } from 'src/app/service/auth.service';
 import { FileService } from 'src/app/service/file.service';
-import { AuthActions } from 'src/ngrx/actions/auth.actions';
 import { FileActions } from 'src/ngrx/actions/file.actions';
 import { AuthState } from 'src/ngrx/states/auth.states';
 import { FileState } from 'src/ngrx/states/file.states';
-
+import { OpenFileDialogComponent } from '../open-file-dialog/open-file-dialog.component';
+import { MatMenuModule } from '@angular/material/menu';
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-fillter',
+  templateUrl: './fillter.component.html',
+  styleUrls: ['./fillter.component.scss'],
 })
-export class HomeComponent implements OnInit {
-
-  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
-  optionChoices = [
-    {
-      name: 'Shared with me',
-      value: 1,
-    },
-    {
-      name: 'Owned by me',
-      value: 0,
-    },
-  ];
+export class FillterComponent {
   id!: string | undefined;
   userId!: string | null;
   files$: Observable<FileState>;
   auth$ = this.store.select('auth');
   constructor(
-    private route: Router,
     private fileService: FileService,
-    private store: Store<{ auth: AuthState; file: FileState }>
+    private store: Store<{ auth: AuthState; file: FileState }>,
+    private dailog: MatDialog
   ) {
     this.auth$.subscribe((res) => {
       this.userId = res.user?.userId!;
@@ -45,13 +31,6 @@ export class HomeComponent implements OnInit {
     this.files$.subscribe((res) => {
       console.log(res);
     });
-  }
-  ngOnInit() {
-    this.store.dispatch(FileActions.getFilesByMemberId({memberId: this.userId!}));
-  }
-  selectFile(fileId: string) {
-    console.log(fileId);
-    this.route.navigate([`/spreadsheet/${fileId}`]);
   }
 
   onChange(event: any) {
@@ -63,7 +42,22 @@ export class HomeComponent implements OnInit {
         console.log(res);
       });
     } else {
-      this.store.dispatch(FileActions.getFilesByMemberId({memberId: this.userId!}));
+      this.store.dispatch(FileActions.getAllFiles());
     }
+  }
+
+  optionChoices = [
+    {
+      name: 'Shared with me',
+      value: 1,
+    },
+    {
+      name: 'Owned by me',
+      value: 0,
+    },
+  ];
+
+  openFile() {
+    this.dailog.open(OpenFileDialogComponent);
   }
 }

@@ -14,30 +14,33 @@ import { InviteService } from 'src/app/service/invite.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent implements OnInit{
+export class NavbarComponent implements OnInit {
   userId!: string;
   auth$ = this.store.select('auth');
-  invites$!: Observable<InvitationState>
+  invites$!: Observable<InvitationState>;
   // inviteCount!:number;
   constructor(
     public auth: AuthService,
     protected inviteService: InviteService,
-    private store: Store<{ auth: AuthState, invite: InvitationState }>,
+    private store: Store<{ auth: AuthState; invite: InvitationState }>,
     private dialog: MatDialog
   ) {
     this.auth$.subscribe((auth) => {
       this.userId = auth.user?.userId ?? '';
       console.log(auth.user);
-    })
+    });
 
     this.invites$ = this.store.select('invite');
-    this.store.dispatch(InvitationActions.getInvitations({idReciever: this.userId}));
+    this.store.dispatch(
+      InvitationActions.getInvitations({ idReciever: this.userId })
+    );
   }
 
-  open(){
-    this.dialog.open(NotificationComponent)
+  open() {
+    this.dialog.open(NotificationComponent);
   }
 
-  ngOnInit(){
-  }
+  navigateToLandingPage() {}
+
+  ngOnInit() {}
 }

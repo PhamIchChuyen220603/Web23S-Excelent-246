@@ -1,12 +1,17 @@
 <app-navbar> </app-navbar>
+
 <app-template></app-template>
-
-
-<div class="histories-contain">
+<app-fillter></app-fillter>
+<!-- <app-view-mode></app-view-mode> -->
+<app-content></app-content>
+<!-- <div class="histories-contain">
   <div class="histories-fillters">
     <div class="histories-fillters-time">Recently</div>
     <div class="histories-fillters-owner">
-      <select (change)="onChange($event)" class="histories-fillters-owner-options">
+      <select
+        (change)="onChange($event)"
+        class="histories-fillters-owner-options"
+      >
         <option *ngFor="let choice of optionChoices" [value]="choice.value">
           {{ choice.name }}
         </option>
@@ -14,12 +19,24 @@
     </div>
     <div class="histories-fillters-date">Last opened by me</div>
     <div class="histories-fillters-options">
-      <img class="histories-fillters-logos" src="../../../../../assets/home_logos/grid.png" />
-      <img class="histories-fillters-logos" src="../../../../../assets/home_logos/az.png" />
-      <img class="histories-fillters-logos" src="../../../../../assets/home_logos/folder.png" />
+      <img
+        class="histories-fillters-logos"
+        src="../../../../../assets/home_logos/grid.png"
+      />
+      <img
+        class="histories-fillters-logos"
+        src="../../../../../assets/home_logos/az.png"
+      />
+      <img
+        class="histories-fillters-logos"
+        src="../../../../../assets/home_logos/folder.png"
+      />
     </div>
   </div>
-  <div *ngIf="(this.files$ | async)?.loading == true" class="histories-contents">
+  <div
+    *ngIf="(this.files$ | async)?.loading == true"
+    class="histories-contents"
+  >
     <app-loading></app-loading>
   </div>
   <div *ngIf="(this.files$ | async)?.loading == false" >
@@ -28,7 +45,10 @@
       <span (click)="selectFile(f.fileId)" class="histories-contents-title">{{ f.title }}</span>
       <span class="histories-contents-owner">{{ f.createdBy }}</span>
       <span class="histories-contents-date">{{ f.createdDate }}</span>
-      <img class="histories-contents-options" src="../../../assets/home_logos/threedots.png" />
+      <img
+        class="histories-contents-options"
+        src="../../../assets/home_logos/threedots.png"
+      />
     </div>
   </div>
-</div>
+</div> -->

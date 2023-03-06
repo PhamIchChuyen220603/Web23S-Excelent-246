@@ -22,6 +22,7 @@
 .pic {
   width: 15rem;
   height: 10rem;
+  cursor: pointer;
 }
 
 .template-bottom {
@@ -49,12 +50,17 @@
   align-items: center;
   justify-content: center;
   border-radius: 6px;
-  border: none;
+  border: 0.01875rem solid;
+  border-color: #f1f3f4;
   margin-right: 2.5rem;
+  cursor: pointer;
 }
 .background:hover {
+  width: 10rem;
+  height: 7.5rem;
   border: 0.01875rem solid;
   border-color: #e11e5d;
+  border-radius: 6px;
 }
 
 .pic {
@@ -64,5 +70,5 @@
 .title {
   font-size: 0.875rem;
   color: #737373;
-  font-weight: lighter;
+  font-weight: bold;
 }
