@@ -6,6 +6,7 @@ import { getFirestore, Timestamp, FieldValue } from 'firebase-admin/firestore'
 
 @Injectable({})
 export class FileService {
+    currentFile!:any;
     db = getFirestore();
     docRef = this.db.collection('excelFiles');
 

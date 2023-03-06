@@ -15,10 +15,29 @@
     <button mat-icon-button class="histories-fillters-view">
       <mat-icon>calendar_view_month</mat-icon>
     </button>
-
-    <button mat-icon-button class="histories-fillters-sort">
+    <button
+      mat-icon-button
+      class="histories-fillters-sort"
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
+    >
       <mat-icon>sort_by_alpha</mat-icon>
     </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <span>Last opened by me</span>
+      </button>
+      <button mat-menu-item>
+        <span>Last modified by me</span>
+      </button>
+      <button mat-menu-item>
+        <span>Most recent edits</span>
+      </button>
+      <button mat-menu-item>
+        <span>Title</span>
+      </button>
+    </mat-menu>
+
     <button
       mat-icon-button
       (click)="openFile()"

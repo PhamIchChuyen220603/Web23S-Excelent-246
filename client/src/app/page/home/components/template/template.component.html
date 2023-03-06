@@ -8,8 +8,9 @@
   </div>
   <div class="template-bottom">
     <div *ngFor="let a of templates">
-      <p class="background">
+      <p (click)="startNewFile()" class="background">
         <img
+          (click)="startNewFile()"
           class="pic"
           src="../../../assets/home_logos/microsoft-excel-logo.png"
         />
