@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { File } from '../../app/model/file.model';
 export const FileActions = {
-  createFile: createAction('[File] Create File', props<{ userId: string,file: File }>()),
+  createFile: createAction('[File] Create File', props<{ idCreator: string,file: File }>()),
   createFileSuccess: createAction('[File] Create File Success', props<{ file: File }>()),
   createFileFailure: createAction('[File] Create File Failure', props<{ error: string }>()),
 

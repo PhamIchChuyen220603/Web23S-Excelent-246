@@ -24,15 +24,15 @@ export class NotificationComponent implements OnInit{
       console.log(auth.user);
     })
     this.invites$ = this.store.select('invite');
-    this.store.dispatch(InvitationActions.getInvitations({idReciever: this.userId}));
+    this.store.dispatch(InvitationActions.getInvitations({idReceiver: this.userId}));
   }
 
   ngOnInit(){
 
   }
 
-  accept(idFile:string, idReciever:string, idInvitation:string){
-    this.store.dispatch(InvitationActions.acceptInvitation({idFile, idReciever, idInvitation}));
+  accept(idFile:string, idReciever:string, idInvitation:string, invitation: Invitation){
+    this.store.dispatch(InvitationActions.acceptInvitation({idFile, idReceiver: idReciever, idInvitation, invitation}));
   }
 
   reject(idInvitation:string){

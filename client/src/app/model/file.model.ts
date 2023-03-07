@@ -8,5 +8,5 @@ export interface File {
   createdBy: string;
   data: any;
   status: 'private' | 'public';
-  member: string[];
+  members: string[];
 }

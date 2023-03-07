@@ -1,3 +1,4 @@
+import { AuthModel } from 'src/Models/auth.model';
 import { Injectable } from '@nestjs/common';
 import { FileModel } from '../../Models/file.model';
 // import { File, FileDocument } from "src/schema/file.schema";
@@ -23,16 +24,17 @@ export class FileService {
     }
   }
 
-  async create(file: FileModel): Promise<FileModel | null> {
-    try {
-      const docRef = await this.docRef.add(file);
-      const doc = await docRef.get();
-      return doc.data() as FileModel;
-    } catch (err) {
-      console.log(err);
-      return null;
+  async create(creator: AuthModel,file: FileModel) {
+    const res = await this.docRef.add({ ...file,
+      fileId: Timestamp.now().toMillis().toString(),
+      ownerId: creator.userId,
+      createdBy: creator.userName,
+      createdDate: Timestamp.now().toMillis(),
+      modifiedBy: '',
+      modifiedDate: Timestamp.now().toMillis(),
+      status: "private",
+    });
     }
-  }
 
   async update(id: string, file: FileModel): Promise<FileModel | any> {
     try {

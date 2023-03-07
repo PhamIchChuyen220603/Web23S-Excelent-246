@@ -20,7 +20,7 @@ export class Invitation {
   to: string;
 
   @Prop()
-  status: 'pending' | 'accepted' | 'rejected';
+  status: string;;
 
   @Prop()
   fileId: string;

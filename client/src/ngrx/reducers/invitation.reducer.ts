@@ -13,10 +13,9 @@ const initialState: InvitationState = {
 
 export const InvitationReducer = createReducer(
     initialState,
-    on(InvitationActions.sendInvitation, (state, {invitation}) => {
+    on(InvitationActions.sendInvitation, (state) => {
         return {
             ...state,
-            invitation: invitation,
             inProcess: true,
             loading: true,
             error: '',
@@ -41,7 +40,7 @@ export const InvitationReducer = createReducer(
         };
     }),
 
-    on(InvitationActions.getInvitations, (state,{idReciever}) => {
+    on(InvitationActions.getInvitations, (state,{idReceiver: idReciever}) => {
         return {
             ...state,
             inProcess: true,
@@ -77,8 +76,11 @@ export const InvitationReducer = createReducer(
         };
     }),
 
-    on(InvitationActions.acceptInvitationSuccess, (state,{idInvitation}) => {
-        let newInvitations = state.invitations.filter(invitation => invitation.id != idInvitation);
+    on(InvitationActions.acceptInvitationSuccess, (state,{idInvitation,invitation}) => {
+        let newInvitations = [...state.invitations]
+        let index = newInvitations.findIndex((invitation:any) => invitation.id == idInvitation);
+        newInvitations[index] = {...invitation};
+        // let newInvitations = state.invitations.filter(invitation => invitation.id != idInvitation);
         return {
             ...state,
             invitations: newInvitations,
@@ -97,9 +99,15 @@ export const InvitationReducer = createReducer(
         };
     }),
 
-    on(InvitationActions.rejectInvitation, (state,) => {
+    on(InvitationActions.rejectInvitation, (state,{idInvitation}) => {
+        let newInvitations = [...state.invitations]
+        let index = newInvitations.findIndex((invitation:any) => invitation.id == idInvitation);
+        if(index != -1){
+            newInvitations[index] = {...newInvitations[index], status: 'accepted'};
+        }
         return {
             ...state,
+            invitations: newInvitations,
             inProcess: true,
             loading: true,
             error: '',

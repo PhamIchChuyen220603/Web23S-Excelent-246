@@ -1,4 +1,5 @@
 import { Body, Param, Controller, Post, Get, Put, Query, Delete } from '@nestjs/common';
+import { AuthModel } from 'src/Models/auth.model';
 import { FileModel } from 'src/Models/file.model';
 import { FileService } from './file.service';
 @Controller('file')
@@ -32,8 +33,8 @@ export class FileController {
     }
 
     @Post('create')
-    create(@Body() file: FileModel) {
-        return this.fileService.create(file);
+    create(@Query('id') creator: AuthModel ,@Body() file: FileModel) {
+        return this.fileService.create(creator,file);
     }
 
     @Put('update')

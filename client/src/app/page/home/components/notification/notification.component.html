@@ -8,18 +8,29 @@
         </div>
         <div class="invitation-container" *ngIf="(this.invites$|async)?.loading == false">
             <div *ngFor="let invite of (invites$|async)?.invitations" class="content">
-                <div class="message">
-                    <p><span>{{invite.name}}</span> invited you to join in file <span>{{invite.fileName}}</span></p>
-                </div>
-                <div class="choice">
-                    <div (click)="accept(invite.fileId,this.userId,invite.id)" class="accept">
-                        <p>Accept</p>
+                <div *ngIf="invite.status == 'pending' " class="content">
+                    <div class="message">
+                        <p><span>{{invite.name}}</span> invited you to join in file <span>{{invite.fileName}}</span></p>
                     </div>
-                    <div (click)="reject(invite.id)" class="reject">
-                        <p>Reject</p>
+                    <div class="choice">
+                        <div (click)="accept(invite.fileId,this.userId,invite.id,invite)" class="accept">
+                            <p>Accept</p>
+                        </div>
+                        <div (click)="reject(invite.id)" class="reject">
+                            <p>Reject</p>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="invite.status == 'accepted' " class="old-content">
+                    <div class="message">
+                        <p><span>You</span> accepted to join in file <span>{{invite.fileName}}</span></p>
+                    </div>
+                </div>
+                <div *ngIf="invite.status == 'rejected' " class="old-content">
+                    <div class="message">
+                        <p><span>You</span> rejected to join in file <span>{{invite.fileName}}</span></p>
                     </div>
                 </div>
             </div>
         </div>
-    <!-- </div> -->
 </div>

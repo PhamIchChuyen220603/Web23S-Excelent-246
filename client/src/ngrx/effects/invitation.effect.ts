@@ -14,7 +14,7 @@ export class InvitationEffect {
     sendInvitation$ = createEffect(() => this.action.pipe(
         ofType(InvitationActions.sendInvitation),
         switchMap((action) => {
-            return from(this.inviteService.send(action.invitation)).pipe(
+            return from(this.inviteService.send(action.invitation, action.idReceiver)).pipe(
                 map((result:any) => {
                     return InvitationActions.sendInvitationSuccess()
                 }),
@@ -28,7 +28,7 @@ export class InvitationEffect {
     getInvitations$ = createEffect(() => this.action.pipe(
         ofType(InvitationActions.getInvitations),
         switchMap((action) => {
-            return from(this.inviteService.get(action.idReciever)).pipe(
+            return from(this.inviteService.get(action.idReceiver)).pipe(
                 map((result:any) => {
                     return InvitationActions.getInvitationSuccess({invitations: result})
                 }),
@@ -42,9 +42,9 @@ export class InvitationEffect {
     acceptInvitation$ = createEffect(() => this.action.pipe(
         ofType(InvitationActions.acceptInvitation),
         switchMap((action) => {
-            return from(this.inviteService.accept(action.idFile, action.idReciever, action.idInvitation)).pipe(
+            return from(this.inviteService.accept(action.idFile, action.idReceiver, action.idInvitation, action.invitation)).pipe(
                 map(() => {
-                    return InvitationActions.acceptInvitationSuccess({idInvitation: action.idInvitation});
+                    return InvitationActions.acceptInvitationSuccess({idInvitation: action.idInvitation, invitation: action.invitation});
                 }),
                 catchError((error) => {
                     return of(InvitationActions.acceptInvitationFailure({error: error}))
@@ -58,7 +58,7 @@ export class InvitationEffect {
         switchMap((action) => {
             return from(this.inviteService.reject(action.idInvitation)).pipe(
                 map(() => {
-                    return InvitationActions.rejectInvitationSuccess()
+                    return InvitationActions.rejectInvitationSuccess({idInvitation: action.idInvitation})
                 }),
                 catchError((error) => {
                     return of(InvitationActions.rejectInvitationFailure({error: error}))

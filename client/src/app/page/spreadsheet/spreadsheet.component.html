@@ -8,7 +8,6 @@
     </div>
     <div  *ngIf="(this.file$|async)?.loading == false" class="sheet-container">
             <ejs-spreadsheet
-            (created)="open()"
             id="spreadsheet" #spreadsheet 
             [openUrl]="this.openUrl" 
             (allowSave)="true"

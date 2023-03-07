@@ -42,18 +42,19 @@ export class SpreadsheetComponent implements OnInit {
     });
     this.file$ = this.store.select('file');
     this.route.paramMap.subscribe(params => {
-      this.idParam = params.get('id');
-      console.log(this.idParam);
+      this.FileService.idParam = params.get('id')!;
+      console.log(this.FileService.idParam);
     });
-    this.store.dispatch(FileActions.getFileById({ fileId: this.idParam! }));
-  }
-  ngOnInit(): void {
+    this.store.dispatch(FileActions.getFileById({ fileId: this.FileService.idParam! }));
     this.file$.subscribe((file) => {
       if(file!=null){
         this.file = file.file!;
         console.log(this.file)
       }
     })
+  }
+  ngOnInit(): void {
+    
   }
 
   openUrl =
@@ -78,7 +79,7 @@ export class SpreadsheetComponent implements OnInit {
       ownerId: this.id,
       data: response,
       status: "public",
-      member: [],
+      members: ['1AVuBiKftySNehyP0B4MkSAEYtB3'],
     }
     this.FileService.createFile(fileToUpLoad);
   }

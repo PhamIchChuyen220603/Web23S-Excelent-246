@@ -23,7 +23,8 @@ import { Observable } from 'rxjs';
 export class FileService {
   constructor(private fireStore: Firestore, private http: HttpClient) {}
   public idToDelete!: string;
-  public idToUpdate!: string
+  public idToUpdate!: string;
+  public idParam!: string;
   currentFile!: any;
   // spreadSheetObj!: Spreadsheet
 
