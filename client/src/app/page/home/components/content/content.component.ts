@@ -40,10 +40,13 @@ export class ContentComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.userId);
+    // console.log(this.userId)
     this.store.dispatch(
       FileActions.getFilesByMemberId({ memberId: this.userId! })
     );
+    this.files$.subscribe((res) => {
+      console.log(res.files);
+    });
   }
 
   selectFile(fileId: string) {
