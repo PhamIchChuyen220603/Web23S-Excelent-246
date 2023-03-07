@@ -8,7 +8,6 @@
         <div class="file-name-and-tools">
           <div class="file-name">
             <!-- <h2 *ngIf="this.fileService.currentFile != null">{{this.fileService.currentFile?.title}}</h2> -->
-            <h3>{{this.title}}</h3>
             <div *ngIf="isEditing" class="editor">
               <input type="text" name="value" autofocus [(ngModel)]="pendingValue" (keydown.Enter)="processChanges()"
                 (keydown.Meta.Enter)="processChanges()" (keydown.Escape)="cancel()" />
@@ -20,7 +19,7 @@
               </a>
             </div>
             <div *ngIf="( ! isEditing )" (click)="edit()">
-              {{ value }}
+              <h3>{{this.title}}</h3>
             </div>
           </div>
           <ejs-menu (select)="openN($event)" #menu id="menu" [items]=menuItems>

@@ -8,6 +8,10 @@ import { MenuEventArgs } from '@syncfusion/ej2-navigations';
 import { MatDialog } from '@angular/material/dialog';
 import { OpenFileDialogComponent } from '../open-file-dialog/open-file-dialog.component';
 import { FileService } from 'src/app/service/file.service';
+import { Store } from '@ngrx/store';
+import { FileState } from 'src/ngrx/states/file.states';
+import { Observable } from 'rxjs';
+import { FileActions } from 'src/ngrx/actions/file.actions';
 
 
 @Component({
@@ -16,18 +20,25 @@ import { FileService } from 'src/app/service/file.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  public title = 'Spreadsheet';
   public isEditing: boolean;
   public pendingValue: string;
-  public value!: 'Nguyen Tan Trung';
+  public title = 'Nguyen Tan Trung';
   public valueChangeEvents: EventEmitter<string>;
+  files$: Observable<FileState>;
 
 
-  constructor(private eRef: ElementRef, private router: Router, protected authService: AuthService, private dailog: MatDialog, protected fileService: FileService) {
-
+  constructor(private eRef: ElementRef, private router: Router,
+    protected authService: AuthService, private dailog: MatDialog,
+    protected fileService: FileService,
+    private store: Store<{ file: FileState }>) {
     this.isEditing = false;
     this.pendingValue = "";
     this.valueChangeEvents = new EventEmitter();
+    this.files$ = this.store.select('file');
+    // this.store.dispatch(FileActions.getFilesByUserId({ userId: this.userId! }));
+    this.files$.subscribe((res) => {
+      console.log(res);
+    })
   }
 
   @ViewChild('menu') menu!: ElementRef;
@@ -103,6 +114,10 @@ export class NavbarComponent {
       this.open();
     }
   }
+
+
+
+  // I cancel the editing of the value.
   public cancel(): void {
 
     this.isEditing = false;
@@ -113,18 +128,17 @@ export class NavbarComponent {
   // I enable the editing of the value.
   public edit(): void {
 
-    this.pendingValue = this.value;
+    this.pendingValue = this.title;
     this.isEditing = true;
 
   }
-
 
   // I process changes to the pending value.
   public processChanges(): void {
 
     // If the value actually changed, emit the change but don't change the local
     // value - we don't want to break unidirectional data-flow.
-    if (this.pendingValue !== this.value) {
+    if (this.pendingValue !== this.title) {
 
       this.valueChangeEvents.emit(this.pendingValue);
 
