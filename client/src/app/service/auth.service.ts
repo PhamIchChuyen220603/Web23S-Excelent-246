@@ -38,7 +38,7 @@ export class AuthService {
         this.authStore.dispatch(AuthActions.loginSuccess({ user: temp }));
       }
     });
-  }
+  }  
   // Sign in with Google
   getData() {
     return this.http.get('https://social.runwayclub.dev/api/articles/latest');
