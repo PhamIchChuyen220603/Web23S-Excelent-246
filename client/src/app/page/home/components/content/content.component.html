@@ -1,40 +1,25 @@
-<div  class="histories-contents">
+<div class="histories-contents">
   <app-loading *ngIf="(this.files$ | async)?.loading == true"></app-loading>
 </div>
-<div class="divTo" *ngIf="(this.files$ | async)?.loading == false" >
-  <div  *ngFor="let f of (this.files$ | async)?.files" class="divToVua">
-    <img
-      class="histories-contents-file-logo"
-      src="../../../assets/home_logos/microsoft-excel-logo.png"
-    />
+<div class="divTo" *ngIf="(this.files$ | async)?.loading == false">
+  <div *ngFor="let f of (this.files$ | async)?.files" class="divToVua">
+    <img class="histories-contents-file-logo" src="../../../assets/home_logos/microsoft-excel-logo.png" />
     <span (click)="selectFile(f.fileId)" class="histories-contents-title">{{
       f.title
-    }}</span>
+      }}</span>
     <span class="histories-contents-owner">{{ f.createdBy }}</span>
     <span class="histories-contents-date">{{ f.createdDate }}</span>
-    <button
-      mat-icon-button (click)="getId(f.fileId)"
-      [matMenuTriggerFor]="menu"
-      aria-label="Example icon-button with a menu"
-    >
+    <button mat-icon-button (click)="getId(f.fileId)" [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu">
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button
-      (click)="openDialog()"
-        mat-menu-item
-        *ngIf="canRename(f.ownerId) == false"
-        disabled
-      >
+      <button (click)="openDialog()" mat-menu-item *ngIf="canRename(f.ownerId) == false" disabled>
         <mat-icon>text_fields </mat-icon>
 
         <span>Rename</span>
       </button>
-      <button
-        (click)="openDialog()"
-        mat-menu-item
-        *ngIf="canRename(f.ownerId) == true"
-      >
+      <button (click)="openDialog()" mat-menu-item *ngIf="canRename(f.ownerId) == true">
         <mat-icon>text_fields</mat-icon>
         <span>Rename</span>
       </button>

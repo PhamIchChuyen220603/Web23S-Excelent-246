@@ -18,7 +18,7 @@ import { RenameDialogComponent } from '../rename-dialog/rename-dialog.component'
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.scss'],
 })
-export class ContentComponent  implements OnInit{
+export class ContentComponent implements OnInit {
   userId!: string | null;
   files$: Observable<FileState>;
   auth$ = this.store.select('auth');
@@ -31,7 +31,7 @@ export class ContentComponent  implements OnInit{
     this.auth$ = this.store.select('auth')
     this.files$ = this.store.select('file');
     this.auth$.subscribe((res) => {
-      if(res.loading == false){
+      if (res.loading == false) {
         this.userId = res.user?.userId!;
         console.log(this.userId)
       }
@@ -40,8 +40,11 @@ export class ContentComponent  implements OnInit{
   }
 
   ngOnInit() {
-    console.log(this.userId)
-    this.store.dispatch(FileActions.getFilesByMemberId({memberId: this.userId!}));
+    // console.log(this.userId)
+    this.store.dispatch(FileActions.getFilesByMemberId({ memberId: this.userId! }));
+    this.files$.subscribe((res) => {
+      console.log(res.files);
+    })
   }
 
 
@@ -56,7 +59,7 @@ export class ContentComponent  implements OnInit{
   }
 
   deleleFile(fileId: string) {
-   this.store.dispatch(FileActions.deleteFile({fileId: fileId}))
+    this.store.dispatch(FileActions.deleteFile({ fileId: fileId }))
   }
 
   openDialog() {
@@ -68,5 +71,5 @@ export class ContentComponent  implements OnInit{
     console.log(this.fileService.idToUpdate);
   }
 
-  
+
 }
