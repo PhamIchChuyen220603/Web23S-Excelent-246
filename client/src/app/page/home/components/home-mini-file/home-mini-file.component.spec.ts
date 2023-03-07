@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MiniFileComponent } from './mini-file.component';
+import { HomeMiniFileComponent } from './home-mini-file.component';
 
-describe('MiniFileComponent', () => {
-  let component: MiniFileComponent;
-  let fixture: ComponentFixture<MiniFileComponent>;
+describe('HomeMiniFileComponent', () => {
+  let component: HomeMiniFileComponent;
+  let fixture: ComponentFixture<HomeMiniFileComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MiniFileComponent ]
+      declarations: [ HomeMiniFileComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MiniFileComponent);
+    fixture = TestBed.createComponent(HomeMiniFileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

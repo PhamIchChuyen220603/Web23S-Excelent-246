@@ -16,52 +16,12 @@ import { FileState } from 'src/ngrx/states/file.states';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent  {
-
-  // @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
-  // optionChoices = [
-  //   {
-  //     name: 'Shared with me',
-  //     value: 1,
-  //   },
-  //   {
-  //     name: 'Owned by me',
-  //     value: 0,
-  //   },
-  // ];
-  // id!: string | undefined;
-  // userId!: string | null;
-  // files$: Observable<FileState>;
-  // auth$ = this.store.select('auth');
   constructor(
     private route: Router,
     private fileService: FileService,
     private store: Store<{ auth: AuthState; file: FileState }>
   ) {
-    // this.auth$.subscribe((res) => {
-    //   this.userId = res.user?.userId!;
-    // });
-    // this.files$ = this.store.select('file');
-    // this.store.dispatch(FileActions.getFilesByUserId({ userId: this.userId! }));
-    // this.files$.subscribe((res) => {
-    //   // console.log(res);
-    // });
-  }
-  // ngOnInit() {
-  //   this.store.dispatch(FileActions.getFilesByMemberId({memberId: this.userId!}));
-  // }
-  // selectFile(fileId: string) {
-  //   this.route.navigate([`/spreadsheet/${fileId}`]);
-  // }
 
-  // onChange(event: any) {
-  //   if (event?.target.value == 0) {
-  //     this.store.dispatch(
-  //       FileActions.getFilesByUserId({ userId: this.userId! })
-  //     );
-  //     this.files$.subscribe((res) => {
-  //     });
-  //   } else {
-  //     this.store.dispatch(FileActions.getFilesByMemberId({memberId: this.userId!}));
-  //   }
-  // }
+  }
+ 
 }

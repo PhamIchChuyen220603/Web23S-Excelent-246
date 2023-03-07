@@ -29,11 +29,11 @@ export class InvitationService {
         let file = await this.fileService.getById(idFile);
             file.members.push(idReciever);
         await this.fileService.update(idFile,file);
-            return await this.invitationModel.findOneAndDelete({id: idInvitation});
+            return await this.invitationModel.findOneAndDelete({id: idInvitation}, {status: 'accepted'});
     }
 
     async rejectInvitation(idInvitation: string) {
-        await this.invitationModel.findOneAndDelete({id: idInvitation})
+        await this.invitationModel.findOneAndDelete({id: idInvitation}, {status: 'rejected'})
     }
 
 
