@@ -1,11 +1,16 @@
 <div class="grid-mode-contain">
-  <div class="grid-mode-content">
+  <div class="grid-mode-content" *ngFor="let f of (this.files$ | async)?.files">
     <div class="grid-mode-content-background"></div>
     <div class="grid-mode-content-info">
-      <div class="grid-mode-content-info-title"></div>
+      <div class="grid-mode-content-info-title">{{ f.title }}</div>
       <div class="grid-mode-content-info-others">
-        <div class="grid-mode-content-info-others-logo"></div>
-        <div class="grid-mode-content-info-others-time"></div>
+        <img
+          src="../../../../../assets/logo/logo1.png"
+          class="grid-mode-content-info-others-logo"
+        />
+        <div class="grid-mode-content-info-others-time">
+          {{ f.createdDate }}
+        </div>
         <button
           class="grid-mode-content-info-others-option"
           mat-icon-button

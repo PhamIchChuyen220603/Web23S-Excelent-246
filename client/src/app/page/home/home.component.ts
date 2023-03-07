@@ -15,13 +15,10 @@ import { FileState } from 'src/ngrx/states/file.states';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent  {
+export class HomeComponent {
   constructor(
     private route: Router,
     private fileService: FileService,
     private store: Store<{ auth: AuthState; file: FileState }>
-  ) {
-
-  }
- 
+  ) {}
 }

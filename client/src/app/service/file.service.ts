@@ -74,4 +74,11 @@ export class FileService {
     ) as Observable<File[]>;
   }
 
+  getFilesByDate(){
+    return this.http.get(`${environment.baseUrl}file/getFilesByDate` ) as Observable<File[]>;
+  }
+
+  getFilesByTitle(){
+    return this.http.get(`${environment.baseUrl}file/getFilesByTitle` ) as Observable<File[]>;
+  }
 }

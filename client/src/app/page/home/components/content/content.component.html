@@ -1,8 +1,8 @@
-<div  class="histories-contents">
+<div class="histories-contents">
   <app-loading *ngIf="(this.files$ | async)?.loading == true"></app-loading>
 </div>
-<div class="divTo" *ngIf="(this.files$ | async)?.loading == false" >
-  <div  *ngFor="let f of (this.files$ | async)?.files" class="divToVua">
+<div class="divTo" *ngIf="(this.files$ | async)?.loading == false">
+  <div *ngFor="let f of (this.files$ | async)?.files" class="divToVua">
     <img
       class="histories-contents-file-logo"
       src="../../../assets/home_logos/microsoft-excel-logo.png"
@@ -13,7 +13,8 @@
     <span class="histories-contents-owner">{{ f.createdBy }}</span>
     <span class="histories-contents-date">{{ f.createdDate }}</span>
     <button
-      mat-icon-button (click)="getId(f.fileId)"
+      mat-icon-button
+      (click)="getId(f.fileId)"
       [matMenuTriggerFor]="menu"
       aria-label="Example icon-button with a menu"
     >
@@ -21,7 +22,7 @@
     </button>
     <mat-menu #menu="matMenu">
       <button
-      (click)="openDialog()"
+        (click)="openDialog()"
         mat-menu-item
         *ngIf="canRename(f.ownerId) == false"
         disabled

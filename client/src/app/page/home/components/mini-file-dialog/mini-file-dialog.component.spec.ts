@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OpenFileDialogComponent } from './open-file-dialog.component';
+import { MiniFileDialogComponent } from './mini-file-dialog.component';
 
-describe('OpenFileDialogComponent', () => {
-  let component: OpenFileDialogComponent;
-  let fixture: ComponentFixture<OpenFileDialogComponent>;
+describe('MiniFileDialogComponent', () => {
+  let component: MiniFileDialogComponent;
+  let fixture: ComponentFixture<MiniFileDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OpenFileDialogComponent ]
+      declarations: [ MiniFileDialogComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(OpenFileDialogComponent);
+    fixture = TestBed.createComponent(MiniFileDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

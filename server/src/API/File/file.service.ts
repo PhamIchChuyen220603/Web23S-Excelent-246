@@ -110,4 +110,26 @@ export class FileService {
             return null;
         }
     }
+    
+    async getFilesByDate(): Promise<FileModel[] | null> {
+      try {
+        const snapshot = await this.docRef.get();
+        const files = snapshot.docs.map((doc) => doc.data());
+        return files as FileModel[];
+      } catch (err) {
+        console.log(err);
+        return null;
+      }
+    }
+
+    async getFilesByTitle(): Promise<FileModel[] | null> {
+      try {
+        const snapshot = await this.docRef.get();
+        const files = snapshot.docs.map((doc) => doc.data());
+        return files as FileModel[];
+      } catch (err) {
+        console.log(err);
+        return null;
+      }
+    }
 }

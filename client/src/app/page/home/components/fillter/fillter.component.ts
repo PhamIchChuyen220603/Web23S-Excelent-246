@@ -6,18 +6,20 @@ import { FileService } from 'src/app/service/file.service';
 import { FileActions } from 'src/ngrx/actions/file.actions';
 import { AuthState } from 'src/ngrx/states/auth.states';
 import { FileState } from 'src/ngrx/states/file.states';
-import { OpenFileDialogComponent } from '../open-file-dialog/open-file-dialog.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { File } from 'src/app/model/file.model';
+import { FileDialogComponent } from '../file-dialog/file-dialog.component';
 @Component({
   selector: 'app-fillter',
   templateUrl: './fillter.component.html',
   styleUrls: ['./fillter.component.scss'],
 })
-export class FillterComponent{
+export class FillterComponent {
   id!: string | undefined;
   userId!: string | null;
   files$: Observable<FileState>;
   auth$ = this.store.select('auth');
+  viewMode = false;
   constructor(
     private fileService: FileService,
     private store: Store<{ auth: AuthState; file: FileState }>,
@@ -36,7 +38,9 @@ export class FillterComponent{
         FileActions.getFilesByUserId({ userId: this.userId! })
       );
     } else {
-      this.store.dispatch(FileActions.getFilesByMemberId({memberId: this.userId!}));
+      this.store.dispatch(
+        FileActions.getFilesByMemberId({ memberId: this.userId! })
+      );
     }
   }
 
@@ -49,11 +53,21 @@ export class FillterComponent{
       name: 'Shared with me',
       value: 1,
     },
-    
   ];
 
   openFile() {
-    this.dailog.open(OpenFileDialogComponent);
+    this.dailog.open(FileDialogComponent);
   }
 
+  getFilesByDate() {
+    this.store.dispatch(FileActions.getFilesByDate());
+  }
+
+  getFilesByTitle() {
+    this.store.dispatch(FileActions.getFilesByTitle());
+  }
+
+  changeMode() {
+    return (this.viewMode = true);
+  }
 }
