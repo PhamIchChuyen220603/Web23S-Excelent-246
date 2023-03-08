@@ -24,6 +24,7 @@ import { FileReducer } from 'src/ngrx/reducers/file.reducers';
 import { FileEffects } from 'src/ngrx/effects/file.effects';
 import { InvitationEffect } from 'src/ngrx/effects/invitation.effect';
 import { InvitationReducer } from 'src/ngrx/reducers/invitation.reducer';
+import { MatIconModule } from '@angular/material/icon';
 
 // syncfusion components
 
@@ -43,6 +44,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     SocketIoModule.forRoot(config),
     
 
+    MatIconModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
@@ -51,9 +53,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
       file: FileReducer,
       invite: InvitationReducer,
     }),
-    EffectsModule.forRoot([AuthEffects,
-    FileEffects,
-    InvitationEffect]),
+    EffectsModule.forRoot([AuthEffects, FileEffects, InvitationEffect]),
   ],
   providers: [],
   bootstrap: [AppComponent],

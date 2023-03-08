@@ -30,9 +30,13 @@ export const FileActions = {
   getFilesByMemberIdSuccess: createAction('[File] Get File By Member Id Success', props<{ files: File[] }>()),
   getFilesByMemberIdFailure: createAction('[File] Get File By Member Id Failure', props<{ error: string }>()),
 
-  getFilesByDate: createAction('[File] Get File By Date', props<{ date: number }>()),
+  getFilesByDate: createAction('[File] Get File By Date'),
   getFilesByDateSuccess: createAction('[File] Get File By Date Success', props<{ files: File[] }>()),
   getFilesByDateFailure: createAction('[File] Get File By Date Failure', props<{ error: string }>()),
+
+  getFilesByTitle: createAction('[File] Get File By Title'),
+  getFilesByTitleSuccess: createAction('[File] Get File By Title Success', props<{ files: File[] }>()),
+  getFilesByTitleFailure: createAction('[File] Get File By Title Failure', props<{ error: string }>()),
 
   saveFile: createAction('[File] Save File', props<{ file: File }>()),
   saveFileSuccess: createAction('[File] Save File Success'),
@@ -41,4 +45,6 @@ export const FileActions = {
   openFile: createAction('[File] Open File', props<{ file: File }>()),
   openFileSuccess: createAction('[File] Open File Success'),
   openFileFailure: createAction('[File] Open File Failure', props<{ error: string }>()),
+
+
 }

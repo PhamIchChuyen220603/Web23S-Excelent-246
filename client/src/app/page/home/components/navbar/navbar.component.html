@@ -30,5 +30,10 @@
   <div class="profile">
     <span class="userName">{{ (this.auth$ | async)?.user?.userName }}</span>
     <img class="photo" [src]="(this.auth$ | async)?.user?.photoURL" />
+    
+    <div class="logout">
+      <img src="../../../../../assets/logout (1).png" (click)="this.auth.logOut()" id="img-logOut">
+      <a href="/login" (click)="this.auth.logOut()" id="logOutButton">Log out</a>
+    </div>
   </div>
 </div>
