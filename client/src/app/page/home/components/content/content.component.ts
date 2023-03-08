@@ -28,30 +28,27 @@ export class ContentComponent implements OnInit {
     private store: Store<{ auth: AuthState; file: FileState }>,
     private dialog: MatDialog
   ) {
-    this.auth$ = this.store.select('auth')
+    this.auth$ = this.store.select('auth');
     this.files$ = this.store.select('file');
     this.auth$.subscribe((res) => {
       if (res.loading == false) {
         this.userId = res.user?.userId!;
-        console.log(this.userId)
+        console.log(this.userId);
       }
-    })
+    });
     this.store.dispatch(FileActions.getFilesByUserId({ userId: this.userId! }));
   }
 
   ngOnInit() {
-    // console.log(this.userId)
-    this.store.dispatch(FileActions.getFilesByMemberId({ memberId: this.userId! }));
-    this.files$.subscribe((res) => {
-      console.log(res.files);
-    })
+    console.log(this.userId);
+    this.store.dispatch(
+      FileActions.getFilesByMemberId({ memberId: this.userId! })
+    );
   }
-
 
   selectFile(fileId: string) {
     this.route.navigate([`/spreadsheet/${fileId}`]);
   }
-
 
   canRename(ownerId: string) {
     if (ownerId == this.userId) return true;
@@ -59,7 +56,7 @@ export class ContentComponent implements OnInit {
   }
 
   deleleFile(fileId: string) {
-    this.store.dispatch(FileActions.deleteFile({ fileId: fileId }))
+    this.store.dispatch(FileActions.deleteFile({ fileId: fileId }));
   }
 
   openDialog() {
@@ -70,6 +67,4 @@ export class ContentComponent implements OnInit {
     this.fileService.idToUpdate = fileId;
     console.log(this.fileService.idToUpdate);
   }
-
-
 }

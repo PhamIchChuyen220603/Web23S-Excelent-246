@@ -24,6 +24,7 @@ import { FileReducer } from 'src/ngrx/reducers/file.reducers';
 import { FileEffects } from 'src/ngrx/effects/file.effects';
 import { InvitationEffect } from 'src/ngrx/effects/invitation.effect';
 import { InvitationReducer } from 'src/ngrx/reducers/invitation.reducer';
+import { MatIconModule } from '@angular/material/icon';
 
 // syncfusion components
 
@@ -36,7 +37,7 @@ import { InvitationReducer } from 'src/ngrx/reducers/invitation.reducer';
     ToolbarModule,
     MenuModule,
     HttpClientModule,
-
+    MatIconModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

@@ -1,0 +1,16 @@
+<div class="container">
+  <div *ngFor="let data of (this.files$ | async)?.files" class="example-card">
+    <div>
+      <div class="header">
+        <img
+          (click)="getFileById(data)"
+          src="../../../../../assets/logo/logo2.png"
+        />
+        <div class="content">
+          <img src="../../../../../assets/logo/logo1.png" alt="" />
+          <p>{{ data.title }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
