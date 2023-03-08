@@ -52,6 +52,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CdkMenuModule } from '@angular/cdk/menu';
 import { DialogModule } from '@angular/cdk/dialog';
+import { WarningComponent } from '../components/warning/warning.component';
 
 @NgModule({
   declarations: [NavbarOneComponent, LoadingComponent],
@@ -111,7 +112,6 @@ import { DialogModule } from '@angular/cdk/dialog';
   exports: [
     NavbarOneComponent,
     LoadingComponent,
-
     // Material
     ToolbarModule,
     MenuModule,

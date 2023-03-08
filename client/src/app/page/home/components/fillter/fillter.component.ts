@@ -9,6 +9,7 @@ import { FileState } from 'src/ngrx/states/file.states';
 import { MatMenuModule } from '@angular/material/menu';
 import { File } from 'src/app/model/file.model';
 import { FileDialogComponent } from '../file-dialog/file-dialog.component';
+import { WarningComponent } from 'src/app/components/warning/warning.component';
 @Component({
   selector: 'app-fillter',
   templateUrl: './fillter.component.html',
@@ -19,7 +20,7 @@ export class FillterComponent {
   userId!: string | null;
   files$: Observable<FileState>;
   auth$ = this.store.select('auth');
-  viewMode = false;
+  mode = false;
   constructor(
     private fileService: FileService,
     private store: Store<{ auth: AuthState; file: FileState }>,
@@ -67,7 +68,7 @@ export class FillterComponent {
     this.store.dispatch(FileActions.getFilesByTitle());
   }
 
-  changeMode() {
-    return (this.viewMode = true);
+  viewMode() {
+    return (this.mode = true);
   }
 }
