@@ -12,7 +12,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { RenameDialogComponent } from '../rename-dialog/rename-dialog.component';
-
+import { File } from 'src/app/model/file.model';
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
@@ -22,6 +22,8 @@ export class ContentComponent implements OnInit {
   userId!: string | null;
   files$: Observable<FileState>;
   auth$ = this.store.select('auth');
+  arr: Array<File> = [];
+  arr2: Array<File> = [];
   constructor(
     private route: Router,
     private fileService: FileService,
@@ -37,13 +39,18 @@ export class ContentComponent implements OnInit {
       }
     });
     this.store.dispatch(FileActions.getFilesByUserId({ userId: this.userId! }));
+    this.appendItems();
   }
 
   ngOnInit() {
-    console.log(this.userId);
-    this.store.dispatch(
-      FileActions.getFilesByMemberId({ memberId: this.userId! })
-    );
+    // this.store.dispatch(
+    //   FileActions.getFilesByMemberId({ memberId: this.userId! })
+    // );
+    this.files$.subscribe((data) => {
+      this.arr = data.files.slice(0, 8);
+      this.arr2 = data.files;
+      console.log(this.arr2);
+    });
   }
 
   selectFile(fileId: string) {
@@ -66,5 +73,23 @@ export class ContentComponent implements OnInit {
   getId(fileId: string) {
     this.fileService.idToUpdate = fileId;
     console.log(this.fileService.idToUpdate);
+  }
+
+  // //test
+  onScrollDown(ev: any) {
+    console.log('scrolled down!!', ev);
+
+    this.appendItems();
+  }
+
+  appendItems() {
+    this.addItems('push');
+  }
+
+  addItems(_method: string) {
+    for (let i = 7; this.arr.length <= this.arr2.length; i++) {
+      this.arr.push(this.arr2[i]);
+    }
+    console.log(this.arr2);
   }
 }

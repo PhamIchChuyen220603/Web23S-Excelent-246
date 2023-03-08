@@ -2,12 +2,18 @@
   <div class="navbar">
     <app-navbar></app-navbar>
   </div>
-  <div *ngIf="(this.file$|async)?.loading == true">
+  <div *ngIf="(this.file$ | async)?.loading == true">
     <app-loading></app-loading>
   </div>
-  <div *ngIf="(this.file$|async)?.loading == false" class="sheet-container">
-    <ejs-spreadsheet (created)="open()" id="spreadsheet" #spreadsheet [openUrl]="this.openUrl" (allowSave)="true"
-      [saveUrl]="this.saveUrl">
+  <div *ngIf="(this.file$ | async)?.loading == false" class="sheet-container">
+    <ejs-spreadsheet
+      (created)="open()"
+      id="spreadsheet"
+      #spreadsheet
+      [openUrl]="this.openUrl"
+      (allowSave)="(true)"
+      [saveUrl]="this.saveUrl"
+    >
     </ejs-spreadsheet>
   </div>
 </div>

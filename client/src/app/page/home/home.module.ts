@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common'
+import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -12,8 +12,7 @@ import { ContentComponent } from './components/content/content.component';
 import { RenameDialogComponent } from './components/rename-dialog/rename-dialog.component';
 import { FileDialogComponent } from './components/file-dialog/file-dialog.component';
 import { MiniFileDialogComponent } from './components/mini-file-dialog/mini-file-dialog.component';
-import { ViewModeComponent } from './components/view-mode/view-mode.component';
-
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -25,8 +24,13 @@ import { ViewModeComponent } from './components/view-mode/view-mode.component';
     RenameDialogComponent,
     FileDialogComponent,
     MiniFileDialogComponent,
-    ViewModeComponent
   ],
-  imports: [CommonModule, HomeRoutingModule, FormsModule, SharedModule],
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    FormsModule,
+    SharedModule,
+    InfiniteScrollModule,
+  ],
 })
 export class HomeModule {}

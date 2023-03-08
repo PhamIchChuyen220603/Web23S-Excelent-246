@@ -13,8 +13,8 @@
   <div class="histories-fillters-date">Last opened by me</div>
   <div class="histories-fillters-options">
     <button
+      (click)="viewMode()"
       mat-icon-button
-      (click)="changeMode()"
       class="histories-fillters-view"
     >
       <mat-icon>calendar_view_month</mat-icon>
@@ -55,4 +55,4 @@
   </div>
 </div>
 
-<app-view-mode *ngIf="this.viewMode == true"></app-view-mode>
+<!-- <app-warning *ngIf="this.mode == false"></app-warning>// -->
