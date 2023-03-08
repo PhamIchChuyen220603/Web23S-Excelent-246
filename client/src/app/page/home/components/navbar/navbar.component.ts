@@ -18,6 +18,7 @@ export class NavbarComponent implements OnInit {
   userId!: string;
   auth$ = this.store.select('auth');
   invites$!: Observable<InvitationState>;
+  invitesCount = 0;
   // inviteCount!:number;
   constructor(
     public auth: AuthService,
@@ -31,9 +32,16 @@ export class NavbarComponent implements OnInit {
     });
 
     this.invites$ = this.store.select('invite');
-    this.store.dispatch(
-      InvitationActions.getInvitations({ idReciever: this.userId })
-    );
+    this.store.dispatch(InvitationActions.getInvitations({ idReceiver: this.userId }));
+    this.invites$.subscribe((invites) => {
+      let count  = 0;
+      invites.invitations.forEach((invite) => {
+        if(invite.status == 'pending'){
+          count++;
+        }
+      })
+      this.invitesCount = count;  
+    })
   }
 
   open() {

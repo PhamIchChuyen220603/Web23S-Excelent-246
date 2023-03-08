@@ -28,6 +28,10 @@ import { MatIconModule } from '@angular/material/icon';
 
 // syncfusion components
 
+// SocketIO
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -37,6 +41,9 @@ import { MatIconModule } from '@angular/material/icon';
     ToolbarModule,
     MenuModule,
     HttpClientModule,
+    SocketIoModule.forRoot(config),
+    
+
     MatIconModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

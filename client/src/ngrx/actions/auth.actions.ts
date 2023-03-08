@@ -12,6 +12,8 @@ export const AuthActions = {
   getAllUsers: createAction('[Auth] Get All Users'),
   getAllUsersSuccess: createAction('[Auth] Get All Users Success', props<{ users: User[] }>()),
   getAllUsersFailure: createAction('[Auth] Get All Users Failure', props<{ error: string }>()),
+
+  
   // getProfile: createAction(
   //   '[Auth] Get Profile',
   //   props<{ idToken: string }>()

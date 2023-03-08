@@ -5,11 +5,13 @@ import { AuthModule } from './API/Auth/auth.module';
 import { ChatModule } from './API/chat/chat.module';
 import { FileModule } from './API/file/file.module';
 import { InvitationModule } from './api/invitation/invitation.module';
+import { FileGateway } from './file/file.gateway';
 
 
 
 @Module({
   imports: [
+    //gateway
 
     // api module
     FileModule,
@@ -25,6 +27,6 @@ import { InvitationModule } from './api/invitation/invitation.module';
   ],
   controllers: [
   ],
-  providers: [],
+  providers: [FileGateway],
 })
 export class AppModule { }
