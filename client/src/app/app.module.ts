@@ -27,6 +27,10 @@ import { InvitationReducer } from 'src/ngrx/reducers/invitation.reducer';
 
 // syncfusion components
 
+// SocketIO
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -36,6 +40,8 @@ import { InvitationReducer } from 'src/ngrx/reducers/invitation.reducer';
     ToolbarModule,
     MenuModule,
     HttpClientModule,
+    SocketIoModule.forRoot(config),
+    
 
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

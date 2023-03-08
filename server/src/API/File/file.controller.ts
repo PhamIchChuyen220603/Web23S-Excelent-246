@@ -6,6 +6,9 @@ import { FileService } from './file.service';
 export class FileController {
     constructor(private fileService: FileService) {
     }
+
+    
+
     // file/get
     @Get('getAll')
     getAll() {
@@ -33,8 +36,8 @@ export class FileController {
     }
 
     @Post('create')
-    create(@Query('id') creator: AuthModel ,@Body() file: FileModel) {
-        return this.fileService.create(creator,file);
+    create(@Body() file: FileModel) {
+        return this.fileService.create(file);
     }
 
     @Put('update')

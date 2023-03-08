@@ -24,17 +24,18 @@ export class FileService {
     }
   }
 
-  async create(creator: AuthModel,file: FileModel) {
-    const res = await this.docRef.add({ ...file,
-      fileId: Timestamp.now().toMillis().toString(),
-      ownerId: creator.userId,
-      createdBy: creator.userName,
-      createdDate: Timestamp.now().toMillis(),
-      modifiedBy: '',
-      modifiedDate: Timestamp.now().toMillis(),
-      status: "private",
-    });
-    }
+  async create(file: FileModel) {
+      const res = await this.docRef.add({
+        fileId: Timestamp.now().toMillis().toString(),
+        title: "Untitled",
+        createdDate: Timestamp.now().toMillis(),
+        modifiedDate: Timestamp.now().toMillis(),
+        modifiedBy: '',
+        status: "private",
+        members:[],
+      });
+      console.log(file);
+  }
 
   async update(id: string, file: FileModel): Promise<FileModel | any> {
     try {
@@ -76,19 +77,6 @@ export class FileService {
         })
     }
 
-    
-
-    // async deleteById(fileId: string): Promise<boolean>{
-    //     try{
-    //         const fileRef = this.docRef.doc(fileId);
-    //         await fileRef.delete();
-    //         return true;
-    //     }
-    //     catch(err){
-    //         console.log(err);
-    //         return false;
-    //     }
-    // }
 
   async getByUserId(userId: string): Promise<FileModel[] | null> {
     try {

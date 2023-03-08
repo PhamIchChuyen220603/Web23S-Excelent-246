@@ -34,7 +34,7 @@ export const FileReducer = createReducer(
       ...state,
       inProcess: false,
       loading: false,
-      error,
+      error: error,
     };
   }
   ),

@@ -1,4 +1,4 @@
-import { Spreadsheet } from '@syncfusion/ej2-angular-spreadsheet';
+import { CollaborativeEditArgs, Spreadsheet } from '@syncfusion/ej2-angular-spreadsheet';
 import { environment } from './../env/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -17,18 +17,32 @@ import {
 import { File } from '../model/file.model';
 import { Observable } from 'rxjs';
 
+//SocketIO
+import {Socket} from 'ngx-socket-io'
+
 @Injectable({
   providedIn: 'root',
 })
 export class FileService {
-  constructor(private fireStore: Firestore, private http: HttpClient) {}
+  constructor(private fireStore: Firestore, private http: HttpClient, private socket: Socket) {}
   public idToDelete!: string;
   public idToUpdate!: string;
   public idParam!: string;
   currentFile!: any;
-  // spreadSheetObj!: Spreadsheet
 
   db = collection(this.fireStore, 'excelFiles');
+
+  getDataByFileId(fileId: string){
+    console.log('join-' + fileId);
+    const channel = 'message-' + fileId;
+    return this.socket.fromEvent(channel);
+  }
+
+  sendDataByFileId(fileId: string, data: any){
+    this.socket.emit('message', {fileId: fileId, data: data});
+    console.log(data);
+  }
+
 
   openFile(sheet: Spreadsheet, file: any) {
     sheet.openFromJson(file);
@@ -63,8 +77,8 @@ export class FileService {
     return this.http.put(`${environment.baseUrl}file/update?id=${id}`, file);
   }
 
-  async createFile(file: File) {
-    return setDoc(doc(this.db), file);
+  createFile(file: File) {
+    return this.http.post(`${environment.baseUrl}file/create`,file);
   }
 
 

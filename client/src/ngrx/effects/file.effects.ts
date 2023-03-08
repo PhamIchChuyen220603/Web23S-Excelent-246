@@ -67,6 +67,20 @@ export class FileEffects{
     ))
 
 
+    createFile$ = createEffect(() => this.actions$.pipe(
+        ofType(FileActions.createFile),
+        switchMap((action) => {
+            return from(this.fileService.createFile(action.file)).pipe(
+                map((result:any) => {
+                    return FileActions.createFileSuccess({file: result})
+                }),
+                catchError((error) => {
+                    return of(FileActions.createFileFailure({error: error}))
+                })
+            )
+        })
+    )) 
+
     
 
     deleteFileById$ = createEffect(() => this.actions$.pipe(

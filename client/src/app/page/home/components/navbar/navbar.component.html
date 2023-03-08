@@ -20,7 +20,7 @@
   
   <div class="notification">
     <div class="demo-section">
-      <mat-icon [matBadge]="(this.invites$|async)?.invitations?.length" matBadgeColor="accent" (click)="open()">notifications</mat-icon>
+      <mat-icon [matBadge]="this.invitesCount" matBadgeColor="accent" (click)="open()">notifications</mat-icon>
         <!-- Include text description of the icon's meaning for screen-readers -->
         <!-- <span class="cdk-visually-hidden">
         </span> -->

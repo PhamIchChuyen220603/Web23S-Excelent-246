@@ -80,7 +80,9 @@ export const InvitationReducer = createReducer(
         let newInvitations = [...state.invitations]
         let index = newInvitations.findIndex((invitation:any) => invitation.id == idInvitation);
         newInvitations[index] = {...invitation};
-        // let newInvitations = state.invitations.filter(invitation => invitation.id != idInvitation);
+        // newInvitations[length] = newInvitations.splice(index,1,newInvitations[length])[0];
+        [newInvitations[index], newInvitations[newInvitations.length]] = [newInvitations[newInvitations.length], newInvitations[index]]
+        // newInvitations.push(checkedInvite!);
         return {
             ...state,
             invitations: newInvitations,

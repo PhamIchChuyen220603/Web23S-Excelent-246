@@ -1,6 +1,6 @@
 <div id="container">
     <div class="navbar">
-        <button (click)="upload()">open</button>
+        <!-- <button (click)="upload()">open</button> -->
         <app-navbar></app-navbar>
     </div>
     <div *ngIf="(this.file$|async)?.loading == true">
@@ -9,6 +9,8 @@
     <div  *ngIf="(this.file$|async)?.loading == false" class="sheet-container">
             <ejs-spreadsheet
             id="spreadsheet" #spreadsheet 
+            (actionComplete)="sendData(this.FileService.idParam,$event)"
+            (created)="hide()"
             [openUrl]="this.openUrl" 
             (allowSave)="true"
             [saveUrl]="this.saveUrl">
@@ -16,3 +18,7 @@
     </div>
 </div>
 
+
+<div *ngFor="let data of tempData">
+    <p>{{data}}</p>
+</div>

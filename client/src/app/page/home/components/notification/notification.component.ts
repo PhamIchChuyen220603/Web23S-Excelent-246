@@ -33,6 +33,7 @@ export class NotificationComponent implements OnInit{
 
   accept(idFile:string, idReciever:string, idInvitation:string, invitation: Invitation){
     this.store.dispatch(InvitationActions.acceptInvitation({idFile, idReceiver: idReciever, idInvitation, invitation}));
+    // this.store.dispatch(InvitationActions.getInvitations({idReceiver: this.userId}));
   }
 
   reject(idInvitation:string){
