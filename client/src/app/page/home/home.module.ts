@@ -13,6 +13,7 @@ import { RenameDialogComponent } from './components/rename-dialog/rename-dialog.
 import { FileDialogComponent } from './components/file-dialog/file-dialog.component';
 import { MiniFileDialogComponent } from './components/mini-file-dialog/mini-file-dialog.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { MaintainingComponent } from './components/maintaining/maintaining.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -24,6 +25,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RenameDialogComponent,
     FileDialogComponent,
     MiniFileDialogComponent,
+    MaintainingComponent,
   ],
   imports: [
     CommonModule,

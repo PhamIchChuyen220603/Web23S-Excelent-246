@@ -42,7 +42,6 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     MenuModule,
     HttpClientModule,
     SocketIoModule.forRoot(config),
-    
 
     MatIconModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),

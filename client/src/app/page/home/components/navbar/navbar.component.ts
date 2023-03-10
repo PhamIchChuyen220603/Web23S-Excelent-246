@@ -32,16 +32,18 @@ export class NavbarComponent implements OnInit {
     });
 
     this.invites$ = this.store.select('invite');
-    this.store.dispatch(InvitationActions.getInvitations({ idReceiver: this.userId }));
+    this.store.dispatch(
+      InvitationActions.getInvitations({ idReceiver: this.userId })
+    );
     this.invites$.subscribe((invites) => {
-      let count  = 0;
+      let count = 0;
       invites.invitations.forEach((invite) => {
-        if(invite.status == 'pending'){
+        if (invite.status == 'pending') {
           count++;
         }
-      })
-      this.invitesCount = count;  
-    })
+      });
+      this.invitesCount = count;
+    });
   }
 
   open() {
@@ -51,4 +53,13 @@ export class NavbarComponent implements OnInit {
   navigateToLandingPage() {}
 
   ngOnInit() {}
+
+  logout = false;
+
+  clickToLogOut() {
+    return (this.logout = true);
+  }
+  turnOffLogOut() {
+    this.logout = false;
+  }
 }
