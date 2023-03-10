@@ -4,8 +4,10 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './API/Auth/auth.module';
 import { ChatModule } from './API/chat/chat.module';
 import { FileModule } from './API/file/file.module';
+import { FileService } from './API/file/file.service';
 import { InvitationModule } from './api/invitation/invitation.module';
 import { FileGateway } from './file/file.gateway';
+
 
 
 
@@ -23,10 +25,10 @@ import { FileGateway } from './file/file.gateway';
 
     ConfigModule.forRoot(),
 
-    InvitationModule,
+    // InvitationModule,
   ],
   controllers: [
   ],
-  providers: [FileGateway],
+  providers: [FileService],
 })
 export class AppModule { }

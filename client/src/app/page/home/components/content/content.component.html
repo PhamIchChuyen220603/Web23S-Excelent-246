@@ -68,7 +68,7 @@
   class="divTo"
   *ngIf="(this.files$ | async)?.loading == false"
 >
-  <div *ngFor="let f of this.arr" class="divToVua">
+  <div *ngFor="let f of (this.files$|async)?.files" class="divToVua">
     <img
       class="histories-contents-file-logo"
       src="../../../assets/home_logos/microsoft-excel-logo.png"

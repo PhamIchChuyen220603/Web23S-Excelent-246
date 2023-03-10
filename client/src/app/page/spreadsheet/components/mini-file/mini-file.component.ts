@@ -6,6 +6,7 @@ import { FileService } from 'src/app/service/file.service';
 import { AuthState } from 'src/ngrx/states/auth.states';
 import { FileState } from 'src/ngrx/states/file.states';
 import { FileActions } from 'src/ngrx/actions/file.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mini-file',
@@ -16,7 +17,7 @@ export class MiniFileComponent {
   userId!:string | null;
   files$:Observable<FileState>;
   auth$ = this.store.select('auth');
-  constructor(private fileService: FileService, private store: Store<{auth:AuthState, file: FileState}>) {
+  constructor(private fileService: FileService, private store: Store<{auth:AuthState, file: FileState}>, private router: Router) {
     this.auth$.subscribe((res) => {
       this.userId = res.user?.userId!;
     })
@@ -27,8 +28,12 @@ export class MiniFileComponent {
     })
   }
 
-  async getFileById(file: File){
+  getFileById(file: File){
     this.fileService.currentFile = file;
+    this.fileService.idParam = file.fileId;
+    this.fileService.isSelected = true;
+    // this.fileService.openFile()
+    this.router.navigate(['/spreadsheet', file.fileId]);
     console.log(this.fileService.currentFile?.data);
   }
 }

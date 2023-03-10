@@ -1,7 +1,7 @@
 import { CollaborativeEditArgs, Spreadsheet } from '@syncfusion/ej2-angular-spreadsheet';
 import { environment } from './../env/environment';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import {
   addDoc,
   collection,
@@ -13,12 +13,15 @@ import {
   where,
   query,
   deleteDoc,
+  updateDoc,
+  collectionGroup,
 } from '@angular/fire/firestore';
 import { File } from '../model/file.model';
 import { Observable } from 'rxjs';
 
 //SocketIO
 import {Socket} from 'ngx-socket-io'
+import { getFirestore } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -29,8 +32,32 @@ export class FileService {
   public idToUpdate!: string;
   public idParam!: string;
   currentFile!: any;
+  isSelected!: boolean;
+  // so:Socket = this.socket;
 
   db = collection(this.fireStore, 'excelFiles');
+  db2 = getFirestore();
+
+
+  addSheet(file:File){
+    setDoc(doc(this.db, file.fileId), file);
+  }
+
+  updateSheet(file:File, fileId:string){
+    setDoc(doc(this.db, fileId), {
+      fileId: fileId,
+      ownerId: file.ownerId,
+      title: file.title,
+      createdDate: file.createdDate,
+      modifiedDate: file.modifiedDate,
+      modifiedBy: file.modifiedBy,
+      createdBy: file.createdBy,
+      status: file.status,
+      data: file.data,
+      members: file.members,
+    });
+
+  }
 
   getDataByFileId(fileId: string){
     console.log('join-' + fileId);
@@ -83,11 +110,11 @@ export class FileService {
 
 
 
-  deleteFileById(fileId: string) {
-    return this.http.delete(
-      `${environment.baseUrl}file/delete?id=${fileId}`
-    ) as Observable<File[]>;
-  }
+  // deleteFileById(fileId: string) {
+  //   return this.http.delete(
+  //     `${environment.baseUrl}file/delete?id=${fileId}`
+  //   ) as Observable<File[]>;
+  // }
 
   getFilesByDate(){
     return this.http.get(`${environment.baseUrl}file/getFilesByDate` ) as Observable<File[]>;

@@ -6,7 +6,8 @@ const routes: Routes = [{ path: '', loadChildren: () => import('./page/landing-p
 { path: 'login', loadChildren: () => import('./page/login-page/login-page.module').then(m => m.LoginPageModule) },
 { path: 'spreadsheet/:id', loadChildren: () => import('./page/spreadsheet/spreadsheet.module').then(m => m.SpreadsheetModule) },
 { path: 'aboutus', loadChildren: () => import('./page/about-us/about-us.module').then(m => m.AboutUsModule) },
-{ path: 'feedback', loadChildren: () => import('./page/feedback/feedback.module').then(m => m.FeedbackModule) }];
+{ path: 'feedback', loadChildren: () => import('./page/feedback/feedback.module').then(m => m.FeedbackModule) },
+{ path: 'test', loadChildren: () => import('./page/test/test.module').then(m => m.TestModule) }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

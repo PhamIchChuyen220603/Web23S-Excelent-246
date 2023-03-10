@@ -1,6 +1,6 @@
 import { ShareDialogComponent } from './../share-dialog/share-dialog.component';
 import { MenuItemModel } from './../../../../../../node_modules/@syncfusion/ej2-navigations/src/common/menu-base-model.d';
-import { Component, ElementRef, ViewChild, HostListener, Input, EventEmitter } from '@angular/core';
+import { Component, ElementRef, ViewChild, HostListener, Input, EventEmitter, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { MenuEventArgs } from '@syncfusion/ej2-navigations';
@@ -19,10 +19,10 @@ import { FileActions } from 'src/ngrx/actions/file.actions';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit{
   public isEditing: boolean;
-  public pendingValue: string;
-  public title = 'Nguyen Tan Trung';
+  public pendingValue!: string;
+  public title = '';
   public valueChangeEvents: EventEmitter<string>;
   files$: Observable<FileState>;
 
@@ -31,14 +31,20 @@ export class NavbarComponent {
     protected authService: AuthService, private dailog: MatDialog,
     protected fileService: FileService,
     private store: Store<{ file: FileState }>) {
+    // this.title = this.fileService.currentFile.title!;
     this.isEditing = false;
-    this.pendingValue = "";
     this.valueChangeEvents = new EventEmitter();
     this.files$ = this.store.select('file');
     // this.store.dispatch(FileActions.getFilesByUserId({ userId: this.userId! }));
-    this.files$.subscribe((res) => {
-      console.log(res);
-    })
+    // this.files$.subscribe((res) => {
+    //   console.log(res);
+    // })
+  }
+
+  ngOnInit(): void {
+    // this.title = this.fileService.currentFile.title!;
+    console.log(this.fileService.currentFile)
+    console.log(this.fileService.idParam);
   }
 
   @ViewChild('menu') menu!: ElementRef;

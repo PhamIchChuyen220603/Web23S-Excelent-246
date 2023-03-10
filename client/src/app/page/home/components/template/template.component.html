@@ -8,8 +8,8 @@
   </div>
   <div class="template-bottom">
     <div *ngFor="let a of templates">
-      <p (click)="startNewFile()" [routerLink]="['/spreadsheet', this.fileService.currentFile?.fileId]" class="background">
-        <img (click)="startNewFile()" [routerLink]="['/spreadsheet', this.fileService.currentFile?.fileId]" class="pic" src="../../../assets/home_logos/microsoft-excel-logo.png"/>
+      <p (click)="startNewFile()" class="background">
+        <img (click)="startNewFile()" class="pic" src="../../../assets/home_logos/microsoft-excel-logo.png"/>
       </p>
       <p class="title">{{ a.name }}</p>
     </div>
