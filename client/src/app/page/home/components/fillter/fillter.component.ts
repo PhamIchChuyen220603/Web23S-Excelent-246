@@ -31,7 +31,7 @@ export class FillterComponent {
       this.userId = res.user?.userId!;
     });
     this.files$ = this.store.select('file');
-    this.store.dispatch(FileActions.getFilesByUserId({ userId: this.userId! }));
+    // this.store.dispatch(FileActions.getFilesByUserId({ userId: this.userId! }));
   }
 
   onChange(event: any) {

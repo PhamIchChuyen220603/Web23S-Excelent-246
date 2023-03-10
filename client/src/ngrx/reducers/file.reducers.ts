@@ -17,8 +17,7 @@ export const FileReducer = createReducer(
       loading: true,
       error: '',
     };
-  }
-  ),
+  }),
   on(FileActions.createFileSuccess, (state, { file }) => {
     return {
       ...state,
@@ -27,8 +26,7 @@ export const FileReducer = createReducer(
       loading: false,
       error: '',
     };
-  }
-  ),
+  }),
   on(FileActions.createFileFailure, (state, { error }) => {
     return {
       ...state,
@@ -36,17 +34,15 @@ export const FileReducer = createReducer(
       loading: false,
       error: error,
     };
-  }
-  ),
-  on(FileActions.getFileById, (state,{fileId}) => {
+  }),
+  on(FileActions.getFileById, (state, { fileId }) => {
     return {
       ...state,
       inProcess: true,
       loading: true,
       error: '',
     };
-  }
-  ),
+  }),
   on(FileActions.getFileByIdSuccess, (state, { file }) => {
     return {
       ...state,
@@ -55,8 +51,7 @@ export const FileReducer = createReducer(
       loading: false,
       error: '',
     };
-  }
-  ),
+  }),
   on(FileActions.getFileByIdFailure, (state, { error }) => {
     return {
       ...state,
@@ -64,8 +59,7 @@ export const FileReducer = createReducer(
       loading: false,
       error: error,
     };
-  }
-  ),
+  }),
 
   on(FileActions.getAllFiles, (state) => {
     return {
@@ -74,8 +68,7 @@ export const FileReducer = createReducer(
       loading: true,
       error: '',
     };
-  }
-  ),
+  }),
   on(FileActions.getAllFilesSuccess, (state, { files }) => {
     return {
       ...state,
@@ -84,8 +77,7 @@ export const FileReducer = createReducer(
       loading: false,
       error: '',
     };
-  }
-  ),
+  }),
   on(FileActions.getAllFilesFailure, (state, { error }) => {
     return {
       ...state,
@@ -95,7 +87,7 @@ export const FileReducer = createReducer(
     };
   }),
 
-  on(FileActions.getFilesByUserId, (state, {userId}) => {
+  on(FileActions.getFilesByUserId, (state, { userId }) => {
     return {
       ...state,
       inProcess: true,
@@ -121,7 +113,7 @@ export const FileReducer = createReducer(
     };
   }),
 
-  on(FileActions.getFilesByDate, (state, ) => {
+  on(FileActions.getFilesByDate, (state) => {
     return {
       ...state,
       inProcess: true,
@@ -129,10 +121,9 @@ export const FileReducer = createReducer(
       error: '',
     };
   }),
-  on(FileActions.getFilesByDateSuccess, (state, {files}) => {
+  on(FileActions.getFilesByDateSuccess, (state, { files }) => {
     let newFiles = [...state.files];
-    newFiles.sort((a, b) => a.createdDate - b.createdDate)
-    
+    newFiles.sort((a, b) => a.createdDate - b.createdDate);
 
     //Sort name
     // newFiles.sort((a,b) => {
@@ -146,8 +137,6 @@ export const FileReducer = createReducer(
     //   }
     //   return 0;
     // })
-
-
 
     return {
       ...state,
@@ -166,7 +155,7 @@ export const FileReducer = createReducer(
     };
   }),
 
-  on(FileActions.getFilesByTitle, (state, ) => {
+  on(FileActions.getFilesByTitle, (state) => {
     return {
       ...state,
       inProcess: true,
@@ -174,9 +163,9 @@ export const FileReducer = createReducer(
       error: '',
     };
   }),
-  on(FileActions.getFilesByTitleSuccess, (state, {files}) => {
+  on(FileActions.getFilesByTitleSuccess, (state, { files }) => {
     let newFiles = [...state.files];
-    newFiles.sort((a,b) => {
+    newFiles.sort((a, b) => {
       const titleA = a.title.toUpperCase();
       const titleB = b.title.toUpperCase();
       if (titleA < titleB) {
@@ -186,7 +175,7 @@ export const FileReducer = createReducer(
         return 1;
       }
       return 0;
-    })
+    });
     return {
       ...state,
       files: newFiles,
@@ -204,7 +193,7 @@ export const FileReducer = createReducer(
     };
   }),
 
-  on(FileActions.updateFile, (state,) => {
+  on(FileActions.updateFile, (state) => {
     return {
       ...state,
       inProcess: true,
@@ -213,11 +202,11 @@ export const FileReducer = createReducer(
     };
   }),
 
-  on(FileActions.updateFileSuccess, (state, { fileId, file}) => {
+  on(FileActions.updateFileSuccess, (state, { fileId, file }) => {
     let newFiles = [...state.files];
-    let index = newFiles.findIndex(f => f.fileId == fileId);
-    if(index != -1){
-      newFiles[index] = {...file};
+    let index = newFiles.findIndex((f) => f.fileId == fileId);
+    if (index != -1) {
+      newFiles[index] = { ...file };
     }
     return {
       ...state,
@@ -235,7 +224,7 @@ export const FileReducer = createReducer(
       error: error,
     };
   }),
-  on(FileActions.deleteFile, (state, {fileId}) => {
+  on(FileActions.deleteFile, (state, { fileId }) => {
     return {
       ...state,
       inProcess: true,
@@ -243,8 +232,8 @@ export const FileReducer = createReducer(
       error: '',
     };
   }),
-  on(FileActions.deleteFileSuccess, (state, {fileId}) => {
-    let newFiles = state.files.filter(f => f.fileId != fileId);
+  on(FileActions.deleteFileSuccess, (state, { fileId }) => {
+    let newFiles = state.files.filter((f) => f.fileId != fileId);
     return {
       ...state,
       files: newFiles,
@@ -261,7 +250,7 @@ export const FileReducer = createReducer(
       error: error,
     };
   }),
-  on(FileActions.saveFile, (state, {file}) => {
+  on(FileActions.saveFile, (state, { file }) => {
     return {
       ...state,
       inProcess: true,
@@ -285,7 +274,7 @@ export const FileReducer = createReducer(
       error: error,
     };
   }),
-  on(FileActions.getFilesByMemberId, (state, {memberId}) => {
+  on(FileActions.getFilesByMemberId, (state, { memberId }) => {
     return {
       ...state,
       inProcess: true,
@@ -310,4 +299,4 @@ export const FileReducer = createReducer(
       error: error,
     };
   })
-)
+);
