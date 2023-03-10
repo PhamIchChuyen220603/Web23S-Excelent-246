@@ -5,6 +5,7 @@ import { AuthModule } from './API/Auth/auth.module';
 import { ChatModule } from './API/chat/chat.module';
 import { FileModule } from './API/file/file.module';
 import { InvitationModule } from './api/invitation/invitation.module';
+import { ChatGateway } from './chat/chat.gateway';
 
 
 
@@ -25,6 +26,6 @@ import { InvitationModule } from './api/invitation/invitation.module';
   ],
   controllers: [
   ],
-  providers: [],
+  providers: [ChatGateway],
 })
 export class AppModule { }

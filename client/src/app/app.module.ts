@@ -24,8 +24,11 @@ import { FileReducer } from 'src/ngrx/reducers/file.reducers';
 import { FileEffects } from 'src/ngrx/effects/file.effects';
 import { InvitationEffect } from 'src/ngrx/effects/invitation.effect';
 import { InvitationReducer } from 'src/ngrx/reducers/invitation.reducer';
-
+import { FormsModule } from '@angular/forms';
+//npm
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 // syncfusion components
+const config: SocketIoConfig = { url: 'http://localhost:3000', options:{}};
 
 @NgModule({
   declarations: [AppComponent],
@@ -48,6 +51,8 @@ import { InvitationReducer } from 'src/ngrx/reducers/invitation.reducer';
     EffectsModule.forRoot([AuthEffects,
     FileEffects,
     InvitationEffect]),
+    SocketIoModule.forRoot(config),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
