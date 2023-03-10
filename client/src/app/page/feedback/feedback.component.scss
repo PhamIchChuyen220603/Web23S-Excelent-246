@@ -72,9 +72,10 @@
 
 #excelent {
     animation-name: excelent;
-    animation-duration: 1.2s;
+    animation-duration: 1s;
     animation-timing-function: ease-in-out;
-    animation-delay: 1s;
+    animation-delay: 0.5s;
+    animation-fill-mode: backwards;
 }
 
 @keyframes button {
@@ -93,7 +94,8 @@
     animation-name: button;
     animation-duration: 1.2s;
     animation-timing-function: ease-in-out;
-    animation-delay: 1.3s;
+    animation-delay: 0.5s;
+    animation-fill-mode: backwards;
 }
 
 @keyframes container-navbar {
@@ -112,7 +114,8 @@
     animation-name: container;
     animation-duration: 1s;
     animation-timing-function: ease-in-out;
-    animation-delay: 1s;
+    animation-delay: 0.5s;
+    animation-fill-mode: backwards;
 }
 
 
@@ -233,6 +236,7 @@ input[name="r"]{
         font-size: 40px;
         color: #737373;
     }
+    animation-fill-mode: backwards;
 }
 
 .name{
@@ -309,6 +313,7 @@ input[name="r"]{
     align-items: center;
     border-radius: 6px;
     cursor: pointer;
+    animation-fill-mode: backwards;
 }
 
 #excelent{
