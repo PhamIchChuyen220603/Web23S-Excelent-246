@@ -13,6 +13,10 @@ export class FileService {
 
   constructor() {}
 
+  saveFile(File: FileModel) {
+    this.currentFile = File;
+  }
+
   async getAll(): Promise<FileModel[] | null> {
     try {
       const snapshot = await this.docRef.get();
@@ -25,14 +29,14 @@ export class FileService {
   }
 
   async create(file: FileModel) {
-      const res = await this.docRef.add({
-        fileId: Timestamp.now().toMillis().toString(),
-        title: "Untitled",
-        createdDate: Timestamp.now().toMillis(),
-        modifiedDate: Timestamp.now().toMillis(),
-        modifiedBy: '',
-        status: "private",
-        members:[],
+      await this.docRef.add({...file
+        // fileId: Timestamp.now().toMillis().toString(),
+        // title: "Untitled",
+        // createdDate: Timestamp.now().toMillis(),
+        // modifiedDate: Timestamp.now().toMillis(),
+        // modifiedBy: '',
+        // status: "private",
+        // members:[],
       });
       console.log(file);
   }
@@ -100,7 +104,7 @@ export class FileService {
             return null;
         }
     }
-    
+
     async getFilesByDate(): Promise<FileModel[] | null> {
       try {
         const snapshot = await this.docRef.get();

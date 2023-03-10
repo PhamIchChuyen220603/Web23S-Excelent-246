@@ -1,8 +1,9 @@
 import { Sse } from '@nestjs/common';
 import { SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
 import { Observable } from 'rxjs';
-import { Server } from 'socket.io';
-
+import { Server, Socket } from 'socket.io';
+import { FileService } from 'src/API/file/file.service';
+import { FileModel } from 'src/Models/file.model';
 
 
 
@@ -10,6 +11,7 @@ import { Server } from 'socket.io';
 export class FileGateway{
   @WebSocketServer() server: Server;
   
+  constructor(private fileService: FileService) {}
 
   handleConnection(client:any, ...arg: any[]){
     console.log(`Client ${client.id} connected}`)
@@ -20,15 +22,12 @@ export class FileGateway{
   }
 
 
-
-
-
   @SubscribeMessage('message')
-  handleMessage(client: any, payload: any): string {
-    // const roomId = payload.fileId;
+  handleMessage(client: Socket, payload: any) {
     console.log('message', payload);
-    this.server.emit('message-' + payload.fileId, payload);
-    this.server.in(payload.fileId).emit('message', payload);
+    client.join('message-' + payload.fileId);
+    client.broadcast.emit('message-' + payload.fileId, payload);
+    // this.server.emit('message-' + payload.fileId, payload);
     return 'Hello world!';
   }
 

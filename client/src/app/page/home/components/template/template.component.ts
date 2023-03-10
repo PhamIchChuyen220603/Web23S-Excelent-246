@@ -61,10 +61,7 @@ export class TemplateComponent {
   };
     this.fileService.currentFile = fileToCreate;
     this.store.dispatch(FileActions.createFile({ file: fileToCreate }));
-    this.store.dispatch(FileActions.getFileByIdSuccess({ file: fileToCreate }));
-    // this.file$.subscribe((file) => {
-    //   if(file.loading == false)
-    //   this.router.navigate(['/spreadsheet', file.file?.fileId!]);
-    // })
+    this.store.dispatch(FileActions.createFileSuccess({ file: this.fileService.currentFile }));
+    this.router.navigate(['/spreadsheet', this.fileService.currentFile.fileId]);
   }
 }

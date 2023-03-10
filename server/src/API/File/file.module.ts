@@ -1,4 +1,5 @@
 import { Module } from "@nestjs/common";
+import { FileGateway } from "src/file/file.gateway";
 // import { File, FileSchema } from "src/schema/file.schema";
 import { FileController } from "./file.controller";
 import { FileService } from "./file.service";
@@ -11,7 +12,7 @@ import { FileService } from "./file.service";
         FileController
     ],
     providers: [
-        FileService
+        FileService, FileGateway
     ],
 })
 

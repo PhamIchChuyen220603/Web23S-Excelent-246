@@ -57,6 +57,14 @@ export class ContentComponent implements OnInit {
   }
 
   selectFile(fileId: string) {
+    this.store.dispatch(FileActions.getFileById({ fileId: fileId }));
+    this.files$.subscribe((res) => {
+      console.log(res.file);
+      this.fileService.currentFile = res.file!;
+      this.fileService.idParam = res.file?.fileId!;
+      this.fileService.isSelected = true;
+    })
+    // console.log(file);
     this.route.navigate([`/spreadsheet/${fileId}`]);
   }
 
