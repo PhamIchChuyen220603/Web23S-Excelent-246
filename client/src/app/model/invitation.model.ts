@@ -3,7 +3,7 @@ export interface Invitation{
     from: string;
     name: string;
     to: string;
-    status: 'pending' | 'accepted' | 'rejected';
+    status: string;
     fileId: string;
     fileName: string;
 }

@@ -66,6 +66,23 @@ export class FileEffects{
         })
     ))
 
+
+    createFile$ = createEffect(() => this.actions$.pipe(
+        ofType(FileActions.createFile),
+        switchMap((action) => {
+            return from(this.fileService.createFile(action.file)).pipe(
+                map((result:any) => {
+                    return FileActions.createFileSuccess({file: result})
+                }),
+                catchError((error) => {
+                    return of(FileActions.createFileFailure({error: error}))
+                })
+            )
+        })
+    )) 
+
+    
+
     deleteFileById$ = createEffect(() => this.actions$.pipe(
         ofType(FileActions.deleteFile),
         switchMap((action) => {
@@ -94,4 +111,31 @@ export class FileEffects{
         })
     ))
 
+    getFilesByDate$ = createEffect(() => this.actions$.pipe(
+        ofType(FileActions.getFilesByDate),
+        switchMap((action) => {
+            return from(this.fileService.getFilesByDate()).pipe(
+                map((result:any) => {
+                    return FileActions.getFilesByDateSuccess({files: result})
+                }),
+                catchError((error) => {
+                    return of(FileActions.getFilesByDateFailure({error: error}))
+                })
+            )
+        })
+    ))
+
+    getFilesByTitle$ = createEffect(() => this.actions$.pipe(
+        ofType(FileActions.getFilesByTitle),
+        switchMap((action) => {
+            return from(this.fileService.getFilesByTitle()).pipe(
+                map((result:any) => {
+                    return FileActions.getFilesByTitleSuccess({files: result})
+                }),
+                catchError((error) => {
+                    return of(FileActions.getFilesByTitleFailure({error: error}))
+                })
+            )
+        })
+    ))
 }

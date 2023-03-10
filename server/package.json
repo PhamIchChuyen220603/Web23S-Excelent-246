@@ -22,7 +22,7 @@
   "dependencies": {
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.2.0",
-    "@nestjs/core": "^9.0.0",
+    "@nestjs/core": "^9.3.9",
     "@nestjs/mongoose": "^9.2.1",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/platform-socket.io": "^9.3.9",
@@ -31,6 +31,7 @@
     "mongoose": "^6.10.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0",
+    "signalrjs": "^0.2.2",
     "socket.io": "^4.5.4"
   },
   "devDependencies": {

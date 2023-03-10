@@ -1,6 +1,6 @@
 import { ShareDialogComponent } from './../share-dialog/share-dialog.component';
 import { MenuItemModel } from './../../../../../../node_modules/@syncfusion/ej2-navigations/src/common/menu-base-model.d';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, HostListener, Input, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { MenuEventArgs } from '@syncfusion/ej2-navigations';
@@ -8,6 +8,11 @@ import { MenuEventArgs } from '@syncfusion/ej2-navigations';
 import { MatDialog } from '@angular/material/dialog';
 import { OpenFileDialogComponent } from '../open-file-dialog/open-file-dialog.component';
 import { FileService } from 'src/app/service/file.service';
+import { Store } from '@ngrx/store';
+import { FileState } from 'src/ngrx/states/file.states';
+import { Observable } from 'rxjs';
+import { FileActions } from 'src/ngrx/actions/file.actions';
+
 
 @Component({
   selector: 'app-navbar',
@@ -15,15 +20,35 @@ import { FileService } from 'src/app/service/file.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  constructor(private router: Router, protected authService: AuthService, private dailog: MatDialog, protected fileService: FileService) {}
+  public isEditing: boolean;
+  public pendingValue: string;
+  public title = 'Nguyen Tan Trung';
+  public valueChangeEvents: EventEmitter<string>;
+  files$: Observable<FileState>;
+
+
+  constructor(private eRef: ElementRef, private router: Router,
+    protected authService: AuthService, private dailog: MatDialog,
+    protected fileService: FileService,
+    private store: Store<{ file: FileState }>) {
+    this.isEditing = false;
+    this.pendingValue = "";
+    this.valueChangeEvents = new EventEmitter();
+    this.files$ = this.store.select('file');
+    // this.store.dispatch(FileActions.getFilesByUserId({ userId: this.userId! }));
+    this.files$.subscribe((res) => {
+      console.log(res);
+    })
+  }
 
   @ViewChild('menu') menu!: ElementRef;
 
 
-  open(){
+
+  open() {
     this.dailog.open(OpenFileDialogComponent);
   }
-  share(){
+  share() {
     this.dailog.open(ShareDialogComponent);
   }
 
@@ -50,8 +75,8 @@ export class NavbarComponent {
     {
       text: 'File',
       items: [
-        { text: 'Open',},
-        { text: 'Save',},
+        { text: 'Open', },
+        { text: 'Save', },
         { text: 'Exit', },
 
       ],
@@ -59,9 +84,9 @@ export class NavbarComponent {
     {
       text: 'Edit',
       items: [
-        { text: 'Cut'},
-        { text: 'Copy'},
-        { text: 'Paste'},
+        { text: 'Cut' },
+        { text: 'Copy' },
+        { text: 'Paste' },
       ],
     },
     {
@@ -83,15 +108,44 @@ export class NavbarComponent {
   ];
 
 
-  openN(args: MenuEventArgs){
+  openN(args: MenuEventArgs) {
     let temp = this.menuItemText.find((item) => item == args.item.text);
-    if(temp == 'Open'){
+    if (temp == 'Open') {
       this.open();
     }
   }
 
 
-  navigateToHome() {
-    this.router.navigate(['home']);
+
+  // I cancel the editing of the value.
+  public cancel(): void {
+
+    this.isEditing = false;
+
   }
+
+
+  // I enable the editing of the value.
+  public edit(): void {
+
+    this.pendingValue = this.title;
+    this.isEditing = true;
+
+  }
+
+  // I process changes to the pending value.
+  public processChanges(): void {
+
+    // If the value actually changed, emit the change but don't change the local
+    // value - we don't want to break unidirectional data-flow.
+    if (this.pendingValue !== this.title) {
+
+      this.valueChangeEvents.emit(this.pendingValue);
+
+    }
+
+    this.isEditing = false;
+
+  }
+
 }

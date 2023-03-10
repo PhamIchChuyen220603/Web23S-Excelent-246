@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OpenFileDialogComponent } from './open-file-dialog.component';
+import { MaintainingComponent } from './maintaining.component';
 
-describe('OpenFileDialogComponent', () => {
-  let component: OpenFileDialogComponent;
-  let fixture: ComponentFixture<OpenFileDialogComponent>;
+describe('MaintainingComponent', () => {
+  let component: MaintainingComponent;
+  let fixture: ComponentFixture<MaintainingComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OpenFileDialogComponent ]
+      declarations: [ MaintainingComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(OpenFileDialogComponent);
+    fixture = TestBed.createComponent(MaintainingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

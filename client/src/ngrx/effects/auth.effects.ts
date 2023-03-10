@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, of, switchMap} from 'rxjs';
+import { catchError, map, of, switchMap } from 'rxjs';
 import { AuthActions } from '../actions/auth.actions';
 import { AuthService } from '../../app/service/auth.service';
 import { Router } from '@angular/router';
@@ -14,8 +14,6 @@ export class AuthEffects {
       switchMap(() => this.authService.loginGG()),
       map((user) => {
         return AuthActions.loginSuccess({ user: user });
-        this.route.navigate(['/home']);
-
       }),
       catchError((error) => of(AuthActions.loginFailure({ error })))
     )
@@ -33,7 +31,7 @@ export class AuthEffects {
     )
   );
 
-  getAllUsers$ = createEffect(() =>{
+  getAllUsers$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(AuthActions.getAllUsers),
       switchMap(() => this.authService.getAllUser()),
