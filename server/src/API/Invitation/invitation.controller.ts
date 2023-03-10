@@ -11,21 +11,21 @@ export class InvitationController {
 
 
     @Post('send/:id')
-    send(@Body() invitation: Invitation, @Param('id') idReciever: string) {
-        return this.invitationService.send(invitation, idReciever);
+    send(@Body() invitation: Invitation, @Param('id') idReceiver: string) {
+        return this.invitationService.send(invitation, idReceiver);
     }
 
     @Get('get/:id')
-    getInvitations(@Param('id') idReciever: string){
-        return this.invitationService.getInvitations(idReciever);
+    getInvitations(@Param('id') idReceiver: string){
+        return this.invitationService.getInvitations(idReceiver);
     }
 
-    @Delete('accept/:idFile/:idReciever/:idInvitation')
-    acceptInvitation(@Param('idFile') idFile: string, @Param('idReciever') idReciever: string, @Param('idInvitation') idInvitation: string) {
-       return this.invitationService.acceptInvitation(idFile, idReciever, idInvitation);
+    @Put('accept/:idFile/:idReceiver/:idInvitation')
+    acceptInvitation(@Param('idFile') idFile: string, @Param('idReceiver') idReceiver: string, @Param('idInvitation') idInvitation: string, @Body() invitation: Invitation) {
+       return this.invitationService.acceptInvitation(idFile, idReceiver, idInvitation, invitation);
     }
 
-    @Delete('reject/:idInvitation')
+    @Put('reject/:idInvitation')
     rejectInvitation(@Param('idInvitation') idInvitation: string) {
         return this.invitationService.rejectInvitation(idInvitation);
     }

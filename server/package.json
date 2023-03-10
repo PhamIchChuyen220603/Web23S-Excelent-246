@@ -31,6 +31,7 @@
     "mongoose": "^6.10.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0",
+    "signalrjs": "^0.2.2",
     "socket.io": "^4.5.4"
   },
   "devDependencies": {

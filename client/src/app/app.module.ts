@@ -14,6 +14,7 @@ import { environment } from '../app/env/environment';
 // syncfusion module
 import { ToolbarModule } from '@syncfusion/ej2-angular-navigations';
 import { MenuModule } from '@syncfusion/ej2-angular-navigations';
+import { FormsModule } from '@angular/forms';
 
 // ngrx
 import { EffectsModule } from '@ngrx/effects';
@@ -24,11 +25,11 @@ import { FileReducer } from 'src/ngrx/reducers/file.reducers';
 import { FileEffects } from 'src/ngrx/effects/file.effects';
 import { InvitationEffect } from 'src/ngrx/effects/invitation.effect';
 import { InvitationReducer } from 'src/ngrx/reducers/invitation.reducer';
-import { FormsModule } from '@angular/forms';
-//npm
+import { MatIconModule } from '@angular/material/icon';
+
+// SocketIO
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
-// syncfusion components
-const config: SocketIoConfig = { url: 'http://localhost:3000', options:{}};
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,7 +40,10 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options:{}};
     ToolbarModule,
     MenuModule,
     HttpClientModule,
+    FormsModule,
+    SocketIoModule.forRoot(config),
 
+    MatIconModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
@@ -52,7 +56,6 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options:{}};
     FileEffects,
     InvitationEffect]),
     SocketIoModule.forRoot(config),
-    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

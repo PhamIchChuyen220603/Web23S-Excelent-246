@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewModeComponent } from './view-mode.component';
+import { FileDialogComponent } from './file-dialog.component';
 
-describe('ViewModeComponent', () => {
-  let component: ViewModeComponent;
-  let fixture: ComponentFixture<ViewModeComponent>;
+describe('FileDialogComponent', () => {
+  let component: FileDialogComponent;
+  let fixture: ComponentFixture<FileDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ViewModeComponent ]
+      declarations: [ FileDialogComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ViewModeComponent);
+    fixture = TestBed.createComponent(FileDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -6,11 +6,13 @@ import { ChatModule } from './API/chat/chat.module';
 import { FileModule } from './API/file/file.module';
 import { InvitationModule } from './api/invitation/invitation.module';
 import { ChatGateway } from './chat/chat.gateway';
+import { FileGateway } from './file/file.gateway';
 
 
 
 @Module({
   imports: [
+    //gateway
 
     // api module
     FileModule,

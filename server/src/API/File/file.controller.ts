@@ -1,10 +1,14 @@
 import { Body, Param, Controller, Post, Get, Put, Query, Delete } from '@nestjs/common';
+import { AuthModel } from 'src/Models/auth.model';
 import { FileModel } from 'src/Models/file.model';
 import { FileService } from './file.service';
 @Controller('file')
 export class FileController {
     constructor(private fileService: FileService) {
     }
+
+    
+
     // file/get
     @Get('getAll')
     getAll() {
@@ -39,5 +43,15 @@ export class FileController {
     @Put('update')
     update(@Query('id') fileId: string, @Body() file: FileModel){
         return this.fileService.update(fileId, file);
+    }
+
+    @Get('getFilesByDate')
+    getFilesByDate(){
+        return this.fileService.getFilesByDate();
+    }
+
+    @Get('getFilesByTitle')
+    getFilesByTitle(){
+        return this.fileService.getFilesByTitle();
     }
 }

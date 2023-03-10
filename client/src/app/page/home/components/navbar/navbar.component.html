@@ -17,23 +17,42 @@
     </button>
     <input class="search-place" type="search" placeholder="Search" />
   </div>
-  
+
   <div class="notification">
     <div class="demo-section">
-      <mat-icon [matBadge]="(this.invites$|async)?.invitations?.length" matBadgeColor="accent" (click)="open()">notifications</mat-icon>
-        <!-- Include text description of the icon's meaning for screen-readers -->
-        <!-- <span class="cdk-visually-hidden">
+      <mat-icon
+        [matBadge]="this.invitesCount"
+        matBadgeColor="accent"
+        (click)="open()"
+        >notifications</mat-icon
+      >
+      <!-- Include text description of the icon's meaning for screen-readers -->
+      <!-- <span class="cdk-visually-hidden">
         </span> -->
     </div>
   </div>
 
   <div class="profile">
     <span class="userName">{{ (this.auth$ | async)?.user?.userName }}</span>
-    <img class="photo" [src]="(this.auth$ | async)?.user?.photoURL" />
-    
-    <div class="logout">
-      <img src="../../../../../assets/logout (1).png" (click)="this.auth.logOut()" id="img-logOut">
-      <a href="/login" (click)="this.auth.logOut()" id="logOutButton">Log out</a>
+    <img
+      (click)="clickToLogOut()"
+      class="photo"
+      [src]="(this.auth$ | async)?.user?.photoURL"
+    />
+
+    <div
+      class="logout"
+      *ngIf="this.logout == true"
+      (mouseleave)="turnOffLogOut()"
+    >
+      <img
+        src="../../../../../assets/logout (1).png"
+        (click)="this.auth.logOut()"
+        id="img-logOut"
+      />
+      <a href="/login" (click)="this.auth.logOut()" id="logOutButton"
+        >Log out</a
+      >
     </div>
   </div>
 </div>

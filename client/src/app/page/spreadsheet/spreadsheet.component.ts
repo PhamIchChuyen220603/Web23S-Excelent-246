@@ -1,8 +1,9 @@
+import { FileActions } from 'src/ngrx/actions/file.actions';
 import { Observable } from 'rxjs';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
-  Spreadsheet, BeforeOpenEventArgs, ActionEventArgs, Workbook,
+  Spreadsheet, BeforeOpenEventArgs, ActionEventArgs, Workbook, DataSourceChangedEventArgs, FindAllArgs, BeforeActionData, CollaborativeEditing, CollaborativeEditArgs,
 } from '@syncfusion/ej2-angular-spreadsheet';
 import { getApp } from 'firebase/app';
 import { File } from 'src/app/model/file.model';
@@ -12,16 +13,19 @@ import { AuthState } from 'src/ngrx/states/auth.states';
 import { InvitationState } from 'src/ngrx/states/invitation.state';
 import { FileState } from 'src/ngrx/states/file.states';
 import { ActivatedRoute } from '@angular/router';
-import { FileActions } from 'src/ngrx/actions/file.actions';
+import { EventArgs } from '@syncfusion/ej2-navigations';
 
 @Component({
   selector: 'app-spreadsheet',
   templateUrl: './spreadsheet.component.html',
   styleUrls: ['./spreadsheet.component.scss'],
-  // encapsulation: ViewEncapsulation.None
 })
 export class SpreadsheetComponent implements OnInit {
   @ViewChild('spreadsheet') spreadsheetObj!: Spreadsheet;
+  data$!: Observable<any>;
+  tempData:any[] = [];
+  newData!:any;
+
   hide() {
     this.spreadsheetObj.hideFileMenuItems(['File'], true);
   }
@@ -30,8 +34,9 @@ export class SpreadsheetComponent implements OnInit {
   file$!: Observable<FileState>
   id!: string;
   idParam!:string | null;
+  evt!: any;
   constructor(
-    private FileService: FileService,
+    protected FileService: FileService,
     private authService: AuthService,
     private route: ActivatedRoute,
     private store: Store<{ auth: AuthState, invite: InvitationState, file: FileState }>
@@ -42,19 +47,23 @@ export class SpreadsheetComponent implements OnInit {
     });
     this.file$ = this.store.select('file');
     this.route.paramMap.subscribe(params => {
-      this.idParam = params.get('id');
-      console.log(this.idParam);
+      this.FileService.idParam = params.get('id')!;
+      console.log(this.FileService.idParam);
     });
-    this.store.dispatch(FileActions.getFileById({ fileId: this.idParam! }));
-  }
-  ngOnInit(): void {
+    this.store.dispatch(FileActions.getFileById({fileId: this.FileService.idParam!}));
     this.file$.subscribe((file) => {
-      if(file!=null){
-        this.file = file.file!;
-        console.log(this.file)
-      }
+      this.FileService.currentFile = file.file;
     })
   }
+  ngOnInit(): void {
+    this.joinRoom(this.FileService.idParam!);
+  }
+
+  ngOnChanges(): void {
+    // console.log(this.tempData)
+  }
+
+  
 
   openUrl =
     'https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/open';
@@ -78,27 +87,37 @@ export class SpreadsheetComponent implements OnInit {
       ownerId: this.id,
       data: response,
       status: "public",
-      member: [],
+      members: ['1AVuBiKftySNehyP0B4MkSAEYtB3'],
     }
-    this.FileService.createFile(fileToUpLoad);
+    // this.FileService.createFile(fileToUpLoad);
   }
-
-  // async open() {
-  //   let file = this.FileService.getFileById(this.idParam!);
-  //   file.subscribe((data) => {
-  //     console.log(data.data.jsonObject.Workbook);
-  //     this.spreadsheetObj.openFromJson({
-  //       file: data.data.jsonObject,
-  //     });
-  //   })
-  // }
-
-  //set Timeout
   
-
   async open(){
     this.spreadsheetObj.openFromJson({
       file: this.file.data.jsonObject, 
     })
   }
+
+  joinRoom(fileId: string){
+    console.log('Already joined in ', fileId!);
+    this.data$ = this.FileService.getDataByFileId(fileId!);
+    this.data$.subscribe((data) => {
+      this.tempData.push(data);
+      console.log(this.tempData);
+    })
+  }
+
+
+  sendData(fileId: string, event: any){
+    console.log(event);
+    let model = event as CollaborativeEditArgs;
+    this.FileService.sendDataByFileId(fileId!, event.eventArgs);
+    console.log(model.eventArgs.address);
+    // console.log(event.eventArgs);
+    this.spreadsheetObj.updateAction(model);
+    // this.FileService.sendDataByFileId(fileId!, event.eventArgs)
+
+
+  }
+
 }

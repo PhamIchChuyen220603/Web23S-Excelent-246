@@ -34,7 +34,7 @@ export const FileReducer = createReducer(
       ...state,
       inProcess: false,
       loading: false,
-      error,
+      error: error,
     };
   }
   ),
@@ -121,7 +121,7 @@ export const FileReducer = createReducer(
     };
   }),
 
-  on(FileActions.getFilesByDate, (state, {date}) => {
+  on(FileActions.getFilesByDate, (state, ) => {
     return {
       ...state,
       inProcess: true,
@@ -129,16 +129,73 @@ export const FileReducer = createReducer(
       error: '',
     };
   }),
-  on(FileActions.getFilesByDateSuccess, (state, { files }) => {
+  on(FileActions.getFilesByDateSuccess, (state, {files}) => {
+    let newFiles = [...state.files];
+    newFiles.sort((a, b) => a.createdDate - b.createdDate)
+    
+
+    //Sort name
+    // newFiles.sort((a,b) => {
+    //   const titleA = a.title.toUpperCase();
+    //   const titleB = b.title.toUpperCase();
+    //   if (titleA < titleB) {
+    //     return -1;
+    //   }
+    //   if (titleA > titleB) {
+    //     return 1;
+    //   }
+    //   return 0;
+    // })
+
+
+
     return {
       ...state,
-      files: files,
+      files: newFiles,
       inProcess: false,
       loading: false,
       error: '',
     };
   }),
   on(FileActions.getFilesByDateFailure, (state, { error }) => {
+    return {
+      ...state,
+      inProcess: false,
+      loading: false,
+      error: error,
+    };
+  }),
+
+  on(FileActions.getFilesByTitle, (state, ) => {
+    return {
+      ...state,
+      inProcess: true,
+      loading: true,
+      error: '',
+    };
+  }),
+  on(FileActions.getFilesByTitleSuccess, (state, {files}) => {
+    let newFiles = [...state.files];
+    newFiles.sort((a,b) => {
+      const titleA = a.title.toUpperCase();
+      const titleB = b.title.toUpperCase();
+      if (titleA < titleB) {
+        return -1;
+      }
+      if (titleA > titleB) {
+        return 1;
+      }
+      return 0;
+    })
+    return {
+      ...state,
+      files: newFiles,
+      inProcess: false,
+      loading: false,
+      error: '',
+    };
+  }),
+  on(FileActions.getFilesByTitleFailure, (state, { error }) => {
     return {
       ...state,
       inProcess: false,

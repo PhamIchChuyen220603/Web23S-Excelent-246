@@ -1,3 +1,4 @@
+import { AuthModel } from 'src/Models/auth.model';
 import { Injectable } from '@nestjs/common';
 import { FileModel } from '../../Models/file.model';
 // import { File, FileDocument } from "src/schema/file.schema";
@@ -23,15 +24,17 @@ export class FileService {
     }
   }
 
-  async create(file: FileModel): Promise<FileModel | null> {
-    try {
-      const docRef = await this.docRef.add(file);
-      const doc = await docRef.get();
-      return doc.data() as FileModel;
-    } catch (err) {
-      console.log(err);
-      return null;
-    }
+  async create(file: FileModel) {
+      const res = await this.docRef.add({
+        fileId: Timestamp.now().toMillis().toString(),
+        title: "Untitled",
+        createdDate: Timestamp.now().toMillis(),
+        modifiedDate: Timestamp.now().toMillis(),
+        modifiedBy: '',
+        status: "private",
+        members:[],
+      });
+      console.log(file);
   }
 
   async update(id: string, file: FileModel): Promise<FileModel | any> {
@@ -74,19 +77,6 @@ export class FileService {
         })
     }
 
-    
-
-    // async deleteById(fileId: string): Promise<boolean>{
-    //     try{
-    //         const fileRef = this.docRef.doc(fileId);
-    //         await fileRef.delete();
-    //         return true;
-    //     }
-    //     catch(err){
-    //         console.log(err);
-    //         return false;
-    //     }
-    // }
 
   async getByUserId(userId: string): Promise<FileModel[] | null> {
     try {
@@ -109,5 +99,27 @@ export class FileService {
             console.log(err);
             return null;
         }
+    }
+    
+    async getFilesByDate(): Promise<FileModel[] | null> {
+      try {
+        const snapshot = await this.docRef.get();
+        const files = snapshot.docs.map((doc) => doc.data());
+        return files as FileModel[];
+      } catch (err) {
+        console.log(err);
+        return null;
+      }
+    }
+
+    async getFilesByTitle(): Promise<FileModel[] | null> {
+      try {
+        const snapshot = await this.docRef.get();
+        const files = snapshot.docs.map((doc) => doc.data());
+        return files as FileModel[];
+      } catch (err) {
+        console.log(err);
+        return null;
+      }
     }
 }

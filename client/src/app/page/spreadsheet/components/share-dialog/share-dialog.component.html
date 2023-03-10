@@ -22,7 +22,7 @@
             <p class="email">{{user.email}}</p>
           </div>
         </div>
-        <div class="invite">
+        <div (click)="sendInvite(this.user,user)"                    class="invite">
           <span class="material-symbols-outlined">
             send
           </span>
