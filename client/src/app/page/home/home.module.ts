@@ -14,6 +14,7 @@ import { FileDialogComponent } from './components/file-dialog/file-dialog.compon
 import { MiniFileDialogComponent } from './components/mini-file-dialog/mini-file-dialog.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MaintainingComponent } from './components/maintaining/maintaining.component';
+import { WellcomeComponent } from './components/wellcome/wellcome.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -26,6 +27,7 @@ import { MaintainingComponent } from './components/maintaining/maintaining.compo
     FileDialogComponent,
     MiniFileDialogComponent,
     MaintainingComponent,
+    WellcomeComponent,
   ],
   imports: [
     CommonModule,
