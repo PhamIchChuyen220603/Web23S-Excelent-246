@@ -10,6 +10,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { File } from 'src/app/model/file.model';
 import { FileDialogComponent } from '../file-dialog/file-dialog.component';
 import { WarningComponent } from 'src/app/components/warning/warning.component';
+import { MaintainingComponent } from '../maintaining/maintaining.component';
 @Component({
   selector: 'app-fillter',
   templateUrl: './fillter.component.html',
@@ -24,13 +25,13 @@ export class FillterComponent {
   constructor(
     private fileService: FileService,
     private store: Store<{ auth: AuthState; file: FileState }>,
-    private dailog: MatDialog
+    private dialog: MatDialog
   ) {
     this.auth$.subscribe((res) => {
       this.userId = res.user?.userId!;
     });
     this.files$ = this.store.select('file');
-    this.store.dispatch(FileActions.getFilesByUserId({ userId: this.userId! }));
+    // this.store.dispatch(FileActions.getFilesByUserId({ userId: this.userId! }));
   }
 
   onChange(event: any) {
@@ -56,8 +57,12 @@ export class FillterComponent {
     },
   ];
 
+  openDialog() {
+    this.dialog.open(MaintainingComponent);
+  }
+
   openFile() {
-    this.dailog.open(FileDialogComponent);
+    this.dialog.open(FileDialogComponent);
   }
 
   getFilesByDate() {

@@ -1,0 +1,25 @@
+.dialog-contain {
+  width: 22.7625rem;
+  height: 10.6875rem;
+  border: 1px solid;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  border-radius: 6px;
+  border: none;
+  padding: 1.875rem 2.625rem;
+}
+
+.dialog-contain-picture {
+  width: 11.25rem;
+  height: 11.25rem;
+}
+.dialog-contain-text {
+  width: 11.25rem;
+  height: 11.25rem;
+  color: #737373;
+  font-size: 1rem;
+  // text-align: center;
+  justify-content: center;
+}

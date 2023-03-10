@@ -9,6 +9,7 @@ import { AuthState } from 'src/ngrx/states/auth.states';
 import { InvitationState } from 'src/ngrx/states/invitation.state';
 import { NotificationComponent } from '../notification/notification.component';
 import { InviteService } from 'src/app/service/invite.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -24,7 +25,8 @@ export class NavbarComponent implements OnInit {
     public auth: AuthService,
     protected inviteService: InviteService,
     private store: Store<{ auth: AuthState; invite: InvitationState }>,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    public router:Router
   ) {
     this.auth$.subscribe((auth) => {
       this.userId = auth.user?.userId ?? '';
@@ -32,23 +34,36 @@ export class NavbarComponent implements OnInit {
     });
 
     this.invites$ = this.store.select('invite');
-    this.store.dispatch(InvitationActions.getInvitations({ idReceiver: this.userId }));
+    this.store.dispatch(
+      InvitationActions.getInvitations({ idReceiver: this.userId })
+    );
     this.invites$.subscribe((invites) => {
-      let count  = 0;
+      let count = 0;
       invites.invitations.forEach((invite) => {
-        if(invite.status == 'pending'){
+        if (invite.status == 'pending') {
           count++;
         }
-      })
-      this.invitesCount = count;  
-    })
+      });
+      this.invitesCount = count;
+    });
   }
 
   open() {
     this.dialog.open(NotificationComponent);
   }
 
-  navigateToLandingPage() {}
+  navigateToLandingPage() {
+    this.router.navigate([''])
+  }
 
   ngOnInit() {}
+
+  logout = false;
+
+  clickToLogOut() {
+    return (this.logout = true);
+  }
+  turnOffLogOut() {
+    this.logout = false;
+  }
 }

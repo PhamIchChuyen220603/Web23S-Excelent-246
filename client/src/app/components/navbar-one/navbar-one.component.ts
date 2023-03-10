@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../../app/service/auth.service'
 
 @Component({
@@ -7,7 +8,7 @@ import { AuthService } from '../../../app/service/auth.service'
   styleUrls: ['./navbar-one.component.scss']
 })
 export class NavbarOneComponent {
-  constructor(public authService: AuthService) {
+  constructor(public authService: AuthService, public router:Router) {
   }
   public login() {
     try {
@@ -18,4 +19,5 @@ export class NavbarOneComponent {
     }
   }
   ngOnInit() { }
+
 }

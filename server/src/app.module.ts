@@ -6,6 +6,7 @@ import { ChatModule } from './API/chat/chat.module';
 import { FileModule } from './API/file/file.module';
 import { FileService } from './API/file/file.service';
 import { InvitationModule } from './api/invitation/invitation.module';
+import { ChatGateway } from './chat/chat.gateway';
 import { FileGateway } from './file/file.gateway';
 
 
@@ -29,6 +30,6 @@ import { FileGateway } from './file/file.gateway';
   ],
   controllers: [
   ],
-  providers: [FileService],
+  providers: [ChatGateway],
 })
 export class AppModule { }

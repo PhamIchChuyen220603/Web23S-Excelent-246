@@ -49,8 +49,11 @@ export class ContentComponent implements OnInit {
     this.files$.subscribe((data) => {
       this.arr = data.files.slice(0, 8);
       this.arr2 = data.files;
-      console.log(this.arr2);
     });
+
+    console.log(this.userId);
+    let a = this.fileService.getFilesByOwner(this.userId!);
+    console.log(a);
   }
 
   selectFile(fileId: string) {
@@ -83,10 +86,8 @@ export class ContentComponent implements OnInit {
     console.log(this.fileService.idToUpdate);
   }
 
-  // //test
   onScrollDown(ev: any) {
     console.log('scrolled down!!', ev);
-
     this.appendItems();
   }
 
@@ -98,6 +99,12 @@ export class ContentComponent implements OnInit {
     for (let i = 7; this.arr.length <= this.arr2.length; i++) {
       this.arr.push(this.arr2[i]);
     }
-    console.log(this.arr2);
+  }
+
+  getFileByUser() {
+    console.log(this.userId);
+    let a = this.fileService.getFilesByOwner(this.userId!);
+    console.log(a);
+    // this.files$.subscribe((res) => {});
   }
 }

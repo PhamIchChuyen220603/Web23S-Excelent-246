@@ -15,10 +15,15 @@ import { FileState } from 'src/ngrx/states/file.states';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  auth$ = this.store.select('auth');
   constructor(
     private route: Router,
     private fileService: FileService,
     private store: Store<{ auth: AuthState; file: FileState }>
   ) {}
+
+  ngOnInit(): void {
+    this.auth$ = this.store.select('auth');
+  }
 }
