@@ -106,6 +106,7 @@
         (click)="openDialog()"
         mat-menu-item
         *ngIf="canRename(f1.ownerId) == true"
+        (click)="getId(f1.fileId)"
       >
         <mat-icon>text_fields</mat-icon>
         <span>Rename</span>

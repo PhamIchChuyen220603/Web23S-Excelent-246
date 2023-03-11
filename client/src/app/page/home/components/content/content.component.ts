@@ -79,11 +79,13 @@ export class ContentComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(RenameDialogComponent);
+    this.store.dispatch(FileActions.getFileById({ fileId: this.fileService.idToUpdate! }));
   }
 
   getId(fileId: string) {
     this.fileService.idToUpdate = fileId;
     console.log(this.fileService.idToUpdate);
+    // this.store.dispatch(FileActions.getFileById({ fileId: fileId }));
   }
 
   onScrollDown(ev: any) {
@@ -99,12 +101,5 @@ export class ContentComponent implements OnInit {
     for (let i = 7; this.arr.length <= this.arr2.length; i++) {
       this.arr.push(this.arr2[i]);
     }
-  }
-
-  getFileByUser() {
-    console.log(this.userId);
-    let a = this.fileService.getFilesByOwner(this.userId!);
-    console.log(a);
-    // this.files$.subscribe((res) => {});
   }
 }

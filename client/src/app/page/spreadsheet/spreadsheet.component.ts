@@ -55,13 +55,13 @@ export class SpreadsheetComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.idParam = params.get('id')!;
       this.FileService.idParam = params.get('id')!;
-      console.log(this.FileService.idParam);
+      // console.log(this.FileService.idParam);
     });
+    this.store.dispatch(FileActions.getFileById({fileId: this.FileService.idParam!}));
     this.file$.subscribe((res) => {
       this.FileService.currentFile = res.file;
+      console.log(this.FileService.currentFile);
     })
-
-
   }
   ngOnInit(): void {
     console.log(this.FileService.currentFile?.data);
@@ -70,10 +70,16 @@ export class SpreadsheetComponent implements OnInit {
 
   ngOnChanges(event:any): void {
     console.log(event);
-    let model: CollaborativeEditArgs = {...event} as CollaborativeEditArgs;
-    console.log(model.eventArgs.address);
-    this.FileService.sendDataByFileId(this.FileService.idParam!, event);
-    this.spreadsheetObj.updateAction(model);
+    setTimeout(() => {
+      let model: CollaborativeEditArgs = {...event} as CollaborativeEditArgs;
+      console.log(model.eventArgs.address);
+      this.FileService.sendDataByFileId(this.FileService.idParam!, event);
+    },2500)
+    
+    setTimeout(() => {
+      this.FileService.updateSheet(this.FileService.currentFile!,this.FileService.idParam!);
+    },2500);
+    // this.spreadsheetObj.updateAction(model);
   }
   
 

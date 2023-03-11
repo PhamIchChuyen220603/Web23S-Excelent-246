@@ -27,7 +27,7 @@ export class FileGateway{
     console.log('message', payload);
     client.join('message-' + payload.fileId);
     client.broadcast.emit('message-' + payload.fileId, payload);
-    // this.server.emit('message-' + payload.fileId, payload);
+    
     return 'Hello world!';
   }
 
