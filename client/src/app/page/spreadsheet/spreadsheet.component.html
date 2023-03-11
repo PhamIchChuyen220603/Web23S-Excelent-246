@@ -1,5 +1,7 @@
 <div id="container">
     <div class="navbar">
+        <app-chat></app-chat>
+       
         <!-- <button (click)="upload()">open</button> -->
         <app-navbar></app-navbar>
     </div>
@@ -13,8 +15,10 @@
             (created)="hide()"
             [openUrl]="this.openUrl" 
             (allowSave)="true"
-            [saveUrl]="this.saveUrl">
+            [saveUrl]="this.saveUrl">  
         </ejs-spreadsheet>
+       
     </div>
+   
 </div>
 
