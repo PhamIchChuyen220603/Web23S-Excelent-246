@@ -12,6 +12,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { OpenFileDialogComponent } from './components/open-file-dialog/open-file-dialog.component';
 import { MiniFileComponent } from './components/mini-file/mini-file.component';
 import { ShareDialogComponent } from './components/share-dialog/share-dialog.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { ShareDialogComponent } from './components/share-dialog/share-dialog.com
     OpenFileDialogComponent,
     MiniFileComponent,
     ShareDialogComponent,
+    ChatComponent,
   ],
   imports: [
     CommonModule,
