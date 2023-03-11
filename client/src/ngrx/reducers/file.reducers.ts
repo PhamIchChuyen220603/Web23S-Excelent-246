@@ -193,7 +193,7 @@ export const FileReducer = createReducer(
     };
   }),
 
-  on(FileActions.updateFile, (state) => {
+  on(FileActions.updateFile, (state,{fileId, file}) => {
     return {
       ...state,
       inProcess: true,
@@ -202,15 +202,19 @@ export const FileReducer = createReducer(
     };
   }),
 
-  on(FileActions.updateFileSuccess, (state, { fileId, file }) => {
+  on(FileActions.updateFileSuccess, (state, { file }) => {
     let newFiles = [...state.files];
-    let index = newFiles.findIndex((f) => f.fileId == fileId);
-    if (index != -1) {
-      newFiles[index] = { ...file };
-    }
+    let index = newFiles.findIndex((f) => f.fileId == file.fileId)
+    newFiles[index] = {...file}
+    // let newFiles = [...state.files];
+    // let index = newFiles.findIndex((f) => f.fileId == fileId);
+    // if (index != -1) {
+    //   newFiles[index] = { ...file };
+    // }
     return {
       ...state,
       files: newFiles,
+      file: newFiles[index],
       inProcess: false,
       loading: false,
       error: '',
