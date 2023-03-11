@@ -302,5 +302,35 @@ export const FileReducer = createReducer(
       loading: false,
       error: error,
     };
+  }),
+  
+  on(FileActions.updateFileData, (state, ) => {
+    return {
+      ...state,
+      inProcess: false,
+      loading: false,
+      error: '',
+    };
+  }),
+
+  on(FileActions.updateFileDataSuccess, (state, { fileData }) => {
+    let newFile = {...state.file!};
+    newFile = {...newFile, data: fileData};
+    return {
+      ...state,
+      file: newFile,
+      inProcess: false,
+      loading: false,
+      error: '',
+    }
+  }),
+
+  on(FileActions.updateFileDataFailure, (state, { error }) => {
+    return {
+      ...state,
+      inProcess: false,
+      loading: false,
+      error: error,
+    }
   })
 );

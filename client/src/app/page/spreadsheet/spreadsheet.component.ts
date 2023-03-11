@@ -41,6 +41,9 @@ export class SpreadsheetComponent implements OnInit {
   id!: string;
   idParam!:string | null;
   evt!: any;
+  response!:any;
+  fileToUpdate!:File;
+
   constructor(
     protected FileService: FileService,
     private authService: AuthService,
@@ -62,22 +65,47 @@ export class SpreadsheetComponent implements OnInit {
       this.FileService.currentFile = res.file;
       console.log(this.FileService.currentFile);
     })
+    this.openFile();
   }
+
+  openFile(){
+    setTimeout(() => {
+      console.log(this.FileService.currentFile)
+      this.spreadsheetObj.openFromJson({file: this.FileService.currentFile?.data.jsonObject});
+    },3000);
+  }
+
   ngOnInit(): void {
     console.log(this.FileService.currentFile?.data);
     this.joinRoom();
   }
 
   ngOnChanges(event:any): void {
-    console.log(event);
+    this.spreadsheetObj.saveAsJson().then((JsonFile) => {
+      console.log(JsonFile);
+      this.response = JsonFile;
+    })
+    this.file$.subscribe((res) => {
+      this.fileToUpdate = {...res.file!};
+      console.log(this.fileToUpdate)      // console.log(fileToUpdate.data);
+    })
+
     setTimeout(() => {
       let model: CollaborativeEditArgs = {...event} as CollaborativeEditArgs;
+      this.fileToUpdate.data = {...this.response};
+      console.log(this.fileToUpdate.data);
       console.log(model.eventArgs.address);
       this.FileService.sendDataByFileId(this.FileService.idParam!, event);
     },2500)
     
     setTimeout(() => {
-      this.FileService.updateSheet(this.FileService.currentFile!,this.FileService.idParam!);
+      console.log(this.fileToUpdate);
+      console.log(this.fileToUpdate.data);
+      this.store.dispatch(FileActions.updateFileData({fileId: this.FileService.idParam!, fileData: {...this.fileToUpdate.data}}));
+      // this.FileService.updateFileData(this.FileService.idParam!, this.fileToUpdate.data);
+      // this.FileService.updateById(this.FileService.idParam!, {...this.fileToUpdate})
+      // this.store.dispatch(FileActions.updateFile({fileId: this.idParam!, file: {...this.fileToUpdate}}))
+      // this.FileService.updateById(this.FileService.idParam!, {...this.FileService.currentFile})
     },2500);
     // this.spreadsheetObj.updateAction(model);
   }

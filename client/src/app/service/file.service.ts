@@ -43,20 +43,8 @@ export class FileService {
     setDoc(doc(this.db, file.fileId), file);
   }
 
-  updateSheet(file:File, fileId:string){
-    setDoc(doc(this.db, fileId), {
-      fileId: fileId,
-      ownerId: file.ownerId,
-      title: file.title,
-      createdDate: file.createdDate,
-      modifiedDate: file.modifiedDate,
-      modifiedBy: file.modifiedBy,
-      createdBy: file.createdBy,
-      status: file.status,
-      data: file.data,
-      members: file.members,
-    });
-
+  updateFileData(id: string, data:any){
+    return this.http.put(`${environment.baseUrl}file/updateData?id=${id}`, data);
   }
 
   getDataByFileId(fileId: string){

@@ -55,6 +55,21 @@ export class FileService {
     }
   }
 
+  async updateData(id: string, data: any): Promise<FileModel | any> {
+    try{
+      const fileRef = this.docRef.where('fileId', '==', id);
+      await fileRef.get().then((snapshot) => {
+        snapshot.forEach((doc) => {
+          doc.ref.update({ data: data });
+        });
+      });
+    }
+    catch(err){
+      console.log(err);
+      return null;
+    }
+  }
+
     async getById(fileId: string): Promise<FileModel | null>{
         try{
             let file!:FileModel;

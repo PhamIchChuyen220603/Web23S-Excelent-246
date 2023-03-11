@@ -45,6 +45,11 @@ export class FileController {
         return this.fileService.update(fileId, file);
     }
 
+    @Put('updateData')
+    updateData(@Query('id') fileId: string, @Body() data: any){
+        return this.fileService.updateData(fileId, data);
+    }
+
     @Get('getFilesByDate')
     getFilesByDate(){
         return this.fileService.getFilesByDate();
