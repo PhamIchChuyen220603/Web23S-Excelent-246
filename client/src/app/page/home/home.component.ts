@@ -25,5 +25,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth$ = this.store.select('auth');
+    
   }
 }
