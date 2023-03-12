@@ -1,0 +1,95 @@
+// .chat{
+//     // position: absolute;
+//     width: 3.9rem;
+//     height: 3.9rem;
+//     background-color: white;
+//     // left:114.2rem;
+//     // bottom: 5rem;
+//     // z-index: 10;
+//     border-radius: 50%;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+//     transition: 0.5s;
+// }
+
+// .chat:hover{
+//     transition: 0.5s;
+//     scale: 1.1;
+// }
+
+// .chat img{
+//     width: 80%;
+//     height: 80%;
+// }
+// .chatContainer{
+//     position: absolute;
+//     width: 18.5rem;
+//     height: 22rem;
+//     left:95rem;
+//     bottom: 5rem;
+//     background-color: blue;
+//     z-index: 10;
+// }
+
+
+.show-btn {
+  position: absolute;
+  z-index: 10;
+  left: 95%;
+  top: 83%;
+  width: 3.9rem;
+  height: 3.9rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.show-btn:hover{
+  transition: 0.5s;
+  scale: 1.1;
+  cursor: pointer;
+}
+
+img {
+  width: 80%;
+  height: 80%;
+}
+
+input[type="checkbox"]{
+  display: none;
+}
+
+.wrapper{
+  position: absolute;
+  top: 42%;
+  left: 77%;
+  z-index: 10;
+  width: 320px;
+  height: 400px;
+  margin: 80px auto;
+  background: #E11E5D;
+  border-radius: 6px;
+  animation: up 1s ;
+}
+#show:checked ~ .wrapper{
+  display: none;
+}
+
+#chat{
+}
+
+
+@keyframes up{
+  50%{
+    scale: 1.01;
+  }
+  100%{
+    scale: 1;
+  }
+}

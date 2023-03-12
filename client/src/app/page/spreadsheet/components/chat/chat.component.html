@@ -1,0 +1,26 @@
+
+<!-- <div class="chat">
+    <img src="../../../assets/messenger.png" alt="">
+   
+</div>
+<div class="chatContainer">
+    
+</div> -->
+
+<div class="container">
+  <input type="checkbox" id="show">
+  <label for="show" class="show-btn">
+    <img src="../../../../../assets/messenger.png" alt="message">
+  </label>
+  <div class="wrapper">
+      <input type="text" [(ngModel)]="roomId" placeholder="Enter room ID">
+      <input type="text" [(ngModel)]="userName" placeholder="Enter your name">
+      <div *ngFor="let msg of messages">
+        <p>from:{{msg.from}}</p>
+        <p>msg: {{msg.msg}}</p>
+      </div>
+      <button (click)="joinRoom(roomId)">Join in</button>
+      <input type="text" [(ngModel)]="newMessage" placeholder="Enter your message" id="chat">
+      <button (click)="sendMessage(newMessage)">Join in</button>
+  </div>
+</div>
