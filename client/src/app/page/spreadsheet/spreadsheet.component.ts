@@ -1,6 +1,7 @@
+import { user } from '@angular/fire/auth';
 import { Timestamp } from '@angular/fire/firestore';
 import { FileActions } from 'src/ngrx/actions/file.actions';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
@@ -15,8 +16,8 @@ import { InvitationState } from 'src/ngrx/states/invitation.state';
 import { FileState } from 'src/ngrx/states/file.states';
 import { ActivatedRoute } from '@angular/router';
 import { DataBoundEventArgs, EventArgs } from '@syncfusion/ej2-navigations';
-// import * as signalR from '@'
-
+import { User } from 'src/app/model/user.model';
+import { Socket } from 'ngx-socket-io';
 @Component({
   selector: 'app-spreadsheet',
   templateUrl: './spreadsheet.component.html',
@@ -24,6 +25,11 @@ import { DataBoundEventArgs, EventArgs } from '@syncfusion/ej2-navigations';
 })
 export class SpreadsheetComponent implements OnInit {
   @ViewChild('spreadsheet') spreadsheetObj!: Spreadsheet;
+  ngAfterViewInit(){
+    setTimeout(() => {
+      this.FileService.spreadsheet = this.spreadsheetObj;
+    },2000)
+  }
   // test!: SpreadsheetComponent;
   data$!: Observable<any>;
   tempData:any[] = [];
@@ -31,7 +37,8 @@ export class SpreadsheetComponent implements OnInit {
   model!: CollaborativeEditArgs
   temp!:any;
   newFile!:File;
-
+  user!: User;
+  users: any[] = [];
   hide() {
     this.spreadsheetObj.hideFileMenuItems(['File'], true);
   }
@@ -50,11 +57,16 @@ export class SpreadsheetComponent implements OnInit {
     private route: ActivatedRoute,
     private store: Store<{ auth: AuthState, invite: InvitationState, file: FileState }>
   ) {
+
+    this.FileService.spreadsheet = this.spreadsheetObj;
+    // console.log(this.FileService.spreadsheet)
     this.auth$ = this.store.select('auth');
     this.auth$.subscribe((auth) => {
+      this.user = auth.user!;
       this.id = auth.user?.userId || 'kh co user';
     });
     this.file$ = this.store.select('file');
+    this.store.dispatch(FileActions.getFilesByUserId({userId: this.id!}));
     this.route.paramMap.subscribe(params => {
       this.idParam = params.get('id')!;
       this.FileService.idParam = params.get('id')!;
@@ -66,7 +78,8 @@ export class SpreadsheetComponent implements OnInit {
       console.log(this.FileService.currentFile);
     })
     this.openFile();
-  }
+}
+
 
   openFile(){
     setTimeout(() => {
@@ -93,21 +106,16 @@ export class SpreadsheetComponent implements OnInit {
     setTimeout(() => {
       let model: CollaborativeEditArgs = {...event} as CollaborativeEditArgs;
       this.fileToUpdate.data = {...this.response};
-      console.log(this.fileToUpdate.data);
-      console.log(model.eventArgs.address);
+      // console.log(this.fileToUpdate.data);
+      // console.log(model.eventArgs.address);
       this.FileService.sendDataByFileId(this.FileService.idParam!, event);
     },2500)
     
     setTimeout(() => {
-      console.log(this.fileToUpdate);
-      console.log(this.fileToUpdate.data);
-      this.store.dispatch(FileActions.updateFileData({fileId: this.FileService.idParam!, fileData: {...this.fileToUpdate.data}}));
-      // this.FileService.updateFileData(this.FileService.idParam!, this.fileToUpdate.data);
-      // this.FileService.updateById(this.FileService.idParam!, {...this.fileToUpdate})
-      // this.store.dispatch(FileActions.updateFile({fileId: this.idParam!, file: {...this.fileToUpdate}}))
-      // this.FileService.updateById(this.FileService.idParam!, {...this.FileService.currentFile})
+      // console.log(this.fileToUpdate);
+      // console.log(this.fileToUpdate.data);
+      this.store.dispatch(FileActions.updateFile({fileId: this.FileService.idParam!,file: {...this.fileToUpdate, data: {...this.fileToUpdate.data}}}));
     },2500);
-    // this.spreadsheetObj.updateAction(model);
   }
   
 
@@ -152,30 +160,17 @@ export class SpreadsheetComponent implements OnInit {
       if(res !== undefined || res !== null){
         this.tempData.push(res);
         let model: CollaborativeEditArgs = res.data as CollaborativeEditArgs;
-        console.log(model);
+        if(model != undefined || model != null){
+        // console.log(model);
         this.spreadsheetObj.updateAction(model);
-      }
-    })
-}
-
-
-
-  async sendData(){
-    let response!:any;
-    await this.spreadsheetObj.saveAsJson().then((JsonFile) => {
-      response = JsonFile;
-    })
-
-    let file!:Observable<any>;
-    let fileToUpdate!:File;
-    this.store.dispatch(FileActions.getFileById({fileId: '1678372340831'}));
-    this.file$.subscribe((res) => {
-      fileToUpdate = {...res.file!};
-      fileToUpdate.data = {...response};
-    })
-    this.store.dispatch(FileActions.updateFile({fileId: "1678372340831", file: fileToUpdate}));
-    // this.store.dispatch(FileActions.getFileById({fileId: '1678372340831'}));
+        }else{
+          
+        } 
+    }})
   }
 
-  
+
+
 }
+
+
