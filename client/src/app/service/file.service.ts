@@ -34,6 +34,7 @@ export class FileService {
   currentFile!: any;
   isSelected!: boolean;
   // so:Socket = this.socket;
+  currentUserId!: string
 
   db = collection(this.fireStore, 'excelFiles');
   db2 = getFirestore();

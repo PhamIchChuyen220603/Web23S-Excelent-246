@@ -9,22 +9,36 @@ import { AuthActions } from 'src/ngrx/actions/auth.actions';
 import { FileActions } from 'src/ngrx/actions/file.actions';
 import { AuthState } from 'src/ngrx/states/auth.states';
 import { FileState } from 'src/ngrx/states/file.states';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit{
   auth$ = this.store.select('auth');
   constructor(
     private route: Router,
     private fileService: FileService,
     private store: Store<{ auth: AuthState; file: FileState }>
-  ) {}
-
-  ngOnInit(): void {
+  ) {
     this.auth$ = this.store.select('auth');
+    this.auth$.subscribe((data)=>{
+      
+    })
+
+    const auth = getAuth()
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.fileService.currentUserId = user.uid
+      } else {
+
+      }
+    });
+    
+  }
+  ngOnInit(){
     
   }
 }
