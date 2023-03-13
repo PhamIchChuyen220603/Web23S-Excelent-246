@@ -14,6 +14,10 @@ export const FileActions = {
   updateFileSuccess: createAction('[File] Update File Success', props<{ file: File}>()),
   updateFileFailure: createAction('[File] Update File Failure', props<{ error: string }>()),
 
+  updateFileData : createAction('[File] Update File Data', props<{ fileId: string, fileData: any }>()),
+  updateFileDataSuccess: createAction('[File] Update File Data Success', props<{ fileData: any }>()),
+  updateFileDataFailure: createAction('[File] Update File Data Failure', props<{ error: string }>()),
+
   getFileById: createAction('[File] Get File', props<{ fileId: string }>()),
   getFileByIdSuccess: createAction('[File] Get File Success', props<{ file: File }>()),
   getFileByIdFailure: createAction('[File] Get File Failure', props<{ error: string }>()),

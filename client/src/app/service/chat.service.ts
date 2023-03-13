@@ -7,6 +7,7 @@ import { ChatModel } from '../model/chat.model';
 })
 export class ChatService {
 
+  participators: Array<any> = [];
   constructor(private socket:Socket) { }
 
   getMessageByRoomId(roomId: string){

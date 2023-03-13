@@ -33,6 +33,7 @@ export class FileService {
   public idParam!: string;
   currentFile!: any;
   isSelected!: boolean;
+  spreadsheet!: Spreadsheet;
   // so:Socket = this.socket;
 
   db = collection(this.fireStore, 'excelFiles');
@@ -43,20 +44,8 @@ export class FileService {
     setDoc(doc(this.db, file.fileId), file);
   }
 
-  updateSheet(file:File, fileId:string){
-    setDoc(doc(this.db, fileId), {
-      fileId: fileId,
-      ownerId: file.ownerId,
-      title: file.title,
-      createdDate: file.createdDate,
-      modifiedDate: file.modifiedDate,
-      modifiedBy: file.modifiedBy,
-      createdBy: file.createdBy,
-      status: file.status,
-      data: file.data,
-      members: file.members,
-    });
-
+  updateFileData(id: string, data:any){
+    return this.http.put(`${environment.baseUrl}file/updateData?id=${id}`, data);
   }
 
   getDataByFileId(fileId: string){
@@ -71,8 +60,8 @@ export class FileService {
   }
 
 
-  openFile(sheet: Spreadsheet, file: any) {
-    sheet.openFromJson(file);
+  openFile(sheet: Spreadsheet, file: File) {
+    sheet.openFromJson({ file: file.data.jsonObject });
   }
 
   getAllFiles() {
@@ -122,5 +111,14 @@ export class FileService {
 
   getFilesByTitle(){
     return this.http.get(`${environment.baseUrl}file/getFilesByTitle` ) as Observable<File[]>;
+  }
+
+  exportFile(spreadsheet: Spreadsheet, file: File, name: string){
+    console.log(file);
+    spreadsheet.save({
+      url:'https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/save',
+      fileName: name,
+      saveType: 'Xlsx',
+    })
   }
 }

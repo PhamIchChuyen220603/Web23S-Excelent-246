@@ -112,7 +112,7 @@ export class FileEffects{
     ))
 
     getFilesByDate$ = createEffect(() => this.actions$.pipe(
-        ofType(FileActions.getAllFiles),
+        ofType(FileActions.getFilesByDate),
         switchMap((action) => {
             return from(this.fileService.getFilesByDate()).pipe(
                 map((result:any) => {
@@ -126,7 +126,7 @@ export class FileEffects{
     ))
 
     getFilesByTitle$ = createEffect(() => this.actions$.pipe(
-        ofType(FileActions.getAllFiles),
+        ofType(FileActions.getFilesByTitle),
         switchMap((action) => {
             return from(this.fileService.getFilesByTitle()).pipe(
                 map((result:any) => {
@@ -138,4 +138,19 @@ export class FileEffects{
             )
         })
     ))
+
+    updateFileData$ = createEffect(() => this.actions$.pipe(
+        ofType(FileActions.updateFileData),
+        switchMap((action) => {
+            return from(this.fileService.updateFileData(action.fileId, action.fileData)).pipe(
+                map((result: any) => {
+                    return FileActions.updateFileDataSuccess({fileData: result})
+                }),
+                catchError((error) => {
+                    return of(FileActions.updateFileDataFailure({error: error}))
+                })
+            )
+        })
+    ))
+
 }

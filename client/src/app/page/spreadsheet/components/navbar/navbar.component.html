@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <div id="container">
   <div class="content">
     <div class="left-side">
@@ -7,34 +8,24 @@
         </div>
         <div class="file-name-and-tools">
           <div class="file-name">
-            <!-- <h2 *ngIf="this.fileService.currentFile != null">{{this.fileService.currentFile?.title}}</h2> -->
-            <div *ngIf="isEditing" class="editor">
-              <input type="text" name="value" autofocus [(ngModel)]="pendingValue" (keydown.Enter)="processChanges()"
-                (keydown.Meta.Enter)="processChanges()" (keydown.Escape)="cancel()" />
-              <button (click)="processChanges()">
-                Save
-              </button>
-              <a (click)="cancel()" (keydown.Enter)="cancel()" tabindex="0">
-                Cancel
-              </a>
-            </div>
-            <div *ngIf="( ! isEditing )" (click)="edit()">
-              <h3>{{this.title}}</h3>
-            </div>
+            <p id="title" (click)="rename()" [contentEditable]="this.editable"  *ngIf="this.fileService.currentFile != null">{{this.fileService.currentFile?.title}}</p>
           </div>
-          <ejs-menu (select)="openN($event)" #menu id="menu" [items]=menuItems>
+          <ejs-menu  (select)="openN($event)" #menu id="menu" [items]=menuItems>
           </ejs-menu>
         </div>
       </div>
     </div>
     <div class="right-side">
       <div class="right-side-content">
+        <div  *ngFor="let user of this.users |slice:0:4" [matTooltip]="user.userName!" [matTooltipShowDelay]="500" style="display: flex; justify-content: center; align-items: center;">
+          <img *ngIf="user.userId != (this.auth$|async)?.user?.userId" [src]="(this.auth$|async)?.user?.photoURL" alt="user avatar" class="user-avatar">
+        </div>
         <div (click)="share()" class="share">
           Chia sẻ
         </div>
         <div class="profile">
           <div class="avt">
-            <img [src]="this.authService.userInfo?.photoURL" alt="">
+            <img [src]="(this.auth$|async)?.user?.photoURL" alt="">
           </div>
         </div>
       </div>
@@ -43,3 +34,5 @@
 </div>
 
 <!-- <button (click)="openN()">open</button> -->
+
+<!-- <input type="text" name="" id="" readonly [con]> -->

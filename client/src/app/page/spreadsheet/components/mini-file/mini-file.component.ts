@@ -7,6 +7,7 @@ import { AuthState } from 'src/ngrx/states/auth.states';
 import { FileState } from 'src/ngrx/states/file.states';
 import { FileActions } from 'src/ngrx/actions/file.actions';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-mini-file',
@@ -17,14 +18,14 @@ export class MiniFileComponent {
   userId!:string | null;
   files$:Observable<FileState>;
   auth$ = this.store.select('auth');
-  constructor(private fileService: FileService, private store: Store<{auth:AuthState, file: FileState}>, private router: Router) {
+  constructor(private fileService: FileService, private store: Store<{auth:AuthState, file: FileState}>, private router: Router, private dialog: MatDialog) {
     this.auth$.subscribe((res) => {
       this.userId = res.user?.userId!;
     })
     this.files$ = this.store.select('file');
-    this.store.dispatch(FileActions.getFilesByUserId({userId: this.userId!}));
+    // this.store.dispatch(FileActions.getFilesByUserId({ userId: this.userId! }));
     this.files$.subscribe((res) => {
-      console.log(res); 
+      console.log(res.files); 
     })
   }
 
@@ -35,5 +36,7 @@ export class MiniFileComponent {
     // this.fileService.openFile()
     this.router.navigate(['/spreadsheet', file.fileId]);
     console.log(this.fileService.currentFile?.data);
+    this.dialog.closeAll();
+    this.fileService.openFile(this.fileService.spreadsheet, this.fileService.currentFile)
   }
 }
