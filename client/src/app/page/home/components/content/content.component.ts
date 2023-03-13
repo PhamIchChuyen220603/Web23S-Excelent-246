@@ -38,7 +38,7 @@ export class ContentComponent implements OnInit {
         // console.log(this.userId);
     });
     this.store.dispatch(FileActions.getFilesByUserId({ userId: localStorage.getItem('userId')! }));
-    this.appendItems();
+    // this.appendItems();
   }
 
   ngOnInit() {
@@ -56,7 +56,6 @@ export class ContentComponent implements OnInit {
       this.fileService.isSelected = true;
       localStorage.setItem('currentFile', JSON.stringify(res.file))
       localStorage.setItem('idParam', JSON.stringify(res.file?.fileId))
-      localStorage.setItem('isSelected', 'true')
     })
     // console.log(file);
     setTimeout(() => {
@@ -92,8 +91,9 @@ export class ContentComponent implements OnInit {
   }
 
   addItems(_method: string) {
-    for (let i = 7; this.arr.length <= this.arr2.length; i++) {
+    for (let i = this.arr.length -1; this.arr.length <= this.arr2.length; i++) {
       this.arr.push(this.arr2[i]);
+      break;
     }
   }
 }
