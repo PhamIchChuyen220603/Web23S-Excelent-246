@@ -46,6 +46,7 @@ export class NavbarComponent implements OnInit{
     // this.pendingValue = this.fileService.currentFile.title!;
     this.pendingValue = JSON.parse(localStorage.getItem('currentFile')!).title;
 
+
     // console.log(this.fileService.currentFile.ownerId)
     this.isEditing = false;
     this.valueChangeEvents = new EventEmitter();
@@ -55,7 +56,9 @@ export class NavbarComponent implements OnInit{
       this.user = res.user!;
       // console.log(this.user);
     })
-    this.store.dispatch(FileActions.getFilesByUserId({ userId: this.user.userId! }));
+    this.store.dispatch(FileActions.getFilesByUserId({ userId: JSON.parse(localStorage.getItem('idParam')!) }));
+    // this.store.dispatch(FileActions.getFilesByUserId({ userId: this.user.userId! }));
+
     console.log(this.fileService.idParam!)
 
     try{
