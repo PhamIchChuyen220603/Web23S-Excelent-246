@@ -51,10 +51,12 @@ export class ContentComponent implements OnInit {
   selectFile(fileId: string) {
     this.store.dispatch(FileActions.getFileById({ fileId: fileId }));
     this.files$.subscribe((res) => {
-      console.log(res.file);
       this.fileService.currentFile = res.file!;
       this.fileService.idParam = res.file?.fileId!;
       this.fileService.isSelected = true;
+      localStorage.setItem('currentFile', JSON.stringify(res.file))
+      localStorage.setItem('idParam', JSON.stringify(res.file?.fileId))
+      localStorage.setItem('isSelected', 'true')
     })
     // console.log(file);
     setTimeout(() => {
@@ -63,7 +65,7 @@ export class ContentComponent implements OnInit {
   }
 
   canRename(ownerId: string) {
-    if (ownerId == this.userId) return true;
+    if (ownerId == localStorage.getItem('userId')) return true;
     else return false;
   }
 
@@ -73,6 +75,7 @@ export class ContentComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(RenameDialogComponent);
+    
     this.store.dispatch(FileActions.getFileById({ fileId: this.fileService.idToUpdate! }));
   }
 

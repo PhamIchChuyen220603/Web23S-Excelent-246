@@ -72,11 +72,13 @@ export class SpreadsheetComponent implements OnInit {
       this.FileService.idParam = params.get('id')!;
       // console.log(this.FileService.idParam);
     });
-    this.store.dispatch(FileActions.getFileById({fileId: this.FileService.idParam!}));
+    this.store.dispatch(FileActions.getFileById({fileId: JSON.parse(localStorage.getItem('idParam')!)}));
     this.file$.subscribe((res) => {
       this.FileService.currentFile = res.file;
       console.log(this.FileService.currentFile);
     })
+    
+
     this.openFile();
 }
 
@@ -84,7 +86,8 @@ export class SpreadsheetComponent implements OnInit {
   openFile(){
     setTimeout(() => {
       console.log(this.FileService.currentFile)
-      this.spreadsheetObj.openFromJson({file: this.FileService.currentFile?.data.jsonObject});
+      console.log(JSON.parse(localStorage.getItem('currentFile')!).data)
+      this.spreadsheetObj.openFromJson({file: JSON.parse(localStorage.getItem('currentFile')!).data.jsonObject});
     },3000);
   }
 

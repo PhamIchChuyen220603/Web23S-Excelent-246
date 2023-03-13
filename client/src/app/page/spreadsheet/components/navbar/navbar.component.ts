@@ -43,7 +43,9 @@ export class NavbarComponent implements OnInit{
     protected authService: AuthService, private dailog: MatDialog,
     protected fileService: FileService,
     private store: Store<{ file: FileState, auth: AuthState }>, private socket: Socket, private chatService: ChatService) {
-    this.pendingValue = this.fileService.currentFile.title!;
+    // this.pendingValue = this.fileService.currentFile.title!;
+    this.pendingValue = JSON.parse(localStorage.getItem('currentFile')!).title;
+
     // console.log(this.fileService.currentFile.ownerId)
     this.isEditing = false;
     this.valueChangeEvents = new EventEmitter();
