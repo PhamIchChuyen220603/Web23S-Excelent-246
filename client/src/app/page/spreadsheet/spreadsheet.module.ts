@@ -18,8 +18,8 @@ import { RenameComponent } from './components/rename/rename.component';
 
 @NgModule({
   declarations: [
-    SpreadsheetComponent,
     NavbarComponent,
+    SpreadsheetComponent,
     SheetComponent,
     OpenFileDialogComponent,
     MiniFileComponent,

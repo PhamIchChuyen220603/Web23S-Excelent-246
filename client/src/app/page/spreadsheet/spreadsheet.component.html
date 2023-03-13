@@ -1,8 +1,6 @@
 <div id="container">
     <div class="navbar">
         <app-chat></app-chat>
-       
-        <!-- <button (click)="upload()">open</button> -->
         <app-navbar></app-navbar>
     </div>
     <div *ngIf="(this.file$|async)?.loading == true">
