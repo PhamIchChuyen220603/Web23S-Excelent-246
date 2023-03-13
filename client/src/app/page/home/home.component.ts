@@ -9,7 +9,7 @@ import { AuthActions } from 'src/ngrx/actions/auth.actions';
 import { FileActions } from 'src/ngrx/actions/file.actions';
 import { AuthState } from 'src/ngrx/states/auth.states';
 import { FileState } from 'src/ngrx/states/file.states';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { Auth, getAuth, onAuthStateChanged } from 'firebase/auth';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit{
   auth$ = this.store.select('auth');
   constructor(
     private route: Router,
-    private fileService: FileService,
+    private authService: AuthService,
     private store: Store<{ auth: AuthState; file: FileState }>
   ) {
     this.auth$ = this.store.select('auth');
@@ -28,17 +28,9 @@ export class HomeComponent implements OnInit{
       
     })
 
-    const auth = getAuth()
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        this.fileService.currentUserId = user.uid
-      } else {
-
-      }
-    });
     
   }
   ngOnInit(){
-    
+    console.log(localStorage.getItem('userId'))
   }
 }

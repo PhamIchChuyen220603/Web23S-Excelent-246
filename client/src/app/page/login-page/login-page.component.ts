@@ -9,16 +9,7 @@ import { FileService } from 'src/app/service/file.service';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent {
-  constructor(public authSrvc: AuthService, private fileService: FileService) {
-    const auth = getAuth()
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        this.fileService.currentUserId = user.uid
-      } else {
-
-      }
-    });
-
+  constructor(public authService: AuthService, private fileService: FileService) {
   }
 
 }

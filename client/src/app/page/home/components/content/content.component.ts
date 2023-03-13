@@ -33,11 +33,11 @@ export class ContentComponent implements OnInit {
     this.auth$ = this.store.select('auth');
     this.files$ = this.store.select('file');
     this.auth$.subscribe((res) => {
-        console.log(this.fileService.currentUserId)
-        this.userId = this.fileService.currentUserId;
-        console.log(this.userId);
+        // console.log(this.fileService.currentUserId)
+        // this.userId = this.fileService.currentUserId;
+        // console.log(this.userId);
     });
-    this.store.dispatch(FileActions.getFilesByUserId({ userId: this.userId! }));
+    this.store.dispatch(FileActions.getFilesByUserId({ userId: localStorage.getItem('userId')! }));
     this.appendItems();
   }
 
