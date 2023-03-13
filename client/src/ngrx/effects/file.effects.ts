@@ -138,4 +138,19 @@ export class FileEffects{
             )
         })
     ))
+
+    updateFileData$ = createEffect(() => this.actions$.pipe(
+        ofType(FileActions.updateFileData),
+        switchMap((action) => {
+            return from(this.fileService.updateFileData(action.fileId, action.fileData)).pipe(
+                map((result: any) => {
+                    return FileActions.updateFileDataSuccess({fileData: result})
+                }),
+                catchError((error) => {
+                    return of(FileActions.updateFileDataFailure({error: error}))
+                })
+            )
+        })
+    ))
+
 }

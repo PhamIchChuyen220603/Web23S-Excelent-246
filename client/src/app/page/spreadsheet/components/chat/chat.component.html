@@ -13,14 +13,20 @@
     <img src="../../../../../assets/messenger.png" alt="message">
   </label>
   <div class="wrapper">
-      <input type="text" [(ngModel)]="roomId" placeholder="Enter room ID">
-      <input type="text" [(ngModel)]="userName" placeholder="Enter your name">
-      <div *ngFor="let msg of messages">
-        <p>from:{{msg.from}}</p>
-        <p>msg: {{msg.msg}}</p>
+    <div class="chat-info">
+
+    </div>
+    <div class="message-container">
+      <div *ngFor="let msg of messages" [class]="(msg.from == (this.auth$|async)?.user?.userId) ? 'card' : 'friend'">
+        <!-- <p >from:{{msg.from}}</p> -->
+        <img *ngIf="(msg.from != (this.auth$|async)?.user?.userId)" [src]="(this.auth$|async)?.user?.photoURL" alt="">
+        <p>{{msg.msg}}</p>
+        <img *ngIf="(msg.from == (this.auth$|async)?.user?.userId)" [src]="(this.auth$|async)?.user?.photoURL" alt="">
       </div>
-      <button (click)="joinRoom(roomId)">Join in</button>
-      <input type="text" [(ngModel)]="newMessage" placeholder="Enter your message" id="chat">
-      <button (click)="sendMessage(newMessage)">Join in</button>
+     </div>
+    <div class="send-message">
+      <input (keydown)="send(newMessage,$event)" id="send" type="text" [(ngModel)]="newMessage" placeholder="Enter your message">
+      <button (click)="sendMessage(newMessage)">Send</button>
+    </div>
   </div>
 </div>

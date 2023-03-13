@@ -3,4 +3,5 @@ export interface ChatModel{
     msg: string;
     date: number;
     from: string;
+    fromURL: string;
 }

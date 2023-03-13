@@ -196,8 +196,8 @@ export const FileReducer = createReducer(
   on(FileActions.updateFile, (state,{fileId, file}) => {
     return {
       ...state,
-      inProcess: true,
-      loading: true,
+      inProcess: false,
+      loading: false,
       error: '',
     };
   }),
@@ -214,7 +214,7 @@ export const FileReducer = createReducer(
     return {
       ...state,
       files: newFiles,
-      file: newFiles[index],
+      // file: newFiles[index],
       inProcess: false,
       loading: false,
       error: '',
@@ -302,5 +302,35 @@ export const FileReducer = createReducer(
       loading: false,
       error: error,
     };
+  }),
+  
+  on(FileActions.updateFileData, (state, ) => {
+    return {
+      ...state,
+      inProcess: false,
+      loading: false,
+      error: '',
+    };
+  }),
+
+  on(FileActions.updateFileDataSuccess, (state, { fileData }) => {
+    let newFile = {...state.file!};
+    newFile = {...newFile, data: fileData};
+    return {
+      ...state,
+      file: newFile,
+      inProcess: false,
+      loading: false,
+      error: '',
+    }
+  }),
+
+  on(FileActions.updateFileDataFailure, (state, { error }) => {
+    return {
+      ...state,
+      inProcess: false,
+      loading: false,
+      error: error,
+    }
   })
 );

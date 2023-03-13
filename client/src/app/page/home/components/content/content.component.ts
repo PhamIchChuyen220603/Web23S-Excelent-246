@@ -65,7 +65,9 @@ export class ContentComponent implements OnInit {
       this.fileService.isSelected = true;
     })
     // console.log(file);
-    this.route.navigate([`/spreadsheet/${fileId}`]);
+    setTimeout(() => {
+      this.route.navigate([`/spreadsheet/${fileId}`]);
+    },1500)
   }
 
   canRename(ownerId: string) {
