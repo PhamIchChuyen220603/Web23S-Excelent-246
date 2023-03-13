@@ -38,7 +38,7 @@ export class ContentComponent implements OnInit {
         // console.log(this.userId);
     });
     this.store.dispatch(FileActions.getFilesByUserId({ userId: localStorage.getItem('userId')! }));
-    this.appendItems();
+    // this.appendItems();
   }
 
   ngOnInit() {
@@ -51,10 +51,11 @@ export class ContentComponent implements OnInit {
   selectFile(fileId: string) {
     this.store.dispatch(FileActions.getFileById({ fileId: fileId }));
     this.files$.subscribe((res) => {
-      console.log(res.file);
       this.fileService.currentFile = res.file!;
       this.fileService.idParam = res.file?.fileId!;
       this.fileService.isSelected = true;
+      localStorage.setItem('currentFile', JSON.stringify(res.file))
+      localStorage.setItem('idParam', JSON.stringify(res.file?.fileId))
     })
     // console.log(file);
     setTimeout(() => {
@@ -63,7 +64,7 @@ export class ContentComponent implements OnInit {
   }
 
   canRename(ownerId: string) {
-    if (ownerId == this.userId) return true;
+    if (ownerId == localStorage.getItem('userId')) return true;
     else return false;
   }
 
@@ -73,6 +74,7 @@ export class ContentComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(RenameDialogComponent);
+    
     this.store.dispatch(FileActions.getFileById({ fileId: this.fileService.idToUpdate! }));
   }
 
@@ -89,8 +91,9 @@ export class ContentComponent implements OnInit {
   }
 
   addItems(_method: string) {
-    for (let i = 7; this.arr.length <= this.arr2.length; i++) {
+    for (let i = this.arr.length -1; this.arr.length <= this.arr2.length; i++) {
       this.arr.push(this.arr2[i]);
+      break;
     }
   }
 }
